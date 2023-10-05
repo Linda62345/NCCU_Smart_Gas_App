@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UsageHistory"
+    android:background="@color/white">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toTopOf="@+id/nav_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout6"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="90dp"
+            android:orientation="vertical">
+
+            <Spinner
+                android:id="@+id/usageOption_Spinner"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:contentDescription="gasUsage"
+                android:textSize="28sp" />
+
+
+
+            <LinearLayout
+                android:id="@+id/usageLinear"
+                android:layout_width="match_parent"
+                android:layout_height="157dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="16dp"
+                android:background="#F4F4F4">
+
+
+                <TextView
+                    android:id="@+id/gas_specification"
+                    android:layout_width="114dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="48dp"
+                    android:paddingStart="15dp"
+                    android:text="剩餘重量"
+                    android:textColor="#716F6F"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/changable_gas_specification"
+                    android:layout_width="195dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="48dp"
+                    android:layout_marginBottom="2dp"
+                    android:paddingStart="15dp"
+                    android:text="xxx"
+                    android:textColor="#716F6F"
+                    android:textSize="16sp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/record_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-190dp"
+                android:layout_marginBottom="170dp"
+                android:layout_gravity="center"
+                android:paddingStart="15dp"
+                android:text="近期記錄"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+            <com.example.smartgasapp.listViewAdjust
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:id="@+id/sensorlist"/>
+            <!--
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/getTheGraph"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/gas_remainsTitle"
+                android:layout_width="114dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:paddingStart="15dp"
+                android:text="剩餘重量"
+                android:textColor="#716F6F"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/changable_gas_remains"
+                android:layout_width="195dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:paddingStart="15dp"
+                android:text="xxx"
+                android:textColor="#716F6F"
+                android:textSize="16sp"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+    </ScrollView>
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

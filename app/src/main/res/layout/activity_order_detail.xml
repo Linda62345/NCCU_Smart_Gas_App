@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--可能要加RelativeLayout-->
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OrderDetail"
+    android:fillViewport="true">
+
+
+    <LinearLayout
+        android:paddingTop="5dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="40dp">
+
+
+        <TextView
+            android:id="@+id/client_greetingTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/client_greetingSubtitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/client_greetingSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="以下是您的訂單明細"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/client_greetingTitle" />
+
+
+        <GridLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="30dp"
+            android:layout_marginTop="8dp"
+            android:paddingLeft="10dp"
+            android:background="@android:color/white"
+            android:backgroundTint="#ffececec"
+            android:columnCount="2"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:orientation="vertical"
+            android:rowCount="3"
+            app:backgroundTint="#ffffffff"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/client_greetingSubtitle">
+
+            <TextView
+                android:id="@+id/receiptNameTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginTop="7dp"
+                android:text="姓名: "
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#716F6F"
+                android:textSize="16sp"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/receiptTelNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginTop="7dp"
+                android:text="聯絡電話:"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#716F6F"
+                android:textSize="16sp"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/receiptAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="7dp"
+                android:text="配送地址: "
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#716F6F"
+                android:textSize="16sp"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/changable_receiptName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="25.0dp"
+                android:layout_marginTop="7dp"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#716F6F"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/changable_receiptTelNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="25.0dp"
+                android:layout_marginTop="7dp"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#716F6F"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/changable_receiptAddr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
+                android:layout_marginLeft="25.0dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="14dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#716F6F"
+                android:textSize="16sp" />
+        </GridLayout>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:paddingHorizontal="10dp"
+            android:background="#FFFFCC"
+            android:orientation="vertical"
+            android:rowCount="2">
+            <TextView
+                android:layout_gravity="left"
+                android:text="步驟一 - 以下是訂單格式、數量"
+                android:textSize="18sp"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                />
+            <TextView
+                android:layout_gravity="left"
+                android:text="請編輯鋼瓶是否要兌換"
+                android:autoSizeTextType="uniform"
+                android:layout_width="wrap_content"
+                android:layout_marginBottom="5dp"
+                />
+
+        </GridLayout>
+
+        <!-- 這裡要加標題 -->
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:paddingHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:columnCount="4">
+            <TextView
+                android:layout_gravity="center"
+                android:text="@string/orderQuantity"
+                android:textSize="18sp"
+                android:autoSizeTextType="uniform"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                android:layout_columnWeight="1"
+                />
+            <TextView
+                android:layout_gravity="center"
+                android:text="@string/orderType"
+                android:textSize="18sp"
+                android:autoSizeTextType="uniform"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                android:layout_columnWeight="1.5"
+                />
+            <TextView
+                android:layout_gravity="center"
+                android:text="@string/orderWeight"
+                android:textSize="18sp"
+                android:autoSizeTextType="uniform"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                android:layout_columnWeight="1"
+                />
+            <TextView
+                android:layout_gravity="center"
+                android:text="@string/orderRemain"
+                android:textSize="18sp"
+                android:autoSizeTextType="uniform"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                android:layout_columnWeight="2"
+                />
+        </GridLayout>
+
+        <com.example.smartgasapp.listViewAdjust
+            android:id="@+id/listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:animationCache="false"
+            android:divider="@null"
+            android:scrollingCache="false"
+            android:smoothScrollbar="true"
+            android:layout_marginHorizontal="30dp"/>
+
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:paddingHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:background="#FFFFCC"
+            android:orientation="vertical"
+            android:rowCount="2">
+            <TextView
+                android:layout_gravity="left"
+                android:text="步驟二 - 以下是訂單配送內容"
+                android:textSize="18sp"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                />
+            <TextView
+                android:layout_gravity="left"
+                android:text="請編輯配送時間、日期"
+                android:autoSizeTextType="uniform"
+                android:layout_width="wrap_content"
+                android:layout_marginBottom="5dp"
+                />
+
+        </GridLayout>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:paddingHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:rowCount="3"
+            android:columnCount="2">
+
+            <TextView
+                android:text="配送日期"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
+                />
+            <TextView
+                android:text="配送時間"
+                android:autoSizeTextType="uniform"
+                android:layout_marginTop="5dp"
+
+                android:maxLines="1"
+                />
+            <TextView
+                android:text="配送方式"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
+                />
+            <TextView
+                android:id="@+id/ExpectDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
+                android:layout_marginVertical="5dp"
+                android:text="日期: "
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#716F6F"
+                android:textStyle="bold" />
+            <Spinner
+                android:id="@+id/Time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:layout_gravity="end"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:entries="@array/Order_Time_Option"
+                />
+            <TextView
+                android:id="@+id/deliveryMethod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginBottom="5dp"
+                android:text="配送方式: "
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#716F6F"
+                android:textStyle="bold" />
+
+        </GridLayout>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:rowCount="2"
+            android:background="#ADD8E6">
+            <TextView
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:text="付款方式"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_columnWeight="1">
+            </TextView>
+            <TextView
+                android:layout_gravity="center"
+                android:text="現金"
+                android:layout_margin="5dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_columnWeight="1">
+            </TextView>
+        </GridLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="30dp"
+            android:columnCount="2">
+            <Button
+                android:id="@+id/receipt_edit_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="@integer/material_motion_duration_medium_1"
+                android:layout_gravity="center"
+                android:background="#ff3272d7"
+                android:text="編輯訂單"
+                android:textColor="#ffffffff"
+                android:textSize="20dp"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
+                android:textStyle="bold"
+                android:layout_columnWeight="1"
+                />
+            <TextView
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                />
+
+            <Button
+                android:id="@+id/receipt_next_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="@integer/material_motion_duration_medium_1"
+                android:background="#ff3272d7"
+                android:text="@string/gas_order_complete"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
+                android:textColor="#ffffffff"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_columnWeight="1"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</ScrollView>
