@@ -12,6 +12,7 @@
 
     <LinearLayout
         android:paddingTop="5dp"
+        android:layout_marginHorizontal="20sp"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,62 +23,50 @@
             android:id="@+id/client_greetingTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_gravity="center"
-            android:text=""
+            android:autoSizeTextType="uniform"
+            android:maxLines="1"
+            android:text="test"
             android:textColor="@color/black"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/client_greetingSubtitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="35sp"
+            android:textStyle="bold" />
 
 
         <TextView
             android:id="@+id/client_greetingSubtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_marginBottom="15dp"
             android:text="以下是您的訂單明細"
             android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/client_greetingTitle" />
+            android:textSize="25sp"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:foregroundGravity="center"
+            android:background="@drawable/rounded_button_border">
 
         <GridLayout
             android:id="@+id/linearLayout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="30dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginVertical="30dp"
             android:paddingLeft="10dp"
-            android:background="@android:color/white"
-            android:backgroundTint="#ffececec"
             android:columnCount="2"
             android:minWidth="25px"
             android:minHeight="25px"
             android:orientation="vertical"
-            android:rowCount="3"
-            app:backgroundTint="#ffffffff"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/client_greetingSubtitle">
+            android:rowCount="3">
 
             <TextView
                 android:id="@+id/receiptNameTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-                android:layout_marginTop="7dp"
-                android:text="姓名: "
+                android:text="收件者: "
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="#716F6F"
+                android:textColor="@color/dark_grey"
                 android:textSize="16sp"
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"
@@ -91,7 +80,7 @@
                 android:layout_marginTop="7dp"
                 android:text="聯絡電話:"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="#716F6F"
+                android:textColor="@color/dark_grey"
                 android:textSize="16sp"
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"
@@ -106,7 +95,7 @@
                 android:layout_marginBottom="7dp"
                 android:text="配送地址: "
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="#716F6F"
+                android:textColor="@color/dark_grey"
                 android:textSize="16sp"
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"
@@ -118,11 +107,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_marginLeft="25.0dp"
-                android:layout_marginTop="7dp"
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="#716F6F"
+                android:textColor="@color/dark_grey"
                 android:textSize="16sp" />
 
             <TextView
@@ -135,7 +123,7 @@
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="#716F6F"
+                android:textColor="@color/dark_grey"
                 android:textSize="16sp" />
 
             <TextView
@@ -149,43 +137,28 @@
                 android:layout_marginTop="7dp"
                 android:layout_marginBottom="14dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="#716F6F"
+                android:textColor="@color/dark_grey"
                 android:textSize="16sp" />
         </GridLayout>
 
-        <GridLayout
+        <TextView
+            android:text="請編輯鋼瓶是否要兌換"
+            android:id="@+id/step_one_instr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:paddingHorizontal="10dp"
-            android:background="#FFFFCC"
-            android:orientation="vertical"
-            android:rowCount="2">
-            <TextView
-                android:layout_gravity="left"
-                android:text="步驟一 - 以下是訂單格式、數量"
-                android:textSize="18sp"
-                android:autoSizeTextType="uniform"
-                android:maxLines="1"
-                android:textStyle="bold"
-                android:layout_marginTop="5dp"
-                />
-            <TextView
-                android:layout_gravity="left"
-                android:text="請編輯鋼瓶是否要兌換"
-                android:autoSizeTextType="uniform"
-                android:layout_width="wrap_content"
-                android:layout_marginBottom="5dp"
-                />
-
-        </GridLayout>
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_gravity="left"
+            android:autoSizeTextType="uniform"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginBottom="8dp"/>
 
         <!-- 這裡要加標題 -->
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:paddingHorizontal="10dp"
+            android:background="@drawable/highlight_back"
+            android:layout_marginHorizontal="10dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
             android:columnCount="4">
@@ -193,6 +166,17 @@
                 android:layout_gravity="center"
                 android:text="@string/orderQuantity"
                 android:textSize="18sp"
+                android:textColor="@color/dark_grey"
+                android:autoSizeTextType="uniform"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                android:layout_columnWeight="0.5"
+                />
+            <TextView
+                android:layout_gravity="center"
+                android:text="@string/orderType"
+                android:textSize="18sp"
+                android:textColor="@color/dark_grey"
                 android:autoSizeTextType="uniform"
                 android:textStyle="bold"
                 android:layout_marginTop="5dp"
@@ -200,17 +184,9 @@
                 />
             <TextView
                 android:layout_gravity="center"
-                android:text="@string/orderType"
-                android:textSize="18sp"
-                android:autoSizeTextType="uniform"
-                android:textStyle="bold"
-                android:layout_marginTop="5dp"
-                android:layout_columnWeight="1.5"
-                />
-            <TextView
-                android:layout_gravity="center"
                 android:text="@string/orderWeight"
                 android:textSize="18sp"
+                android:textColor="@color/dark_grey"
                 android:autoSizeTextType="uniform"
                 android:textStyle="bold"
                 android:layout_marginTop="5dp"
@@ -220,10 +196,11 @@
                 android:layout_gravity="center"
                 android:text="@string/orderRemain"
                 android:textSize="18sp"
+                android:textColor="@color/dark_grey"
                 android:autoSizeTextType="uniform"
                 android:textStyle="bold"
                 android:layout_marginTop="5dp"
-                android:layout_columnWeight="2"
+                android:layout_columnWeight="0.5"
                 />
         </GridLayout>
 
@@ -235,42 +212,28 @@
             android:divider="@null"
             android:scrollingCache="false"
             android:smoothScrollbar="true"
-            android:layout_marginHorizontal="30dp"/>
+            android:layout_marginTop="5dp"
+            android:layout_marginHorizontal="10dp"/>
 
+
+
+        <TextView
+            android:text="請編輯配送時間、日期"
+            android:id="@+id/step_two_instr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_gravity="left"
+            android:autoSizeTextType="uniform"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="45dp"
+            android:layout_marginBottom="8dp"/>
 
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:paddingHorizontal="10dp"
-            android:layout_marginTop="10dp"
-            android:background="#FFFFCC"
-            android:orientation="vertical"
-            android:rowCount="2">
-            <TextView
-                android:layout_gravity="left"
-                android:text="步驟二 - 以下是訂單配送內容"
-                android:textSize="18sp"
-                android:autoSizeTextType="uniform"
-                android:maxLines="1"
-                android:textStyle="bold"
-                android:layout_marginTop="5dp"
-                />
-            <TextView
-                android:layout_gravity="left"
-                android:text="請編輯配送時間、日期"
-                android:autoSizeTextType="uniform"
-                android:layout_width="wrap_content"
-                android:layout_marginBottom="5dp"
-                />
-
-        </GridLayout>
-
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:paddingHorizontal="10dp"
+            android:paddingLeft="10dp"
             android:layout_marginTop="10dp"
             android:orientation="vertical"
             android:rowCount="3"
@@ -280,18 +243,23 @@
                 android:text="配送日期"
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"
+                android:textColor="@color/dark_grey"
+                android:textSize="16sp"
                 />
             <TextView
                 android:text="配送時間"
                 android:autoSizeTextType="uniform"
                 android:layout_marginTop="5dp"
-
+                android:textColor="@color/dark_grey"
+                android:textSize="16sp"
                 android:maxLines="1"
                 />
             <TextView
                 android:text="配送方式"
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"
+                android:textColor="@color/dark_grey"
+                android:textSize="16sp"
                 />
             <TextView
                 android:id="@+id/ExpectDate"
@@ -301,14 +269,16 @@
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"
                 android:layout_marginVertical="5dp"
-                android:text="日期: "
+                android:layout_marginRight="20dp"
+                android:text="yyyy-mm-dd"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="#716F6F"
+                android:textColor="@color/dark_grey"
+                android:textSize="16sp"
                 android:textStyle="bold" />
             <Spinner
                 android:id="@+id/Time"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="42dp"
                 android:minHeight="48dp"
                 android:layout_gravity="end"
                 android:layout_marginTop="5dp"
@@ -321,11 +291,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:layout_marginBottom="5dp"
-                android:text="配送方式: "
+                android:layout_marginRight="20dp"
+                android:text="到店自取"
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="#716F6F"
+                android:textColor="@color/dark_grey"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
         </GridLayout>
@@ -333,17 +305,18 @@
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginHorizontal="10dp"
             android:orientation="horizontal"
             android:rowCount="2"
-            android:background="#ADD8E6">
+            android:background="@drawable/highlight_back">
             <TextView
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
                 android:text="付款方式"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/dark_grey"
                 android:layout_columnWeight="1">
             </TextView>
             <TextView
@@ -351,10 +324,13 @@
                 android:text="現金"
                 android:layout_margin="5dp"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/dark_grey"
                 android:layout_columnWeight="1">
             </TextView>
         </GridLayout>
+
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -364,16 +340,18 @@
             android:orientation="horizontal"
             android:layout_marginHorizontal="30dp"
             android:columnCount="2">
-            <Button
+
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/receipt_edit_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="@integer/material_motion_duration_medium_1"
                 android:layout_gravity="center"
-                android:background="#ff3272d7"
+                android:background="@drawable/blue_button_back"
+                android:paddingHorizontal="30dp"
                 android:text="編輯訂單"
                 android:textColor="#ffffffff"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"
                 android:textStyle="bold"
@@ -384,23 +362,23 @@
                 android:layout_height="wrap_content"
                 />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/receipt_next_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="@integer/material_motion_duration_medium_1"
-                android:background="#ff3272d7"
+                android:background="@drawable/blue_button_back"
                 android:text="@string/gas_order_complete"
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"
                 android:textColor="#ffffffff"
-                android:textSize="20dp"
+                android:textSize="20sp"
+                android:paddingHorizontal="30dp"
                 android:textStyle="bold"
                 android:layout_columnWeight="1"/>
 
         </LinearLayout>
-
 
     </LinearLayout>
 </ScrollView>

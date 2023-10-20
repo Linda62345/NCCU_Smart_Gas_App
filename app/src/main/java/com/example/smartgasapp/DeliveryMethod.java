@@ -3,6 +3,7 @@ package com.example.smartgasapp;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,8 +30,7 @@ import java.util.Objects;
 import java.util.TimeZone;
 
 public class DeliveryMethod extends AppCompatActivity {
-    private Button order;
-    private RadioGroup radioGroup;
+    private Button order,deliver,pickup;
     public Spinner Time_Spinner;
     public static int delivery_method;
     private TextView textView,textTime;
@@ -48,25 +48,50 @@ public class DeliveryMethod extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
 
+
         OrderDetail orderDetail = new OrderDetail();
         orderDetail.edit = false;
 
         textView = findViewById(R.id.textView2);
-        //textTime = findViewById(R.id.textView);
-        radioGroup = findViewById(R.id.radioGroup);
-        radioGroup.check(R.id.deliverOption);
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        deliver = findViewById(R.id.deliverOption);
+        pickup = findViewById(R.id.pickUpOption);
+
+        deliver.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-                checkedId = radioGroup.getCheckedRadioButtonId();
-                if(checkedId==R.id.deliverOption){
-                    delivery_method = 0;
-                }
-                else{
-                    delivery_method = 1;
-                }
+            public void onClick(View v) {
+                delivery_method = 0;
+                deliver.setTextColor(Color.WHITE);
+                deliver.setBackgroundColor(Color.parseColor("#9A9A9A9A"));
+                pickup.setTextColor(Color.parseColor("#9A9A9A9A"));
+                pickup.setBackgroundColor(Color.WHITE);
+            }
+             });
+
+        pickup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                delivery_method = 1;
+                pickup.setTextColor(Color.WHITE);
+                pickup.setBackgroundColor(Color.parseColor("#9A9A9A9A"));
+                deliver.setTextColor(Color.parseColor("#9A9A9A9A"));
+                deliver.setBackgroundColor(Color.WHITE);
             }
         });
+        //textTime = findViewById(R.id.textView);
+//        radioGroup = findViewById(R.id.radioGroup);
+//        radioGroup.check(R.id.deliverOption);
+//        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
+//                checkedId = radioGroup.getCheckedRadioButtonId();
+//                if(checkedId==R.id.deliverOption){
+//                    delivery_method = 0;
+//                }
+//                else{
+//                    delivery_method = 1;
+//                }
+//            }
+//        });
         Log.i("delivery_method", String.valueOf(delivery_method));
         TimePick();
         order.setOnClickListener(new View.OnClickListener() {

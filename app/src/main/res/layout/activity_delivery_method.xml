@@ -11,112 +11,136 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <LinearLayout
-        android:id="@+id/linearLayout6"
-        android:paddingTop="30dp"
-        android:paddingBottom="90dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginHorizontal="20dp"
-        android:orientation="vertical">
-    <GridLayout
-        android:id="@+id/deliverGrid"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginVertical="35dp">
-        <RadioGroup
+
+        <LinearLayout
+            android:id="@+id/linearLayout6"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation= "horizontal"
-            android:gravity="center"
-            android:id = "@+id/radioGroup">
-            <RadioButton
-                android:id="@+id/pickUpOption"
-                android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:orientation="vertical"
+            android:paddingBottom="90dp">
+
+            <TextView
+                android:id="@+id/delivertitle"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_row="0"
-                android:layout_column="1"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
+                android:text="服務方式"
+                android:textColor="@color/black"
+                android:layout_marginBottom="25dp"
+                android:textSize="35sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/title2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="10dp"
+                android:autoSizeTextType="uniform"
+                android:background="@color/white"
+                android:maxLines="1"
+                android:text="選擇取貨方式"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/deliverGrid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="到店自取"
-                android:textSize="20sp"
-                android:autoSizeTextType="uniform"
-                android:maxLines="1"
-                android:textStyle="bold" />
+                android:layout_marginBottom="20dp"
+                android:layout_marginHorizontal="10dp">
 
-            <RadioButton
-                android:id="@+id/deliverOption"
-                android:layout_width="wrap_content"
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/pickUpOption"
+                    android:text="到店自取"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/button_shape_only"
+                    android:textColor="@color/mid_grey" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/deliverOption"
+                    android:text="人員配送"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/button_shape_only"
+                    android:textColor="@color/mid_grey"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/deliveryTimeTitle"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_row="0"
-                android:layout_column="0"
-                android:layout_gravity="center|left"
-                android:layout_marginLeft="20dp"
-                android:padding="10dp"
-                android:text="人員配送"
-                android:textSize="20sp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="38dp"
                 android:autoSizeTextType="uniform"
+                android:background="@color/white"
                 android:maxLines="1"
+                android:text="選擇配送時間"
+                android:textColor="@color/black"
+                android:textSize="24sp"
                 android:textStyle="bold" />
-        </RadioGroup>
 
-    </GridLayout>
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="55dp"
+                android:autoSizeTextType="uniform"
+                android:background="@drawable/blackborder"
+                android:gravity="center"
+                android:maxLines="1"
+                android:padding="15dp"
+                android:text="yyyy/mm/hh"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/deliveryTimeTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginBottom="35dp"
-        android:background="@color/white"
-        android:text="選擇配送時間:"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:autoSizeTextType="uniform"
-        android:maxLines="1"
-        android:textStyle="bold" />
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="date"
-            android:gravity="center"
-            android:textSize="20sp"
-            android:autoSizeTextType="uniform"
-            android:maxLines="1"
-            android:textColor="@color/black"/>
-        <Spinner
-            android:id="@+id/Time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="60dp"
-            android:minHeight="48dp"
-            android:layout_gravity="center"
-            android:textSize="20sp"
-            android:autoSizeTextType="uniform"
-            android:maxLines="1"
-            android:layout_marginTop="30dp"
-            android:entries="@array/Order_Time_Option"
-            />
+            <Spinner
+                android:id="@+id/Time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="55dp"
+                android:layout_marginTop="30dp"
+                android:autoSizeTextType="uniform"
+                android:entries="@array/Order_Time_Option"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:padding="20dp"
+                android:textSize="24sp" />
 
-    <Button
-        android:id="@+id/ConfrimOrder"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:layout_marginHorizontal="60dp"
-        android:textSize="20sp"
-        android:autoSizeTextType="uniform"
-        android:maxLines="1"
-        android:textStyle="bold"
-        android:layout_marginTop="130dp"
-        android:textColor="@color/white"
-        android:text="確認訂單"
-        android:layout_gravity="center"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/ConfrimOrder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="55dp"
+                android:layout_marginTop="80dp"
+                android:autoSizeTextType="uniform"
+                android:background="@drawable/blue_button_back"
+                android:maxLines="1"
+                android:paddingVertical="15dp"
+                android:paddingHorizontal="65dp"
+                android:text="確認訂單"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
 
-
-    </LinearLayout>
+        </LinearLayout>
     </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

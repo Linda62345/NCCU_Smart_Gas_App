@@ -10,7 +10,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toTopOf="@id/nav_view"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
@@ -18,7 +19,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="50dp"
             android:layout_marginHorizontal="20dp"
             android:orientation="vertical">
 
@@ -27,13 +27,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:textStyle="bold"
-                android:text=""
-                android:textColor="@color/black"
-                android:textSize="30sp"
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"
-                />
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:textStyle="bold" />
 
             <com.smarteist.autoimageslider.SliderView
                 android:id="@+id/Slider"
@@ -72,18 +71,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
                 android:background="@drawable/corners"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:orientation="horizontal"
+                    android:layout_marginHorizontal="10dp"
                     android:layout_marginBottom="3dp"
-                    android:layout_marginHorizontal="10dp">
+                    android:orientation="horizontal">
 
 
                     <ImageView
@@ -94,16 +93,14 @@
 
                     <Spinner
                         android:id="@+id/iotSpinner"
-                        android:contentDescription="iot"
                         android:layout_width="wrap_content"
-                        android:layout_weight="@integer/material_motion_duration_medium_1"
                         android:layout_height="48dp"
-                        android:layout_marginHorizontal="5dp"
                         android:layout_gravity="center"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_weight="@integer/material_motion_duration_medium_1"
                         android:backgroundTint="#ff1976d2"
+                        android:contentDescription="iot"
                         android:padding="5dp" />
-
-
 
 
                 </LinearLayout>
@@ -113,28 +110,29 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="10dp"
                     android:orientation="horizontal">
+
                     <ProgressBar
                         android:id="@+id/progressBar"
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="@integer/material_motion_duration_medium_1"
                         android:layout_gravity="center"
+                        android:layout_weight="@integer/material_motion_duration_medium_1"
                         android:progressDrawable="@drawable/custom_progress_bg"
                         android:progressTint="#2196F3" />
 
                     <TextView
                         android:id="@+id/usedGasProgress"
-                        android:textColor="#000000"
-                        android:text="剩餘用量"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:minWidth="40dp"
                         android:layout_marginLeft="10dp"
-                        android:textStyle="bold"
-                        android:textSize="15sp"
                         android:autoSizeTextType="uniform"
-                        android:maxLines="1"/>
+                        android:maxLines="1"
+                        android:minWidth="40dp"
+                        android:text="剩餘用量"
+                        android:textColor="@color/dark_grey"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -145,28 +143,28 @@
                     android:layout_marginTop="2dp"
                     android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/progress_text"
-                    android:text="0"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="@integer/material_motion_duration_medium_1"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:autoSizeTextType="uniform"
-                    android:maxLines="1"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/progress_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="@integer/material_motion_duration_medium_1"
+                        android:autoSizeTextType="uniform"
+                        android:maxLines="1"
+                        android:text="0"
+                        android:textAlignment="center"
+                        android:textColor="@color/dark_grey"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:textColor="#BFD6FA"
-                    android:text="剩餘用量"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:minWidth="40dp"
-                    android:layout_marginLeft="10dp"
-                    android:textStyle="bold"
-                    android:textSize="15sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:minWidth="40dp"
+                        android:text="剩餘用量"
+                        android:textColor="@color/highlight_grey"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -185,10 +183,10 @@
                     android:id="@+id/buyGasButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_columnWeight="@integer/material_motion_duration_medium_1"
-                    android:layout_rowWeight="@integer/material_motion_duration_medium_1"
                     android:layout_row="0"
+                    android:layout_rowWeight="@integer/material_motion_duration_medium_1"
                     android:layout_column="0"
+                    android:layout_columnWeight="@integer/material_motion_duration_medium_1"
                     android:backgroundTint="@color/white"
                     android:contentDescription="TODO"
                     android:src="@drawable/baseline_shopping_cart_24" />
@@ -197,10 +195,10 @@
                     android:id="@+id/findOrderListButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_columnWeight="@integer/material_motion_duration_medium_1"
-                    android:layout_rowWeight="@integer/material_motion_duration_medium_1"
                     android:layout_row="0"
+                    android:layout_rowWeight="@integer/material_motion_duration_medium_1"
                     android:layout_column="1"
+                    android:layout_columnWeight="@integer/material_motion_duration_medium_1"
                     android:layout_gravity="center"
                     android:backgroundTint="@color/white"
                     android:contentDescription="TODO"
@@ -210,8 +208,8 @@
                     android:id="@+id/iotButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_columnWeight="@integer/material_motion_duration_medium_1"
                     android:layout_rowWeight="@integer/material_motion_duration_medium_1"
+                    android:layout_columnWeight="@integer/material_motion_duration_medium_1"
                     android:backgroundTint="@color/white"
                     android:contentDescription="TODO"
                     android:src="@drawable/baseline_wifi_tethering_24" />
@@ -220,16 +218,16 @@
                     android:id="@+id/buyGasButtonTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_columnWeight="@integer/material_motion_duration_medium_1"
                     android:layout_rowWeight="@integer/material_motion_duration_medium_1"
+                    android:layout_columnWeight="@integer/material_motion_duration_medium_1"
                     android:layout_gravity="center"
+                    android:autoSizeTextType="uniform"
+                    android:maxLines="1"
                     android:text="@string/buyGasString"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:autoSizeTextType="uniform"
-                    android:maxLines="1"
                     tools:layout_editor_absoluteX="18dp"
                     tools:layout_editor_absoluteY="28dp" />
 
@@ -237,12 +235,12 @@
                     android:id="@+id/findOrderListTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_columnWeight="@integer/material_motion_duration_medium_1"
                     android:layout_rowWeight="@integer/material_motion_duration_medium_1"
+                    android:layout_columnWeight="@integer/material_motion_duration_medium_1"
                     android:layout_gravity="center"
-                    android:text="@string/searchOrderList"
                     android:autoSizeTextType="uniform"
                     android:maxLines="1"
+                    android:text="@string/searchOrderList"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="18sp"
@@ -254,11 +252,11 @@
                     android:id="@+id/iotTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_columnWeight="@integer/material_motion_duration_medium_1"
                     android:layout_rowWeight="@integer/material_motion_duration_medium_1"
-                    android:text="我的 IOT"
+                    android:layout_columnWeight="@integer/material_motion_duration_medium_1"
                     android:autoSizeTextType="uniform"
                     android:maxLines="1"
+                    android:text="我的 IOT"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="18sp"
@@ -271,13 +269,13 @@
                     android:id="@+id/companyButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_columnWeight="@integer/material_motion_duration_medium_1"
                     android:layout_rowWeight="@integer/material_motion_duration_medium_1"
-                    android:minHeight="48dp"
-                    android:minWidth="48dp"
+                    android:layout_columnWeight="@integer/material_motion_duration_medium_1"
                     android:layout_gravity="center"
                     android:backgroundTint="@color/white"
-                    android:contentDescription="TODO" />
+                    android:contentDescription="TODO"
+                    android:minWidth="48dp"
+                    android:minHeight="48dp" />
                 <!--                android:src="@drawable/baseline_location_on_24" -->
 
 
@@ -285,20 +283,20 @@
                     android:id="@+id/myIDButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_columnWeight="@integer/material_motion_duration_medium_1"
                     android:layout_rowWeight="@integer/material_motion_duration_medium_1"
+                    android:layout_columnWeight="@integer/material_motion_duration_medium_1"
                     android:layout_gravity="center"
                     android:backgroundTint="@color/white"
-                    android:onClick="@barcodeButtonClick"
                     android:contentDescription="TODO"
+                    android:onClick="@barcodeButtonClick"
                     android:src="@drawable/baseline_qr_code_2_24" />
 
                 <TextView
                     android:id="@+id/myIotButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_columnWeight="@integer/material_motion_duration_medium_1"
                     android:layout_rowWeight="@integer/material_motion_duration_medium_1"
+                    android:layout_columnWeight="@integer/material_motion_duration_medium_1"
                     android:layout_gravity="center"
                     android:backgroundTint="@color/white" />
 
@@ -306,8 +304,8 @@
                     android:id="@+id/companyTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_columnWeight="@integer/material_motion_duration_medium_1"
                     android:layout_rowWeight="@integer/material_motion_duration_medium_1"
+                    android:layout_columnWeight="@integer/material_motion_duration_medium_1"
                     android:layout_gravity="center"
                     android:text=""
                     android:textAlignment="center"
@@ -319,8 +317,8 @@
                     android:id="@+id/myIDTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_columnWeight="@integer/material_motion_duration_medium_1"
                     android:layout_rowWeight="@integer/material_motion_duration_medium_1"
+                    android:layout_columnWeight="@integer/material_motion_duration_medium_1"
                     android:layout_gravity="center"
                     android:autoSizeTextType="uniform"
                     android:maxLines="1"
@@ -332,7 +330,6 @@
 
 
             </GridLayout>
-
 
 
         </LinearLayout>
