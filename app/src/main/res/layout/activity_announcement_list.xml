@@ -10,7 +10,7 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/button_background"
+            android:background="@drawable/highlight_gray_button_back"
             android:orientation="horizontal"
             >
 

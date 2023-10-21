@@ -195,7 +195,7 @@
             android:layout_marginTop="2dp"
             android:layout_gravity="end"
             android:layout_marginBottom="17dp"
-            android:background="@drawable/darkergray_button"
+            android:background="@drawable/dark_gray_button_back"
             android:text="@string/save_string"
             android:textColor="#ffffff"
             android:autoSizeTextType="uniform"

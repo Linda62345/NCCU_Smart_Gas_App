@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="87dp"
         android:layout_gravity="center"
-        android:background="@drawable/button_background"
+        android:background="@drawable/highlight_gray_button_back"
         android:text="複合材料"
         />
 
@@ -46,7 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="87dp"
         android:layout_gravity="center"
-        android:background="@drawable/button_background"
+        android:background="@drawable/highlight_gray_button_back"
         android:text="傳統鋼瓶"
         />
 
@@ -54,7 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="239dp"
         android:layout_gravity="center"
-        android:background="@drawable/rounded_button_border"
+        android:background="@drawable/gray_border"
         android:columnCount="4"
         android:rowCount="4">
 
@@ -237,7 +237,7 @@
         android:id="@+id/ChooseDeliverMethod"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/blue_button_back"
+        android:background="@drawable/main_blue_button_back"
         android:textSize="20sp"
         android:padding="5dp"
         android:textStyle="bold"

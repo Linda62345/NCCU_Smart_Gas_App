@@ -23,13 +23,25 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/hometitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
+                android:text="首頁"
+                android:textColor="@color/black"
+                android:layout_marginBottom="15dp"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
                 android:id="@+id/show_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"
-                android:text=""
+                android:text="test"
                 android:textColor="@color/black"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -71,7 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@drawable/corners"
+                android:background="@drawable/highlight_gray_button_back"
                 android:orientation="vertical"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp">
@@ -130,7 +142,7 @@
                         android:maxLines="1"
                         android:minWidth="40dp"
                         android:text="剩餘用量"
-                        android:textColor="@color/dark_grey"
+                        android:textColor="@color/dark_gray"
                         android:textSize="15sp"
                         android:textStyle="bold" />
 
@@ -152,7 +164,7 @@
                         android:maxLines="1"
                         android:text="0"
                         android:textAlignment="center"
-                        android:textColor="@color/dark_grey"
+                        android:textColor="@color/dark_gray"
                         android:textSize="15sp"
                         android:textStyle="bold" />
 
@@ -162,7 +174,7 @@
                         android:layout_marginLeft="10dp"
                         android:minWidth="40dp"
                         android:text="剩餘用量"
-                        android:textColor="@color/highlight_grey"
+                        android:textColor="@color/highlight_gray"
                         android:textSize="15sp"
                         android:textStyle="bold" />
                 </LinearLayout>

@@ -3,7 +3,7 @@
     <!-- Background shape with a shadow -->
     <item>
         <shape>
-            <solid android:color="@color/white" />
+            <solid android:color="@color/extralight_gray" />
             <corners android:radius="10dp" /> <!-- Adjusted to 10dp -->
         </shape>
     </item>
@@ -21,13 +21,13 @@
         <selector>
             <item android:state_pressed="true">
                 <shape>
-                    <solid android:color="@color/mid_grey" />
+                    <solid android:color="@color/mid_gray" />
                     <corners android:radius="10dp" /> <!-- Adjusted to 10dp -->
                 </shape>
             </item>
             <item>
                 <shape>
-                    <solid android:color="@color/white" />
+                    <solid android:color="@color/extralight_gray" />
                     <corners android:radius="10dp" /> <!-- Adjusted to 10dp -->
                 </shape>
             </item>

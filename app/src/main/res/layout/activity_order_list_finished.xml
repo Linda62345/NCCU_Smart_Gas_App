@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,30 +7,54 @@
     android:orientation="vertical"
     tools:context=".OrderListFinished">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/linearfinish"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:orientation="vertical"
+            android:paddingBottom="90dp">
+
+    <TextView
+        android:id="@+id/searchtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autoSizeTextType="uniform"
+        android:maxLines="1"
+        android:text="訂單查詢"
+        android:textColor="@color/black"
+        android:layout_marginBottom="25dp"
+        android:textSize="35sp"
+        android:textStyle="bold" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/order_unfinished"
             android:layout_width="0dp"
             android:layout_height="56.9dp"
             android:layout_weight="1"
-            android:backgroundTint="#ebebeb"
+            android:background="@drawable/white_button_back"
             android:clickable="false"
             android:gravity="center"
             android:text="@string/unfinished"
-            android:textColor="#6b6a6a"
+            android:textColor="@color/mid_gray"
             android:textSize="20sp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/order_finished"
             android:layout_width="0dp"
             android:layout_height="56.9dp"
             android:layout_weight="1"
             android:layout_marginStart="8dp"
-            android:backgroundTint="#9A9A9A"
+            android:background="@drawable/mid_gray_button_back"
             android:clickable="true"
             android:gravity="center"
             android:text="@string/finished"
@@ -38,11 +62,6 @@
             android:textSize="20sp" />
     </LinearLayout>
 
-    <ScrollView
-        android:id="@+id/scrollLayout"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
 
         <LinearLayout
             android:id="@+id/nestedLinearLayout"
@@ -59,18 +78,23 @@
                 android:text="開始時間"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/startDateChangeable"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:minHeight="42dp"
+                android:gravity="center"
+                android:padding="8dp"
                 android:text="start_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:textColor="@color/black"
+                android:autoSizeTextType="uniform"
+                android:layout_marginHorizontal="30dp"
+                android:maxLines="1"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                />
+                android:background="@drawable/highlight_gray_corner_only"/>
 
             <TextView
                 android:id="@+id/dateEnd_title_unfinishedView"
@@ -81,22 +105,26 @@
                 android:text="結束時間"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/endDateChangeable"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:minHeight="42dp"
+                android:gravity="center"
                 android:text="end_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:padding="8dp"
                 android:textColor="@color/black"
+                android:background="@drawable/highlight_gray_corner_only"
+                android:layout_marginHorizontal="30dp"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
 
         </LinearLayout>
-    </ScrollView>
 
     <LinearLayout
         android:id="@+id/order_button_list_unfinished"
@@ -105,36 +133,45 @@
         android:orientation="vertical"
         android:paddingTop="20dp">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/enterSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#ff3272d7"
+            android:background="@drawable/main_blue_button_back"
             android:text="確認"
             android:textSize="20sp"
             android:textColor="#ffffffff"
             android:textStyle="bold"
             android:minHeight="60dp"
-            android:layout_margin="30dp"
+            android:layout_marginHorizontal="70dp"
+            android:layout_marginVertical="30dp"
             android:layout_gravity="center"
-            android:paddingVertical="10dp"
+            android:padding="15dp"
             android:autoSizeMinTextSize="20sp"
             app:autoSizeTextType="uniform" />
 
         <ListView
             android:id="@+id/list_item"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
             android:layout_gravity="center"
             android:layout_marginTop="20dp" />
 
     </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
         android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

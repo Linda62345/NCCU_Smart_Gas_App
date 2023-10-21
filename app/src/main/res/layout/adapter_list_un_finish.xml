@@ -8,12 +8,13 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="20dp"
         android:layout_marginBottom="10dp"
         android:layout_gravity="center"
         android:orientation="vertical"
-        android:background="#4E7AC7">
+        android:background="@drawable/dark_gray_button_back">
 
         <TextView
             android:id="@+id/Ordertime"
@@ -23,8 +24,8 @@
             android:layout_gravity="center"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:text=""
-            android:textSize="24sp" />
+            android:text="2023-11-01 10:00"
+            android:textSize="25sp" />
 
         <TextView
             android:id="@+id/OrderCondition"
@@ -34,8 +35,8 @@
             android:layout_gravity="center"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:text=""
-            android:textSize="24sp" />
+            android:text="未完成"
+            android:textSize="25sp" />
 
     </LinearLayout>
 </LinearLayout>

@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:foregroundGravity="center"
-            android:background="@drawable/rounded_button_border">
+            android:background="@drawable/gray_border">
 
         <GridLayout
             android:id="@+id/linearLayout1"
@@ -62,14 +62,14 @@
             <TextView
                 android:id="@+id/receiptNameTitle"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="19dp"
                 android:layout_gravity="left"
-                android:text="收件者: "
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/dark_grey"
-                android:textSize="16sp"
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"
+                android:text="@string/gas_receiver"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/dark_gray"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -80,7 +80,7 @@
                 android:layout_marginTop="7dp"
                 android:text="聯絡電話:"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/dark_grey"
+                android:textColor="@color/dark_gray"
                 android:textSize="16sp"
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"
@@ -95,7 +95,7 @@
                 android:layout_marginBottom="7dp"
                 android:text="配送地址: "
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/dark_grey"
+                android:textColor="@color/dark_gray"
                 android:textSize="16sp"
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"
@@ -110,7 +110,7 @@
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/dark_grey"
+                android:textColor="@color/dark_gray"
                 android:textSize="16sp" />
 
             <TextView
@@ -123,7 +123,7 @@
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/dark_grey"
+                android:textColor="@color/dark_gray"
                 android:textSize="16sp" />
 
             <TextView
@@ -137,7 +137,7 @@
                 android:layout_marginTop="7dp"
                 android:layout_marginBottom="14dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/dark_grey"
+                android:textColor="@color/dark_gray"
                 android:textSize="16sp" />
         </GridLayout>
 
@@ -157,7 +157,7 @@
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/highlight_back"
+            android:background="@drawable/highlight_gray_corner_only"
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
@@ -166,7 +166,7 @@
                 android:layout_gravity="center"
                 android:text="@string/orderQuantity"
                 android:textSize="18sp"
-                android:textColor="@color/dark_grey"
+                android:textColor="@color/dark_gray"
                 android:autoSizeTextType="uniform"
                 android:textStyle="bold"
                 android:layout_marginTop="5dp"
@@ -176,7 +176,7 @@
                 android:layout_gravity="center"
                 android:text="@string/orderType"
                 android:textSize="18sp"
-                android:textColor="@color/dark_grey"
+                android:textColor="@color/dark_gray"
                 android:autoSizeTextType="uniform"
                 android:textStyle="bold"
                 android:layout_marginTop="5dp"
@@ -186,7 +186,7 @@
                 android:layout_gravity="center"
                 android:text="@string/orderWeight"
                 android:textSize="18sp"
-                android:textColor="@color/dark_grey"
+                android:textColor="@color/dark_gray"
                 android:autoSizeTextType="uniform"
                 android:textStyle="bold"
                 android:layout_marginTop="5dp"
@@ -196,7 +196,7 @@
                 android:layout_gravity="center"
                 android:text="@string/orderRemain"
                 android:textSize="18sp"
-                android:textColor="@color/dark_grey"
+                android:textColor="@color/dark_gray"
                 android:autoSizeTextType="uniform"
                 android:textStyle="bold"
                 android:layout_marginTop="5dp"
@@ -243,14 +243,14 @@
                 android:text="配送日期"
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"
-                android:textColor="@color/dark_grey"
+                android:textColor="@color/dark_gray"
                 android:textSize="16sp"
                 />
             <TextView
                 android:text="配送時間"
                 android:autoSizeTextType="uniform"
                 android:layout_marginTop="5dp"
-                android:textColor="@color/dark_grey"
+                android:textColor="@color/dark_gray"
                 android:textSize="16sp"
                 android:maxLines="1"
                 />
@@ -258,7 +258,7 @@
                 android:text="配送方式"
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"
-                android:textColor="@color/dark_grey"
+                android:textColor="@color/dark_gray"
                 android:textSize="16sp"
                 />
             <TextView
@@ -272,7 +272,7 @@
                 android:layout_marginRight="20dp"
                 android:text="yyyy-mm-dd"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/dark_grey"
+                android:textColor="@color/dark_gray"
                 android:textSize="16sp"
                 android:textStyle="bold" />
             <Spinner
@@ -296,7 +296,7 @@
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/dark_grey"
+                android:textColor="@color/dark_gray"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -310,13 +310,13 @@
             android:layout_marginHorizontal="10dp"
             android:orientation="horizontal"
             android:rowCount="2"
-            android:background="@drawable/highlight_back">
+            android:background="@drawable/highlight_gray_corner_only">
             <TextView
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
                 android:text="付款方式"
                 android:textStyle="bold"
-                android:textColor="@color/dark_grey"
+                android:textColor="@color/dark_gray"
                 android:layout_columnWeight="1">
             </TextView>
             <TextView
@@ -324,7 +324,7 @@
                 android:text="現金"
                 android:layout_margin="5dp"
                 android:textStyle="bold"
-                android:textColor="@color/dark_grey"
+                android:textColor="@color/dark_gray"
                 android:layout_columnWeight="1">
             </TextView>
         </GridLayout>
@@ -347,7 +347,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="@integer/material_motion_duration_medium_1"
                 android:layout_gravity="center"
-                android:background="@drawable/blue_button_back"
+                android:background="@drawable/main_blue_button_back"
                 android:paddingHorizontal="30dp"
                 android:text="編輯訂單"
                 android:textColor="#ffffffff"
@@ -368,7 +368,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="@integer/material_motion_duration_medium_1"
-                android:background="@drawable/blue_button_back"
+                android:background="@drawable/main_blue_button_back"
                 android:text="@string/gas_order_complete"
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"

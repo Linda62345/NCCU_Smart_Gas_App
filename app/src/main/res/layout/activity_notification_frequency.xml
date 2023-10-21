@@ -139,7 +139,7 @@
 <!--    </LinearLayout>-->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/enter"
-            android:background="@drawable/blue_button_back"
+            android:background="@drawable/main_blue_button_back"
             android:layout_width="match_parent"
             android:layout_height="66dp"
             android:textSize="20sp"

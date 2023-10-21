@@ -31,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
-                android:background="@drawable/background_extralight"
+                android:background="@drawable/extralight_gray_button_back"
                 android:orientation="vertical"
                 android:paddingHorizontal="10dp">
 
@@ -44,7 +44,7 @@
                     android:maxLines="1"
                     android:paddingTop="10dp"
                     android:text="我的ID："
-                    android:textColor="@color/dark_grey"
+                    android:textColor="@color/dark_gray"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -57,7 +57,7 @@
                     android:paddingVertical="10dp"
                     android:text="dhekdu"
                     android:textAlignment="center"
-                    android:textColor="@color/dark_grey"
+                    android:textColor="@color/dark_gray"
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
@@ -75,7 +75,7 @@
                     android:layout_height="wrap_content"
                     android:paddingTop="10dp"
                     android:text="家人的手機號碼："
-                    android:textColor="@color/dark_grey"
+                    android:textColor="@color/dark_gray"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -102,7 +102,7 @@
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="10dp"
                     android:layout_marginVertical="10dp"
-                    android:background="@drawable/darkergray_button"
+                    android:background="@drawable/dark_gray_button_back"
                     android:minHeight="48dp"
                     android:paddingVertical="11dp"
                     android:text="@string/confirmString"
@@ -149,7 +149,7 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="24dp"
                 android:layout_marginBottom="116dp"
-                android:background="@drawable/grey_rounded_background" />
+                android:background="@drawable/mid_gray_corner_only" />
 
 
         </LinearLayout>

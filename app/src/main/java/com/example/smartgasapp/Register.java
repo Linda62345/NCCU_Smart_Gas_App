@@ -65,6 +65,7 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         radioGroup = findViewById(R.id.radioGroup);
         etName = findViewById(R.id.register_name_input);

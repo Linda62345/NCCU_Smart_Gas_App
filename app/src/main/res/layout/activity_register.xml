@@ -11,8 +11,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="30dp"
+        android:paddingHorizontal="20dp"
         android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/registertitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoSizeTextType="uniform"
+            android:maxLines="1"
+            android:text="註冊會員"
+            android:textColor="@color/black"
+            android:layout_marginBottom="25dp"
+            android:textSize="35sp"
+            android:textStyle="bold" />
 
 
         <TextView
@@ -345,14 +357,14 @@
             />
 
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/register_next_button"
             android:layout_width="100dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="50dp"
-            android:backgroundTint="#ff3272d7"
+            android:background="@drawable/main_blue_button_back"
             android:onClick="save"
             android:text="@string/next_string"
             android:textColor="#ffffffff"

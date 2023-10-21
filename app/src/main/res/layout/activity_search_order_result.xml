@@ -10,9 +10,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingTop="20dp"
         android:paddingBottom="90dp"
         android:layout_marginHorizontal="20dp">
+
+        <TextView
+            android:id="@+id/receipt_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoSizeTextType="uniform"
+            android:maxLines="1"
+            android:text="訂單明細"
+            android:textColor="@color/black"
+            android:layout_marginBottom="25dp"
+            android:textSize="35sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/gray_border"
+            android:layout_marginBottom="30dp"
+            android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/TableLayout1"
@@ -20,22 +38,18 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="15dp"
-        android:padding="10dp"
-        android:background="@android:color/white"
-        android:backgroundTint="#ffececec"
-        app:backgroundTint="#ffffffff">
+        android:paddingHorizontal="10dp">
 
 
         <TextView
             android:id="@+id/customer_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
             android:autoSizeTextType="uniform"
             android:maxLines="1"
-            android:text="@string/CustomerName"
+            android:text="@string/gas_receiver"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#ff757575"
+            android:textColor="@color/dark_gray"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/contactNumber"
@@ -51,7 +65,7 @@
             android:autoSizeTextType="uniform"
             android:maxLines="1"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#ff757575"
+            android:textColor="@color/dark_gray"
             android:textSize="20.0sp"
             android:textStyle=""
             app:layout_constraintStart_toEndOf="@+id/customer_name"
@@ -63,12 +77,11 @@
             android:id="@+id/contactNumber"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
             android:autoSizeTextType="uniform"
             android:maxLines="1"
             android:text="@string/contactNo"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#ff757575"
+            android:textColor="@color/dark_gray"
             android:textSize="20.0sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/deliveryAddress"
@@ -84,7 +97,7 @@
             android:autoSizeTextType="uniform"
             android:maxLines="1"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#ff757575"
+            android:textColor="@color/dark_gray"
             android:textSize="20.0sp"
             android:textStyle=""
             app:layout_constraintBottom_toBottomOf="@+id/contactNumber"
@@ -96,11 +109,10 @@
             android:id="@+id/deliveryAddress"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
             android:autoSizeTextType="uniform"
             android:text="@string/deliveryAddress"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#ff757575"
+            android:textColor="@color/dark_gray"
             android:textSize="20.0sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/gasDeliveryType"
@@ -115,7 +127,7 @@
             android:layout_marginStart="10dp"
             android:autoSizeTextType="uniform"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#ff757575"
+            android:textColor="@color/dark_gray"
             android:textSize="20.0sp"
             android:textStyle=""
             app:layout_constraintBottom_toBottomOf="@+id/deliveryAddress"
@@ -127,12 +139,11 @@
             android:id="@+id/gasDeliveryType"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
             android:autoSizeTextType="uniform"
             android:maxLines="1"
             android:text="配送方法: "
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#ff757575"
+            android:textColor="@color/dark_gray"
             android:textSize="20.0sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/gasQty"
@@ -148,7 +159,7 @@
             android:autoSizeTextType="uniform"
             android:maxLines="1"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#ff757575"
+            android:textColor="@color/dark_gray"
             android:textSize="20.0sp"
             android:textStyle=""
             app:layout_constraintBottom_toBottomOf="@+id/gasDeliveryType"
@@ -160,11 +171,10 @@
             android:id="@+id/gasQty"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
             android:autoSizeTextType="uniform"
             android:text="@string/gasQuantity"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#ff757575"
+            android:textColor="@color/dark_gray"
             android:textSize="20.0sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/predictionTime"
@@ -180,7 +190,7 @@
             android:autoSizeTextType="uniform"
             android:maxLines="1"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#ff757575"
+            android:textColor="@color/dark_gray"
             android:textSize="20.0sp"
             android:textStyle=""
             app:layout_constraintBottom_toBottomOf="@+id/gasQty"
@@ -195,7 +205,7 @@
             android:layout_marginBottom="10dp"
             android:text="預約時間："
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#ff757575"
+            android:textColor="@color/dark_gray"
             android:textSize="20.0sp"
             android:autoSizeTextType="uniform"
             android:maxLines="1"
@@ -213,29 +223,33 @@
             android:autoSizeTextType="uniform"
             android:maxLines="1"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#ff757575"
+            android:textColor="@color/dark_gray"
             android:textSize="20.0sp"
             android:textStyle=""
             app:layout_constraintBottom_toBottomOf="@+id/predictionTime"
             app:layout_constraintEnd_toEndOf="@+id/TableLayout1"
             app:layout_constraintStart_toEndOf="@+id/predictionTime"
             app:layout_constraintTop_toTopOf="@+id/predictionTime" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.example.smartgasapp.listViewAdjust
-        android:id="@+id/list_item"
-        android:layout_gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="20dp"/>
+        <com.example.smartgasapp.listViewAdjust
+            android:id="@+id/list_item"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="20dp"/>
+    </LinearLayout>
 
-    <Button
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/confirmOrder"
         android:layout_width="match_parent"
         android:layout_height="70.9dp"
-        android:layout_marginHorizontal="50dp"
-        android:backgroundTint="#3272D7"
-        android:backgroundTintMode="src_over"
+        android:layout_marginHorizontal="60dp"
+        android:background="@drawable/main_blue_button_back"
         android:layout_gravity="center"
         android:shadowColor="#ff2c2c2c"
         android:text="@string/confirmString"

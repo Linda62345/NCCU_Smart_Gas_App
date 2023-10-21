@@ -198,4 +198,5 @@
     <string name="orderType">類型</string>
     <string name="orderWeight">規格</string>
     <string name="orderRemain">是否兌換</string>
+    <string name="gas_receiver">收件者:</string>
 </resources>

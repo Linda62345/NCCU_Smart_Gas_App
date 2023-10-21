@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="main_blue">#CC3C66A7</color>
-    <color name="dark_grey">#FF373737</color>
-    <color name="mid_grey">#FF9A9A9A</color>
-    <color name="highlight_grey">#FFD8D8D8</color>
-    <color name="background_grey">#FFF4F4F4</color>
+    <color name="dark_gray">#FF373737</color>
+    <color name="mid_gray">#FF9A9A9A</color>
+    <color name="highlight_gray">#FFD8D8D8</color>
+    <color name="background_gray">#FFF4F4F4</color>
     <color name="progress_back">#FFFEFE</color>
     <color name="progress">#FF6D6464</color>
-    <color name="border_grey">#FFC8C8C8</color>
-    <color name="circle_grey">#757575</color>
-    <color name="light_text_grey">#FFBBBBBB</color>
-    <color name="extralight_grey">#EFEFEF</color>
+    <color name="border_gray">#FFC8C8C8</color>
+    <color name="circle_gray">#757575</color>
+    <color name="light_text_gray">#FFBBBBBB</color>
+    <color name="extralight_gray">#EFEFEF</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="white_button">#FFEBEBEB</color>
     <color name="layout_background2">#FFE6E6E6</color>
 </resources>

@@ -39,7 +39,6 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginBottom="10dp"
                 android:autoSizeTextType="uniform"
-                android:background="@color/white"
                 android:maxLines="1"
                 android:text="選擇取貨方式"
                 android:textColor="@color/black"
@@ -62,8 +61,8 @@
                     android:layout_weight="1"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    android:background="@drawable/button_shape_only"
-                    android:textColor="@color/mid_grey" />
+                    android:background="@drawable/white_button_back"
+                    android:textColor="@color/mid_gray" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/deliverOption"
@@ -73,8 +72,8 @@
                     android:layout_weight="1"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    android:background="@drawable/button_shape_only"
-                    android:textColor="@color/mid_grey"/>
+                    android:background="@drawable/white_button_back"
+                    android:textColor="@color/mid_gray"/>
 
             </LinearLayout>
 
@@ -99,7 +98,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="55dp"
                 android:autoSizeTextType="uniform"
-                android:background="@drawable/blackborder"
+                android:background="@drawable/black_border"
                 android:gravity="center"
                 android:maxLines="1"
                 android:padding="15dp"
@@ -125,12 +124,12 @@
                 android:id="@+id/ConfrimOrder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
+                android:drawableRight="@drawable/arrow_forward_ios_24"
                 android:layout_gravity="center"
                 android:layout_marginHorizontal="55dp"
                 android:layout_marginTop="80dp"
                 android:autoSizeTextType="uniform"
-                android:background="@drawable/blue_button_back"
+                android:background="@drawable/main_blue_button_back"
                 android:maxLines="1"
                 android:paddingVertical="15dp"
                 android:paddingHorizontal="65dp"

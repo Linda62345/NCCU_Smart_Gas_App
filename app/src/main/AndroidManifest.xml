@@ -41,61 +41,61 @@
         <activity
             android:name="com.example.smartgasapp.userIot"
             android:exported="false"
-            android:label="我的 IOT"
+            android:label=" "
             android:parentActivityName="com.example.smartgasapp.Homepage"/>
         <activity
             android:name="com.example.smartgasapp.SearchOrderResult"
             android:exported="false"
-            android:label="訂單明細" />
+            android:label=" " />
         <activity
             android:name="com.example.smartgasapp.SearchOrderResultFinished"
             android:exported="false"
-            android:label="訂單明細" />
+            android:label=" " />
         <activity
             android:name="com.example.smartgasapp.ConfirmDelivery"
             android:exported="false" />
         <activity
             android:name="com.example.smartgasapp.DeliveryMethod"
             android:exported="false"
-            android:label="選擇配送方式"
+            android:label=" "
             android:parentActivityName="com.example.smartgasapp.OrderGas" />
         <activity
             android:name="com.example.smartgasapp.ScanOriginalQRCode"
             android:exported="false"
-            android:label="@string/scanOriginalString"
+            android:label=" "
             android:parentActivityName="com.example.smartgasapp.Homepage" />
         <activity
             android:name="com.example.smartgasapp.ScanNewQRCode"
             android:exported="false"
-            android:label="@string/scanNewString"
+            android:label=" "
             android:parentActivityName="com.example.smartgasapp.ScanOriginalQRCode" />
         <activity
             android:name="com.example.smartgasapp.ScanIotQRCode"
             android:exported="false"
-            android:label="掃描IOT的QrCode"
+            android:label=" "
             android:parentActivityName="com.example.smartgasapp.userIot"/>
         <activity
             android:name="com.example.smartgasapp.OrderListFinished"
             android:exported="false"
-            android:label="@string/searchOrderList"
+            android:label=" "
             android:parentActivityName="com.example.smartgasapp.Homepage" />
         <activity
             android:name="com.example.smartgasapp.OrderListUnfinished"
             android:exported="false"
-            android:label="@string/searchOrderList"
+            android:label=" "
             android:parentActivityName="com.example.smartgasapp.Homepage" />
         <activity
             android:name="com.example.smartgasapp.UserDashboard"
             android:exported="false"
-            android:label="@string/title_user_dashboard" />
+            android:label=" " />
         <activity
             android:name="com.example.smartgasapp.Homepage"
             android:exported="false"
-            android:label="@string/title_home"/>
+            android:label=" "/>
         <activity
             android:name="com.example.smartgasapp.PersonalBarcode"
             android:exported="false"
-            android:label="我的QRCODE"
+            android:label=" "
             android:parentActivityName="com.example.smartgasapp.Homepage" />
         <activity
             android:name="com.example.smartgasapp.GasCompanyLocation"
@@ -105,51 +105,51 @@
         <activity
             android:name="com.example.smartgasapp.NotificationFrequency"
             android:exported="false"
-            android:label="通知頻率與時間"
+            android:label=" "
             android:parentActivityName="com.example.smartgasapp.UserDashboard" />
         <activity
             android:name="com.example.smartgasapp.FamilyInvitationCode"
             android:exported="false"
-            android:label="家人邀請碼"
+            android:label=" "
             android:parentActivityName="com.example.smartgasapp.UserDashboard" />
         <activity
             android:name="com.example.smartgasapp.GasExchange"
             android:exported="false"
-            android:label="累計殘氣兌換"
+            android:label=" "
             android:parentActivityName="com.example.smartgasapp.Homepage" />
         <activity
             android:name="com.example.smartgasapp.cylinder_gas_menu"
             android:exported="false"
-            android:label="瓦斯訂購"
+            android:label=" "
             android:parentActivityName="com.example.smartgasapp.Homepage" />
         <activity
             android:name="com.example.smartgasapp.CompositeGasMenu"
             android:exported="false"
-            android:label="瓦斯訂購"
+            android:label=" "
             android:parentActivityName="com.example.smartgasapp.Homepage" />
         <activity
             android:name="com.example.smartgasapp.OrderGas"
             android:exported="false"
-            android:label="瓦斯訂購"
+            android:label=" "
             android:parentActivityName="com.example.smartgasapp.Homepage" />
         <activity
             android:name="com.example.smartgasapp.OrderDetail"
             android:exported="false"
-            android:label="瓦斯訂購"
+            android:label=" "
             android:parentActivityName="com.example.smartgasapp.Homepage" />
         <activity
             android:name="com.example.smartgasapp.OrderSuccess"
             android:exported="false"
-            android:label="訂單完成" />
+            android:label=" " />
         <activity
             android:name="com.example.smartgasapp.UsageHistory"
             android:exported="false"
-            android:label="用量調查"
+            android:label=" "
             android:parentActivityName="com.example.smartgasapp.Homepage" />
         <activity
             android:name="com.example.smartgasapp.EventPage"
             android:exported="false"
-            android:label="活動公告"
+            android:label=" "
             android:parentActivityName="com.example.smartgasapp.UserDashboard" />
         <activity
             android:name="com.example.smartgasapp.PointPage"
@@ -183,7 +183,8 @@
         <activity
             android:name="com.example.smartgasapp.Register"
             android:exported="false"
-            android:label="註冊會員" />
+            android:label=" "
+            android:parentActivityName="com.example.smartgasapp.ui.login.LoginActivity"/>
         <activity
             android:name="com.example.smartgasapp.MainActivity"
             android:exported="true" />
