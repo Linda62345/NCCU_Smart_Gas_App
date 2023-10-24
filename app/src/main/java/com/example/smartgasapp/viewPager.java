@@ -59,22 +59,12 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Homepage extends AppCompatActivity {
+public class viewPager extends AppCompatActivity {
+    private SessionManager sessionManager;
     private NotificationFrequency notificationFrequencyInstance;
     private static final long SESSION_TIMEOUT_MILLISECONDS = 2 * 60 * 60 * 1000; // 2 hours in milliseconds
     private static final String SESSION_TIMEOUT_KEY = "session_timeout";
 
-    private Button point;
-    private Button homeLogin;
-    private Button moreVol;
-
-    private ImageButton buy;
-    private ImageButton search;
-    private ImageButton location;
-    private ImageButton iot;
-    private ImageButton personalBarcode;
-    private BottomNavigationView bottomNavigationView;
-    private TextView remainGas, showName;
     private ProgressBar progressBar;
     private ViewPager viewPager;
     private ImageAdapter adapter;
@@ -93,11 +83,21 @@ public class Homepage extends AppCompatActivity {
 
 
 
-    @SuppressLint("WrongViewCast")
+    @SuppressLint({"WrongViewCast", "MissingInflatedId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
+
+        sessionManager = new SessionManager(this);
+
+        if (sessionManager.isSessionTimedOut()) {
+            // Handle session timeout, clear session data, and redirect to the login screen
+            sessionManager.clearSessionData();
+            redirectToLogin();
+            return;
+        }
+
 
         String masterKeyAlias = null;
         try {
@@ -128,13 +128,13 @@ public class Homepage extends AppCompatActivity {
         Log.d("TouchEvents", "ViewPager2 created");
         fragments = new ArrayList<>();
 
-//        ArrayList<Double> sensorWeights = new ArrayList<>(iot2.size());
-//        for (int i = 0; i < iot2.size(); i++) {
-//            String sensorId = iot2.get(i); // Get the sensor ID from your data source
-//            sensorWeight = sensorWeights.get(i);
-//            fragments.add(DeviceInfo.newInstance(sensorId, sensorWeight));
-//            Log.i("sensorId & sensorWeight: " , sensorId+sensorWeight);
-//        }
+        ArrayList<Double> sensorWeights = new ArrayList<>(iot2.size());
+        for (int i = 0; i < iot2.size(); i++) {
+            String sensorId = iot2.get(i);
+            sensorWeight = sensorWeights.get(i);
+            fragments.add(DeviceInfo.newInstance(sensorId, sensorWeight));
+            Log.i("sensorId & sensorWeight: " , sensorId+sensorWeight);
+        }
 
 
 
@@ -146,7 +146,7 @@ public class Homepage extends AppCompatActivity {
                 Log.i("TouchEvents", "Page selected: " + position);
                 Log.e("sensor id: " , String.valueOf(iot1));
                 // Get the data for the selected IoT device and update the fragment
-                //updateFragmentWithData(position);
+                updateFragmentWithData(position);
                 //fragment.updateData(sensorId, sensorWeight);
             }
         });
@@ -154,19 +154,8 @@ public class Homepage extends AppCompatActivity {
         Log.e("sensor id: " , String.valueOf(iot1));
 
 
-        // progressBar = findViewById(R.id.progressBar);
-        // iot1 = findViewById(R.id.iot);
-        //point = findViewById(R.id.changable_pointButton);
-        //homeLogin = findViewById(R.id.loginFromHome);
-        // remainGas = findViewById(R.id.changableVol_progress);
-        buy = findViewById(R.id.buyGasButton);
-        search = findViewById(R.id.findOrderListButton);
-        iot = findViewById(R.id.iotButton);
-
-        //location = findViewById(R.id.companyButton);
-        personalBarcode = findViewById(R.id.myIDButton);
-        bottomNavigationView = findViewById(R.id.nav_view);
-        showName = findViewById(R.id.show_name);
+        progressBar = findViewById(R.id.progressBar);
+        iot1 = findViewById(R.id.iot);
 
         // Retrieve user data from SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("user_data", Context.MODE_PRIVATE);
@@ -182,22 +171,6 @@ public class Homepage extends AppCompatActivity {
             return;
         }
 
-        // Continue with normal data retrieval and processing
-        showName.setText("您好，" + username);
-
-        if (!username.isEmpty() && isLoggedIn) {
-            // User is logged in, update UI accordingly
-            showName.setText("您好，" + username);
-        } else {
-            // User is not logged in, handle it accordingly (e.g., redirect to login screen)
-            Intent loginIntent = new Intent(this, LoginActivity.class);
-            startActivity(loginIntent);
-            finish(); // Close the current activity
-        }
-
-        LoginActivity loginActivity = new LoginActivity();
-        showName.setText("您好，" + loginActivity.Customer_Name);
-
         sliderView = findViewById(R.id.Slider);
 
         SliderAdapter sliderAdapter = new SliderAdapter(images);
@@ -211,176 +184,48 @@ public class Homepage extends AppCompatActivity {
         LoginActivity loginActivity1 = new LoginActivity();
         Customer_ID = String.valueOf(loginActivity1.getCustomerID());
 
-//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item);
-//        adapter.add("Iot Id: ");
-//        iot1.setAdapter(adapter);
 
         NetworkTask networkTask1 = new NetworkTask();
         networkTask1.execute();
 
-//        iot1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                String selectedSensor = iot1.getSelectedItem().toString();
-//                if (!selectedSensor.equals("Iot Id: ")) {
-//                    // Remove the "Iot Id: " part from the selected sensor ID
-//                    selectedSensorId = selectedSensor.substring("Iot Id: ".length());
-//                    NetworkTask networkTask = new NetworkTask();
-//                    networkTask.execute(selectedSensorId);
-//                }
-//            }
-
-
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//
-//            }
-//        });
-
-        /*point.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Homepage.this, PointPage.class);
-                startActivity(intent);
-            }
-        });*/
-
-//        homeLogin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(Homepage.this, LoginActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-
-//        moreVol.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(Homepage.this, userIot.class);
-//                startActivity(intent);
-//            }
-//        });
-
-        buy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Thread thread = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            Log.i("customer id", Customer_ID);
-                            showData("http://54.199.33.241/test/Customer_Order_Detail_2.php", Customer_ID);
-                            responseJSON = new JSONObject(result);
-                            if (responseJSON.getString("response").equals("success")) {
-                                Intent intent = new Intent(Homepage.this, OrderDetail.class);
-                                startActivity(intent);
-                            } else {
-                                Intent intent = new Intent(Homepage.this, OrderGas.class);
-                                startActivity(intent);
-                            }
-                        } catch (Exception e) {
-                            Log.i("訂單有無", e.toString());
-                        }
-                    }
-                });
-
-                thread.start();
-            }
-        });
-
-
-        // 訂單查詢
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Homepage.this, OrderListUnfinished.class);
-                startActivity(intent);
-            }
-        });
-
-
-//        location.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(Homepage.this, GasCompanyLocation.class);
-//                startActivity(intent);
-//            }
-//        });
-
-        personalBarcode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Homepage.this, PersonalBarcode.class);
-                startActivity(intent);
-            }
-        });
-
-        iot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Homepage.this, userIot.class);
-                startActivity(intent);
-            }
-        });
-
-
-        BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
-
-        bottomNavigationView.setSelectedItemId(R.id.navigation_home);
-
-        // Perform item selected listener
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                switch (item.getItemId()) {
-                    case navigation_dashboard:
-                        startActivity(new Intent(getApplicationContext(), UserDashboard.class));
-                        overridePendingTransition(0, 0);
-                        NetworkTask networkTask = new NetworkTask();
-                        networkTask.execute();
-                        return true;
-                    case R.id.navigation_home:
-                        startActivity(new Intent(getApplicationContext(), Homepage.class));
-                        overridePendingTransition(0, 0);
-                        NetworkTask networkTask1 = new NetworkTask();
-                        networkTask1.execute();
-
-                        return true;
-                    case R.id.navigation_notifications:
-                        startActivity(new Intent(getApplicationContext(), OrderListUnfinished.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-                }
-                return false;
-            }
-        });
-
-        //  makeAuthenticatedApiRequest();
     }
 
-//    private void updateFragmentWithData(int position) {
-//        JSONArray jsonArray = new JSONArray();
-//        if (position >= 0 && position < jsonArray.length()) {
-//            if (position >= 0 && position < fragments.size()) {
-//                DeviceInfo fragment = fragments.get(position);
-//                fragment.updateData(sensorId, fragment.getSensorWeight());
-//            }
-//            try {
-//                JSONObject jsonObject = jsonArray.getJSONObject(position);
-//                sensorId = jsonObject.getString("sensorId");
-//                sensorWeight = jsonObject.getDouble("SENSOR_Weight");
-//
-//                // Update the fragment with the fetched data
-//                DeviceInfo fragment = fragments.get(position);
-//                fragment.updateData(sensorId, sensorWeight);
-//            } catch (JSONException e) {
-//                // Handle any exceptions that may occur while fetching and parsing the data
-//                e.printStackTrace();
-//            }
-//        }
-//    }
-//
+    private void logout() {
+        sessionManager.clearSessionData(); // Clear the session data
+        redirectToLogin(); // Redirect to the login screen
+    }
+
+    private void redirectToLogin() {
+        // Redirect to the login screen
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        finish(); // Close the current activity
+    }
+
+
+
+    private void updateFragmentWithData(int position) {
+        JSONArray jsonArray = new JSONArray();
+        if (position >= 0 && position < jsonArray.length()) {
+            if (position >= 0 && position < fragments.size()) {
+                DeviceInfo fragment = fragments.get(position);
+                fragment.updateData(sensorId, fragment.getSensorWeight());
+            }
+            try {
+                JSONObject jsonObject = jsonArray.getJSONObject(position);
+                sensorId = jsonObject.getString("sensorId");
+                sensorWeight = jsonObject.getDouble("SENSOR_Weight");
+
+                // Update the fragment with the fetched data
+                DeviceInfo fragment = fragments.get(position);
+                fragment.updateData(sensorId, sensorWeight);
+            } catch (JSONException e) {
+                // Handle any exceptions that may occur while fetching and parsing the data
+                e.printStackTrace();
+            }
+        }
+    }
+
 
     private String fetchDataFromServer(String customerId) {
         try {
@@ -438,15 +283,7 @@ public class Homepage extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences("login_data", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.remove(SESSION_TIMEOUT_KEY);
-//        editor.remove("email"); // Clear saved email
-//        editor.remove("password"); // Clear saved password
         editor.apply();
-
-//        // Save the current activity's class name
-//        SharedPreferences activityPref = getSharedPreferences("activity_data", Context.MODE_PRIVATE);
-//        SharedPreferences.Editor activityEditor = activityPref.edit();
-//        activityEditor.putString("current_activity", getClass().getName());
-//        activityEditor.apply();
 
         // Redirect to the login screen
         Intent intent = new Intent(this, LoginActivity.class);
@@ -528,14 +365,14 @@ public class Homepage extends AppCompatActivity {
 
                         sensorWeight = jsonObject.getDouble("SENSOR_Weight");
                         DeviceInfo fragment = DeviceInfo.newInstance(sensorId, sensorWeight);
-                        // fragments.add(fragment);
+                        fragments.add(fragment);
 
                         fragments.add(DeviceInfo.newInstance(sensorId, sensorWeight));
                         if (sensorId.equals(selectedSensorId)) {
                             progressValue = (int) sensorWeight;
                             sensorWeight = jsonObject.getDouble("SENSOR_Weight");
                         }
-                        //updateUI((int) sensorWeight, sensorWeight);
+                        updateUI((int) sensorWeight, sensorWeight);
 
                         Log.i("sensorId:", sensorId);
                         Log.i("progressBar: ", String.valueOf(progressValue));
@@ -543,30 +380,23 @@ public class Homepage extends AppCompatActivity {
 
                         // Update the UI with the new IoT data (sensorId and sensorWeight).
                         // updateUI( progressValue, sensorWeight);
-                        // updateFragmentWithData(viewPager2.getCurrentItem());
+                        updateFragmentWithData(viewPager2.getCurrentItem());
                     }
-//
-//                    fragments.clear();
-//                    for (int i = 0; i < iot2.size(); i++) {
-//                        fragments.add(DeviceInfo.newInstance(iot2.get(i), sensorWeight)); // You can set initial values as needed
-//                    }
-//                    ArrayList<Double> sensorWeights = new ArrayList<>(iot2.size());
-//                    for (int i = 0; i < iot2.size(); i++) {
-//                        String sensorId = iot2.get(i); // Get the sensor ID from your data source
-//                        //sensorWeight = sensorWeights.get(i);
-//                        fragments.add(DeviceInfo.newInstance(iot2.get(i), sensorWeight));
-//                        Log.i("sensorId & sensorWeight: " , sensorId+sensorWeight);
-//                    }
+
+                    fragments.clear();
+                    for (int i = 0; i < iot2.size(); i++) {
+                        fragments.add(DeviceInfo.newInstance(iot2.get(i), sensorWeight)); // You can set initial values as needed
+                    }
 
                     // Set the adapter for the ViewPager2
-                    //adapter1 = new DeviceInfoPagerAdapter(Homepage.this, fragments);
-                    // viewPager2.setAdapter(adapter1);
+                    adapter1 = new DeviceInfoPagerAdapter(viewPager.this, fragments);
+                    viewPager2.setAdapter(adapter1);
                     viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
                         @Override
                         public void onPageSelected(int position) {
                             Log.i("TouchEvents", "Page selected: " + position);
                             // Get the data for the selected IoT device and update the fragment
-                            //updateFragmentWithData(position);
+                            updateFragmentWithData(position);
                         }
                     });
 
@@ -575,7 +405,7 @@ public class Homepage extends AppCompatActivity {
 
                     if (!fragments.isEmpty()) {
                         DeviceInfo firstFragment = fragments.get(0);
-                        //updateUI((int) firstFragment.getSensorWeight(), firstFragment.getSensorWeight());
+                        updateUI((int) firstFragment.getSensorWeight(), firstFragment.getSensorWeight());
                     }
 
                 } catch (JSONException e) {
@@ -588,20 +418,20 @@ public class Homepage extends AppCompatActivity {
 
     private void updateUI(int progressValue, double sensorWeight) {
         //TextView iotId = findViewById(R.id.iot);
-//        DecimalFormat decimalFormat = new DecimalFormat("#0.00");
-//        String formattedSensorWeight = decimalFormat.format(sensorWeight);
+        DecimalFormat decimalFormat = new DecimalFormat("#0.00");
+        String formattedSensorWeight = decimalFormat.format(sensorWeight);
 
         // this.progressValue = progressValue;
         //this.sensorWeight = sensorWeight;
 
-        // progressBar.setProgress(progressValue);
+        progressBar.setProgress(progressValue);
         Log.i("progress Value", String.valueOf(progressValue));
         // remainGas.setText(formattedSensorWeight);
 
-//        TextView progressText = findViewById(R.id.progress_text);
-//        DecimalFormat decimalFormat1 = new DecimalFormat("#0.00");
-//        String formattedProgressValue = decimalFormat1.format(sensorWeight);
-//        progressText.setText(formattedProgressValue + "%");
+        TextView progressText = findViewById(R.id.progress_text);
+        DecimalFormat decimalFormat1 = new DecimalFormat("#0.00");
+        String formattedProgressValue = decimalFormat1.format(sensorWeight);
+        progressText.setText(formattedProgressValue + "%");
 
     }
 
