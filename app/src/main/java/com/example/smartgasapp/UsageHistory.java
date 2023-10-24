@@ -1,6 +1,7 @@
 package com.example.smartgasapp;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,12 +20,17 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.smartgasapp.ui.login.LoginActivity;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
@@ -60,6 +66,11 @@ public class UsageHistory extends AppCompatActivity {
     ArrayAdapter<String> iotAdapter;
     ListView sensorlistView;
     ArrayList<String> sensorListString;
+    PieChart pieChart;
+    PieData pieData;
+    PieDataSet pieDataSet;
+    ArrayList pieEntries;
+    ArrayList<UsageHistoryItem> usageHistoryList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,9 +79,10 @@ public class UsageHistory extends AppCompatActivity {
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
+        usageHistoryList = new ArrayList<UsageHistoryItem>();
         iot =findViewById(R.id.usageOption_Spinner);
         iot_gas1 = findViewById(R.id.changable_gas_specification);
-        iot_gas2 = findViewById(R.id.changable_gas_remains);
+        //iot_gas2 = findViewById(R.id.changable_gas_remains);
         //lineChart = findViewById(R.id.getTheGraph);
         sensorlistView = findViewById(R.id.sensorlist);
 
@@ -104,7 +116,7 @@ public class UsageHistory extends AppCompatActivity {
                                 selectedSensorId = selectedSensorParts[1];
                             }
                             catch (Exception e){
-                                Log.i("歷史用量UI Exception", e.toString());
+                                Log.i("Usage Spinner UI Exception", e.toString());
                             }
                         }
                     });
@@ -118,7 +130,8 @@ public class UsageHistory extends AppCompatActivity {
                             selectedSensorId = selectedSensorParts[1];
                             Log.i("selectedSensorId",selectedSensorId);
                             new GetHistoryTask().execute(selectedSensorId);
-                            sensorlist(selectedSensorId);
+                            sensorList(selectedSensorId);
+                            setPieChart();
                         }
                         @Override
                         public void onNothingSelected(AdapterView<?> parent) {
@@ -161,19 +174,21 @@ public class UsageHistory extends AppCompatActivity {
                 return false;
             }
         });
+
     }
 
     private class GetHistoryTask extends AsyncTask<String, Void, Void> {
         @Override
         protected Void doInBackground(String... params) {
             Log.i("background",selectedSensorId);
-            getData("http://54.199.33.241/test/iot_history.php", selectedSensorId);
+            getData("http://10.0.2.2/SQL_Connect/iot_history.php", selectedSensorId);
             return null;
         }
 
         @Override
         protected void onPostExecute(Void result) {
-            sensorlist(selectedSensorId);
+            sensorList(selectedSensorId);
+            setPieChart();
         }
     }
     public void getData(String Showurl,String id) {
@@ -215,12 +230,12 @@ public class UsageHistory extends AppCompatActivity {
         }
     }
 
-    public void sensorlist(String sensorid) {
+    public void sensorList(String sensorId) {
         try {
+            usageHistoryList = new ArrayList<>();
             sensorListString = new ArrayList<String>();
             sensorlistView = findViewById(R.id.sensorlist);
             sensorlistView.setAdapter(null);
-
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -232,27 +247,74 @@ public class UsageHistory extends AppCompatActivity {
                                 JSONObject jsonObject = ja.getJSONObject(i);
                                 String SENSOR_Time = jsonObject.optString("SENSOR_Time");
                                 String SENSOR_Weight = jsonObject.optString("SENSOR_Weight");
-                                sensorListString.add("時間: " + SENSOR_Time + " 流量: " + SENSOR_Weight);
+                                String SENSOR_Percent = jsonObject.optString("Gas_remain");
+                                //sensorListString.add("時間: " + SENSOR_Time + " 流量: " + SENSOR_Weight);
+                                Log.i("UsageHistoryItem size",String.valueOf(i));
+                                usageHistoryList.add(new UsageHistoryItem(SENSOR_Weight,SENSOR_Time,SENSOR_Percent));
                                 //目前最後一筆資料
-                                iot_gas1.setText(SENSOR_Weight);
-                                iot_gas2.setText(SENSOR_Weight);
+                                iot_gas1.setText(SENSOR_Weight+" 公斤");
                             }
                             if(ja.length()==0){
                                 iot_gas1.setText("近一個月內無資料");
-                                iot_gas2.setText("近一個月內無資料");
                             }
                         }
-                        ArrayAdapter<String> adapter = new ArrayAdapter<>(UsageHistory.this, android.R.layout.simple_list_item_1, sensorListString);
-                        sensorlistView.setAdapter(adapter);
+                        UsageHistoryListAdapter adapter = new UsageHistoryListAdapter(getApplicationContext(),R.layout.adapter_usage_history,usageHistoryList);
+                        if(usageHistoryList.size()>0){
+                            sensorlistView.setAdapter(null);
+                            sensorlistView.setAdapter(adapter);
+                        }
                     }
                     catch (Exception e){
-                        Log.i("歷史用量記錄UI Exception",e.toString());
+                        Log.i("Usage ListView Exception",e.toString());
                     }
                 }
             });
         } catch (Exception e) {
             Log.i("sensor list exception", e.toString());
         }
+    }
+
+    public void setPieChart() {
+        pieChart = findViewById(R.id.pieChart);
+        pieEntries = new ArrayList<>();
+
+        pieChart.clear();
+
+        if (usageHistoryList.size() > 0) {
+            try {
+                Log.i("Pie chart", "Pie Chart");
+                for (int i = 0; i < usageHistoryList.size(); i++) {
+                    Log.i("usageHistoryList" + String.valueOf(i), usageHistoryList.get(i).percent);
+                }
+                pieEntries.add(new PieEntry(Float.parseFloat(usageHistoryList.get(0).percent) * 1000f, 0));
+                PieEntry transparentSlice = new PieEntry(100f - (Float.parseFloat(usageHistoryList.get(0).percent) * 1000f), 1);
+                transparentSlice.setData(0); // Set data to 0 (fully transparent)
+                pieEntries.add(transparentSlice);
+
+                pieDataSet = new PieDataSet(pieEntries, "");
+
+                ArrayList<Integer> colors = new ArrayList<>();
+                //colors.add(Color.rgb(0, 128, 255)); // Blue for the first slice
+                colors.add(Color.rgb(255, 0, 128)); // Pink for the first slice
+                colors.add(Color.argb(0, 0, 128, 255)); // Transparent for the second slice
+                pieDataSet.setColors(colors);
+
+                pieData = new PieData(pieDataSet);
+                pieChart.setData(pieData);
+
+                pieDataSet.setSliceSpace(2f);
+                pieDataSet.setValueTextColor(Color.WHITE);
+                pieDataSet.setValueTextSize(10f);
+                pieDataSet.setSliceSpace(5f);
+            } catch (Exception e) {
+                Log.i("Pie chart Exception", e.toString());
+            }
+        } else {
+            pieChart.clear();
+            pieChart.setNoDataText("No data available");
+        }
+
+        pieChart.invalidate();
     }
 
 }

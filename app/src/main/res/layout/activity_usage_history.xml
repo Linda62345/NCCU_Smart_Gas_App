@@ -27,6 +27,16 @@
             android:paddingBottom="90dp"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/usageHistoryTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/usageHistoryTitle"
+                android:textColor="@color/black"
+                android:textSize="35sp"
+                android:textStyle="bold"/>
+
             <Spinner
                 android:id="@+id/usageOption_Spinner"
                 android:layout_width="match_parent"
@@ -36,100 +46,63 @@
                 android:contentDescription="gasUsage"
                 android:textSize="28sp" />
 
-
-
-            <LinearLayout
-                android:id="@+id/usageLinear"
-                android:layout_width="match_parent"
-                android:layout_height="157dp"
-                android:layout_gravity="center"
-                android:orientation="horizontal"
-                android:layout_marginTop="40dp"
-                android:layout_marginBottom="16dp"
-                android:background="#F4F4F4">
-
-
-                <TextView
-                    android:id="@+id/gas_specification"
-                    android:layout_width="114dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="48dp"
-                    android:paddingStart="15dp"
-                    android:text="剩餘重量"
-                    android:textColor="#716F6F"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/changable_gas_specification"
-                    android:layout_width="195dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="1dp"
-                    android:layout_marginTop="48dp"
-                    android:layout_marginBottom="2dp"
-                    android:paddingStart="15dp"
-                    android:text="xxx"
-                    android:textColor="#716F6F"
-                    android:textSize="16sp"/>
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/record_title"
+            <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-190dp"
-                android:layout_marginBottom="170dp"
                 android:layout_gravity="center"
-                android:paddingStart="15dp"
-                android:text="近期記錄"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
+                android:columnCount="2"
+                android:rowCount="1">
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id = "@+id/pieChart"
+                    android:layout_width = "0dp"
+                    android:layout_height = "wrap_content"
+                    android:layout_columnWeight="@integer/material_motion_duration_medium_1"
+                    android:layout_rowWeight="@integer/material_motion_duration_medium_1"/>
+                <!--<TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="piechart"
+                    android:layout_columnWeight="@integer/material_motion_duration_medium_1"
+                    android:layout_rowWeight="@integer/material_motion_duration_medium_1" />-->
+                <LinearLayout
+                    android:id="@+id/usageLinear"
+                    android:layout_width="0dp"
+                    android:layout_height="157dp"
+                    android:orientation="vertical"
+                    android:background="@color/white"
+                    android:layout_columnWeight="@integer/material_motion_duration_medium_1"
+                    android:layout_rowWeight="@integer/material_motion_duration_medium_1">
+                    <TextView
+                        android:id="@+id/gas_specification"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:text="剩餘重量"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/changable_gas_specification"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="40dp"
+                        android:text="xxx"
+                        android:textColor="@color/black"
+                        android:textSize="35sp"/>
+
+                </LinearLayout>
+            </GridLayout>
+
             <com.example.smartgasapp.listViewAdjust
-                android:layout_width="wrap_content"
-                android:layout_height="200dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
+                android:animationCache="false"
+                android:divider="@null"
+                android:scrollingCache="false"
+                android:smoothScrollbar="true"
                 android:id="@+id/sensorlist"/>
-            <!--
-            <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/getTheGraph"
-                android:layout_width="match_parent"
-                android:layout_height="140dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-            -->
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/gas_remainsTitle"
-                android:layout_width="114dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:paddingStart="15dp"
-                android:text="剩餘重量"
-                android:textColor="#716F6F"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/changable_gas_remains"
-                android:layout_width="195dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
-                android:paddingStart="15dp"
-                android:text="xxx"
-                android:textColor="#716F6F"
-                android:textSize="16sp"/>
-        </LinearLayout>
-
 
     </LinearLayout>
     </ScrollView>

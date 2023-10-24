@@ -61,11 +61,11 @@ public class EditPersonalInfo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_personal_info);
-        Name = findViewById(R.id.editName);
-        Address = findViewById(R.id.editCompanyAddress);
-        Email = findViewById(R.id.editEmail);
-        Tel = findViewById(R.id.editHousePhone);
-        Phone = findViewById(R.id.editPhoneNo);
+//        Name = findViewById(R.id.editName);
+//        Address = findViewById(R.id.editCompanyAddress);
+//        Email = findViewById(R.id.editEmail);
+//        Tel = findViewById(R.id.editHousePhone);
+//        Phone = findViewById(R.id.editPhoneNo);
         save = findViewById(R.id.saveInfo_button);
 
         LoginActivity loginActivity = new LoginActivity();
