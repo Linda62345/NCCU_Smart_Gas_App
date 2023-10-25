@@ -174,12 +174,12 @@ public class NotificationFrequency extends AppCompatActivity  {
                 }
 
                 // Schedule the next notification check after a specific interval (e.g., every 1 minute)
-                handler.postDelayed(this, 60000);
+              //  handler.postDelayed(this, 60000);
             }
         };
 
         // Start the initial notification check
-        //   handler.post(notificationRunnable);
+          handler.post(notificationRunnable);
     }
 
 //    private void startNotificationCheck(double gasVolume) {
@@ -433,6 +433,14 @@ public class NotificationFrequency extends AppCompatActivity  {
 
 
         private void checkAndNotifyForFrequency(double gasVolume) {
+//            Calendar calendar = Calendar.getInstance();
+//            int hour = calendar.get(Calendar.HOUR_OF_DAY);
+//            int currentMinute = calendar.get(Calendar.MINUTE);
+//
+//            if ((hour == 2 || hour == 18) && gasVolume < 3) {
+//                showNotification("Your gas volume is less than 3 kg");
+//            }
+//        }
             if (gasVolume < 3) {
                 Calendar calendar = Calendar.getInstance();
                 int hour = calendar.get(Calendar.HOUR_OF_DAY);
@@ -452,32 +460,7 @@ public class NotificationFrequency extends AppCompatActivity  {
                         return;
                     }
                 }
-//            //if (gasVolume < 3) {
-//            Calendar calendar = Calendar.getInstance();
-//            int hour = calendar.get(Calendar.HOUR_OF_DAY);
-//            int minute = calendar.get(Calendar.MINUTE);
-//
-//            int desiredHour = hour;
-//            int desiredMinute = minute;
-//
-//            if (gasVolume < 3 && (hour == 14 && minute == 0 || hour == 18 && minute == 0)) {
-//                showNotification("您的瓦斯容量小於" + 3 + "kg");
-//                if (hour >= 14 || (hour == 13 && minute >= 30)) {
-//                    // Afternoon, schedule the next notification for tomorrow morning
-//                    desiredHour = 14;
-//                    desiredMinute = 0;
-//                    showNotification("您的瓦斯容量小於" +  3 + "公斤");
-//                } else if (hour >= 8 && minute == 0) {
-//                    // Morning, schedule the next notification for this afternoon
-//                    desiredHour = 18;
-//                    desiredMinute = 0;
-//                    showNotification("您的瓦斯容量小於" + 3 + "公斤");
-//                }
-//            }
-//                scheduleNotification(desiredHour, desiredMinute, gasVolume);
                 scheduleNotification(desiredHours[0], desiredMinutes[0], gasVolume);
-//                scheduleNotification(14, 0, gasVolume);
-//                scheduleNotification(22,03, gasVolume);
             }
         }
 
@@ -496,11 +479,16 @@ public class NotificationFrequency extends AppCompatActivity  {
 
             long notificationTime = calendar.getTimeInMillis();
 
-            // If the desired time has already passed, schedule it for the next day
-            if (notificationTime < System.currentTimeMillis()) {
-                calendar.add(Calendar.DAY_OF_YEAR, 1);
-                notificationTime = calendar.getTimeInMillis();
+//            // If the desired time has already passed, schedule it for the next day
+//            if (notificationTime < System.currentTimeMillis()) {
+//                calendar.add(Calendar.DAY_OF_YEAR, 1);
+//                notificationTime = calendar.getTimeInMillis();
+//            }
+
+            if (System.currentTimeMillis() > calendar.getTimeInMillis()) {
+                calendar.add(Calendar.DAY_OF_MONTH, 1); // Schedule for the next day
             }
+
             // Create an Intent for the notification
             Intent notificationIntent = new Intent(NotificationFrequency.this, NotificationReceiver.class);
             notificationIntent.putExtra("gasVolume", gasVolume);
