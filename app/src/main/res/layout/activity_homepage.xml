@@ -19,7 +19,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
             android:orientation="vertical">
 
             <TextView
@@ -31,6 +30,7 @@
                 android:text="首頁"
                 android:textColor="@color/black"
                 android:layout_marginBottom="15dp"
+                android:layout_marginHorizontal="20dp"
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
@@ -39,6 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:layout_marginHorizontal="20dp"
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"
                 android:text="test"
@@ -66,127 +67,40 @@
                 app:sliderScrollTimeInSec="2"
                 app:sliderStartAutoCycle="true" />
 
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/viewPager2"
+            <LinearLayout
+                android:id="@+id/gridLayoutProgress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@+id/progressLayout"
-                app:layout_constraintBottom_toTopOf="@id/progressLayout"/>
+                android:layout_marginHorizontal="5dp"
+                android:layout_gravity="center">
+
+                <ImageButton
+                    android:id="@+id/prevButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="110dp"
+                    android:background="@color/white"
+                    android:src="@drawable/baseline_arrow_back_ios_24"
+                    />
 
 
-            <!--            <Button-->
-            <!--                android:id="@+id/loginFromHome"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="48dp"-->
-            <!--                android:layout_gravity="end"-->
-            <!--                android:backgroundTint="@color/white"-->
-            <!--                android:text="登出"-->
-            <!--                android:textColor="@color/black"-->
-            <!--                android:textStyle="bold" />-->
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPager2"
+                    android:layout_width="340dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"/>
 
+                <ImageButton
+                    android:id="@+id/nextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="110dp"
+                    android:background="@color/white"
+                    android:src="@drawable/baseline_arrow_forward_ios_24"
+                    android:paddingStart="5dp"
+                    android:layout_gravity="right"
+                    />
 
-<!--            <LinearLayout-->
-<!--                android:id="@+id/progressLayout"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:background="@drawable/highlight_gray_button_back"-->
-<!--                android:orientation="vertical"-->
-<!--                android:paddingTop="10dp"-->
-<!--                android:paddingBottom="10dp">-->
+            </LinearLayout>
 
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:layout_marginHorizontal="10dp"-->
-<!--                    android:layout_marginBottom="3dp"-->
-<!--                    android:orientation="horizontal">-->
-
-
-<!--                    <ImageView-->
-<!--                        android:id="@+id/imageView"-->
-<!--                        android:layout_width="43dp"-->
-<!--                        android:layout_height="54dp"-->
-<!--                        android:src="@drawable/baseline_propane_tank_gray" />-->
-
-<!--                    <Spinner-->
-<!--                        android:id="@+id/iotSpinner"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="48dp"-->
-<!--                        android:layout_gravity="center"-->
-<!--                        android:layout_marginHorizontal="5dp"-->
-<!--                        android:layout_weight="@integer/material_motion_duration_medium_1"-->
-<!--                        android:backgroundTint="#ff1976d2"-->
-<!--                        android:contentDescription="iot"-->
-<!--                        android:padding="5dp" />-->
-
-
-<!--                </LinearLayout>-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginHorizontal="10dp"-->
-<!--                    android:orientation="horizontal">-->
-
-<!--                    <ProgressBar-->
-<!--                        android:id="@+id/progressBar"-->
-<!--                        style="?android:attr/progressBarStyleHorizontal"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_gravity="center"-->
-<!--                        android:layout_weight="@integer/material_motion_duration_medium_1"-->
-<!--                        android:progressDrawable="@drawable/custom_progress_bg"-->
-<!--                        android:progressTint="#2196F3" />-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/usedGasProgress"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginLeft="10dp"-->
-<!--                        android:autoSizeTextType="uniform"-->
-<!--                        android:maxLines="1"-->
-<!--                        android:minWidth="40dp"-->
-<!--                        android:text="剩餘用量"-->
-<!--                        android:textColor="@color/dark_gray"-->
-<!--                        android:textSize="15sp"-->
-<!--                        android:textStyle="bold" />-->
-
-<!--                </LinearLayout>-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginHorizontal="10dp"-->
-<!--                    android:layout_marginTop="2dp"-->
-<!--                    android:orientation="horizontal">-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/progress_text"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_weight="@integer/material_motion_duration_medium_1"-->
-<!--                        android:autoSizeTextType="uniform"-->
-<!--                        android:maxLines="1"-->
-<!--                        android:text="0"-->
-<!--                        android:textAlignment="center"-->
-<!--                        android:textColor="@color/dark_gray"-->
-<!--                        android:textSize="15sp"-->
-<!--                        android:textStyle="bold" />-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginLeft="10dp"-->
-<!--                        android:minWidth="40dp"-->
-<!--                        android:text="剩餘用量"-->
-<!--                        android:textColor="@color/highlight_gray"-->
-<!--                        android:textSize="15sp"-->
-<!--                        android:textStyle="bold" />-->
-<!--                </LinearLayout>-->
-<!--            </LinearLayout>-->
 
             <GridLayout
                 android:id="@+id/gridLayoutButtons"
@@ -195,6 +109,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="50dp"
+                android:layout_marginHorizontal="20dp"
                 android:columnCount="3"
                 android:rowCount="4"
                 android:useDefaultMargins="true">
@@ -353,7 +268,7 @@
 
 
         </LinearLayout>
-
+\
     </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
