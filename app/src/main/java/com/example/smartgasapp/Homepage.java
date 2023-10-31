@@ -89,6 +89,8 @@ public class Homepage extends AppCompatActivity {
     private TokenManager tokenManager;
     private String sensorId = "";
     private double sensorWeight = 0.0;
+    private int currentItem = 0; // Initially, the current item index is set to 0.
+
     private List<String> iot2 = new ArrayList<>();
 
 
@@ -152,6 +154,28 @@ public class Homepage extends AppCompatActivity {
         });
         Log.e("TouchEvents", "An error occurred!");
         Log.e("sensor id: " , String.valueOf(iot1));
+
+        ImageButton prevButton = findViewById(R.id.prevButton);
+        ImageButton nextButton = findViewById(R.id.nextButton);
+
+        prevButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (viewPager2.getCurrentItem() > 0) {
+                    viewPager2.setCurrentItem(viewPager2.getCurrentItem() - 1, true); // Swipe to the previous item.
+                }
+            }
+        });
+
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (viewPager2.getCurrentItem() < adapter1.getItemCount() - 1) {
+                    viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1, true); // Swipe to the next item.
+                }
+            }
+        });
+
 
 
         // progressBar = findViewById(R.id.progressBar);
