@@ -383,28 +383,6 @@ public class Homepage extends AppCompatActivity {
         //  makeAuthenticatedApiRequest();
     }
 
-//    private void updateFragmentWithData(int position) {
-//        JSONArray jsonArray = new JSONArray();
-//        if (position >= 0 && position < jsonArray.length()) {
-//            if (position >= 0 && position < fragments.size()) {
-//                DeviceInfo fragment = fragments.get(position);
-//                fragment.updateData(sensorId, fragment.getSensorWeight());
-//            }
-//            try {
-//                JSONObject jsonObject = jsonArray.getJSONObject(position);
-//                sensorId = jsonObject.getString("sensorId");
-//                sensorWeight = jsonObject.getDouble("SENSOR_Weight");
-//
-//                // Update the fragment with the fetched data
-//                DeviceInfo fragment = fragments.get(position);
-//                fragment.updateData(sensorId, sensorWeight);
-//            } catch (JSONException e) {
-//                // Handle any exceptions that may occur while fetching and parsing the data
-//                e.printStackTrace();
-//            }
-//        }
-//    }
-//
 
     private String fetchDataFromServer(String customerId) {
         try {
@@ -462,15 +440,7 @@ public class Homepage extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences("login_data", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.remove(SESSION_TIMEOUT_KEY);
-//        editor.remove("email"); // Clear saved email
-//        editor.remove("password"); // Clear saved password
         editor.apply();
-
-//        // Save the current activity's class name
-//        SharedPreferences activityPref = getSharedPreferences("activity_data", Context.MODE_PRIVATE);
-//        SharedPreferences.Editor activityEditor = activityPref.edit();
-//        activityEditor.putString("current_activity", getClass().getName());
-//        activityEditor.apply();
 
         // Redirect to the login screen
         Intent intent = new Intent(this, LoginActivity.class);
@@ -569,22 +539,7 @@ public class Homepage extends AppCompatActivity {
                         // updateUI( progressValue, sensorWeight);
                         // updateFragmentWithData(viewPager2.getCurrentItem());
                     }
-//
-//                    fragments.clear();
-//                    for (int i = 0; i < iot2.size(); i++) {
-//                        fragments.add(DeviceInfo.newInstance(iot2.get(i), sensorWeight)); // You can set initial values as needed
-//                    }
-//                    ArrayList<Double> sensorWeights = new ArrayList<>(iot2.size());
-//                    for (int i = 0; i < iot2.size(); i++) {
-//                        String sensorId = iot2.get(i); // Get the sensor ID from your data source
-//                        //sensorWeight = sensorWeights.get(i);
-//                        fragments.add(DeviceInfo.newInstance(iot2.get(i), sensorWeight));
-//                        Log.i("sensorId & sensorWeight: " , sensorId+sensorWeight);
-//                    }
 
-                    // Set the adapter for the ViewPager2
-                    //adapter1 = new DeviceInfoPagerAdapter(Homepage.this, fragments);
-                    // viewPager2.setAdapter(adapter1);
                     viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
                         @Override
                         public void onPageSelected(int position) {
