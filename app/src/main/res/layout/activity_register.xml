@@ -348,9 +348,20 @@
 
 
         <CheckBox
+            android:id="@+id/serviceCheckBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/terms_cons"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            />
+
+        <CheckBox
+            android:id="@+id/privacyCheckBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/privacy_condition"
             android:textStyle="bold"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"

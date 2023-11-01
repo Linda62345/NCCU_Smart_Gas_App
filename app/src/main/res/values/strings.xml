@@ -116,6 +116,7 @@
     <string name="prompt_confirm_password">確認密碼</string>
     <string name="enter_confirm_pass">請確認您的密碼</string>
     <string name="terms_cons">服務條款</string>
+    <string name="privacy_condition">隱私群政策</string>
     <string name="edit_personal">編輯個人檔案</string>
     <string name="greetings">您好，</string>
     <string name="today_order">今日訂單</string>
@@ -123,7 +124,7 @@
     <string name="finished">已完成</string>
     <string name="unfinished">未完成</string>
     <string name="companyAddress">瓦斯行地址</string>
-    <string name="save_string">儲存</string>
+    <string name="save_string">確認</string>
     <string name="gas_order_complete">送出訂單</string>
 
     <string-array name="frequency_dropdown">

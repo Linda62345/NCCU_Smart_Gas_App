@@ -79,19 +79,26 @@ public class OrderDetailListAdapter extends ArrayAdapter<OrderDetailItem> {
 
                 OrderDetailItem = getItem(position);
 
-                Log.i("Gas_Delete123",String.valueOf(Gas_Delete));
-                Log.i("orderDetail.Gas_Volume",orderDetail.Gas_Volume);
+                //Log.i("Gas_Delete123",String.valueOf(Gas_Delete));
+                //Log.i("orderDetail.Gas_Volume",orderDetail.Gas_Volume);
 
                 if (SpGasRemain.getSelectedItem().toString().equals("兌換")) {
-                    Gas_Delete += Integer.parseInt(OrderDetailItem.getQuantity()) * Integer.parseInt(OrderDetailItem.getWeight());
-                    if(Gas_Delete <= Integer.parseInt(orderDetail.Gas_Volume)){
-                        selection[0] = true;
+                    if(orderDetail.Gas_Volume != null && !orderDetail.Gas_Volume.isEmpty()){
+                        Gas_Delete += Integer.parseInt(OrderDetailItem.getQuantity()) * Integer.parseInt(OrderDetailItem.getWeight());
+                        if(Gas_Delete <= Integer.parseInt(orderDetail.Gas_Volume)){
+                            selection[0] = true;
+                        }
+                        else{
+                            Toast.makeText(mContext.getApplicationContext(), "殘氣量不足", Toast.LENGTH_SHORT).show();
+                            selection[0] = false;
+                            SpGasRemain.setSelection(0);
+                            Gas_Delete -= Integer.parseInt(OrderDetailItem.getQuantity()) * Integer.parseInt(OrderDetailItem.getWeight());
+                        }
                     }
                     else{
                         Toast.makeText(mContext.getApplicationContext(), "殘氣量不足", Toast.LENGTH_SHORT).show();
                         selection[0] = false;
                         SpGasRemain.setSelection(0);
-                        Gas_Delete -= Integer.parseInt(OrderDetailItem.getQuantity()) * Integer.parseInt(OrderDetailItem.getWeight());
                     }
                     check[0] = true;
                 } else {

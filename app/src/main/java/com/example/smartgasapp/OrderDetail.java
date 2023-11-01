@@ -389,6 +389,7 @@ public class OrderDetail extends AppCompatActivity {
                     Log.i("time",currentDateTimeString);
                     data.put("order_time",currentDateTimeString);
                     data.put("expect_time",date+" "+time);
+                    Log.i("order detail expect time",date+time);
                     data.put("delivery_method",method);
 
                     return data;

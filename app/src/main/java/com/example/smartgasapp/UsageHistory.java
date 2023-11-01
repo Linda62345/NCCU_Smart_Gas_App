@@ -181,7 +181,7 @@ public class UsageHistory extends AppCompatActivity {
         @Override
         protected Void doInBackground(String... params) {
             Log.i("background",selectedSensorId);
-            getData("http://10.0.2.2/SQL_Connect/iot_history.php", selectedSensorId);
+            getData("http://54.199.33.241/test/iot_history.php", selectedSensorId);
             return null;
         }
 

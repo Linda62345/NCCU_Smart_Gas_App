@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -46,7 +47,7 @@ public class EditPersonalInfo extends AppCompatActivity {
     public int CUSTOMER_ID;
     public String CUSTOMER_Name, CUSTOMER_Address, CUSTOMER_Email, COMPANY_Id;
     public int CUSTOMER_Tel,CUSTOMER_Phone;
-    private EditText Name, Address, Email, Tel, Phone;
+    private TextView Name, Address, Email, Tel, Phone;
     private Button save;
     public String customer_name="",phone="",tel="",address="",email="", company="";
 
@@ -61,11 +62,11 @@ public class EditPersonalInfo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_personal_info);
-//        Name = findViewById(R.id.editName);
-//        Address = findViewById(R.id.editCompanyAddress);
-//        Email = findViewById(R.id.editEmail);
-//        Tel = findViewById(R.id.editHousePhone);
-//        Phone = findViewById(R.id.editPhoneNo);
+        Name = findViewById(R.id.editName);
+        Address = findViewById(R.id.editCompanyAddress);
+        Email = findViewById(R.id.editEmail);
+        Tel = findViewById(R.id.editHousePhone);
+        Phone = findViewById(R.id.editPhoneNo);
         save = findViewById(R.id.saveInfo_button);
 
         LoginActivity loginActivity = new LoginActivity();
@@ -124,13 +125,10 @@ public class EditPersonalInfo extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Name = findViewById(R.id.editName);
-                Address = findViewById(R.id.editCompanyAddress);
-                Email = findViewById(R.id.editEmail);
-                Tel = findViewById(R.id.editHousePhone);
-                Phone = findViewById(R.id.editPhoneNo);
                 etCompanyName = findViewById(R.id.company);
-                saveProfile();
+                //saveProfile();
+                Intent intent = new Intent(EditPersonalInfo.this, UserDashboard.class);
+                startActivity(intent);
             }
         });
 

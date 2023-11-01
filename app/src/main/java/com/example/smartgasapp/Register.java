@@ -1,17 +1,24 @@
 package com.example.smartgasapp;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.Checkable;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -59,6 +66,7 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
 
     private String name, email, address, phone, houseTel, password, reenterPassword, gender, company, city, area, lift, postCode, floor;
     RequestQueue requestQueue;
+    private CheckBox serviceCheckBox,privacyCheckBox;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -67,6 +75,8 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
         setContentView(R.layout.activity_register);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
+        serviceCheckBox = findViewById(R.id.serviceCheckBox);
+        privacyCheckBox = findViewById(R.id.privacyCheckBox);
         radioGroup = findViewById(R.id.radioGroup);
         etName = findViewById(R.id.register_name_input);
         etMale = findViewById(R.id.radioButton_male);
@@ -187,6 +197,28 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
             etCity.setOnItemSelectedListener(this);
         }
 
+        // 服務條款Dialog
+        serviceCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    // Show the pop-up when the CheckBox is checked
+                    showFilePopup("https://linda62345.github.io/NCCU_Smart_Gas_App/%E5%85%AC%E9%81%93%E7%93%A6%E6%96%AF%E6%9C%8D%E5%8B%99%E6%A2%9D%E6%AC%BE_0720.htm");
+                }
+            }
+        });
+
+        // 隱私權政策Dialog
+        privacyCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    // Show the pop-up when the CheckBox is checked
+                    showFilePopup("https://linda62345.github.io/NCCU_Smart_Gas_App/%E5%85%AC%E9%81%93%E7%93%A6%E6%96%AF%E9%9A%B1%E7%A7%81%E6%AC%8A%E6%94%BF%E7%AD%96.htm");
+                }
+            }
+        });
+
     }
 
     // 連到地區的資料庫
@@ -245,6 +277,15 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
     }
 
     public void save(View view) {
+        //檢查服務條款是否打勾
+        if (!serviceCheckBox.isChecked()) {
+            Toast.makeText(this, "請確認服務條款", Toast.LENGTH_SHORT).show();
+            return; // Exit the function without proceeding
+        }
+        if (!privacyCheckBox.isChecked()) {
+            Toast.makeText(this, "請確認隱私權政策", Toast.LENGTH_SHORT).show();
+            return; // Exit the function without proceeding
+        }
         //這裡要加個警告 姓名欄一定要填
         if (etPassword.getError() == null && etReenterPassword.getError() == null) {
             if (etMale.isChecked()) {
@@ -353,5 +394,29 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
         } else {
             etReenterPassword.setError(null); // Clear the error
         }
+    }
+
+    // 隱私權Dialog function
+    private void showFilePopup(String link){
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.dialog_privacy_pop, null);
+        dialogBuilder.setView(dialogView);
+
+        // Set up the WebView in the layout to display the file content
+        WebView webView = dialogView.findViewById(R.id.webView);
+        // Load the file content or a URL into the WebView
+        webView.loadUrl(link); // Example URL, you can load your content
+
+        // Add a "Close" button to the dialog
+        dialogBuilder.setPositiveButton("Close", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                dialog.dismiss(); // Close the pop-up
+            }
+        });
+
+        // Create and show the dialog
+        AlertDialog alertDialog = dialogBuilder.create();
+        alertDialog.show();
     }
 }

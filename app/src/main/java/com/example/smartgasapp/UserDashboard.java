@@ -61,7 +61,7 @@ public class UserDashboard extends AppCompatActivity {
         setContentView(R.layout.activity_user_dashboard);
 
         userInfo = findViewById(R.id.go_edit_profile);
-       // iot = findViewById(R.id.iotSpinner);
+        //iot = findViewById(R.id.iotSpinner);
         search = findViewById(R.id.search);
         usageHistory = findViewById(R.id.usageHistory);
 
@@ -71,7 +71,7 @@ public class UserDashboard extends AppCompatActivity {
 
         famCoupon = findViewById(R.id.familyCodeButton);
         logout = findViewById(R.id.logout_button);
-     //   progressBar = findViewById(R.id.progressBarinfo);
+        //progressBar = findViewById(R.id.progressBarinfo);
      //   VolumeLeft = findViewById(R.id.changableVol_progressinfo);
 
         showName = findViewById(R.id.show_name);
@@ -348,11 +348,11 @@ public class UserDashboard extends AppCompatActivity {
         DecimalFormat decimalFormat = new DecimalFormat("#0.00");
         String formattedSensorWeight = decimalFormat.format(sensorWeight);
 
-      //  progressBar.setProgress(progressValue);
+        //progressBar.setProgress(progressValue);
    //     VolumeLeft.setText(formattedSensorWeight);
 
         TextView progressText = findViewById(R.id.progress_text);
-//        progressText.setText(String.valueOf(decimalFormat.format(sensorWeight) + "%"));
+        progressText.setText(String.valueOf(decimalFormat.format(sensorWeight) + "%"));
 //        progressText.setText(String.valueOf(decimalFormat.format(progressValue) + "%"));
     }
 
