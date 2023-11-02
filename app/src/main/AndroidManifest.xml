@@ -60,16 +60,6 @@
             android:label=" "
             android:parentActivityName="com.example.smartgasapp.OrderGas" />
         <activity
-            android:name="com.example.smartgasapp.ScanOriginalQRCode"
-            android:exported="false"
-            android:label=" "
-            android:parentActivityName="com.example.smartgasapp.Homepage" />
-        <activity
-            android:name="com.example.smartgasapp.ScanNewQRCode"
-            android:exported="false"
-            android:label=" "
-            android:parentActivityName="com.example.smartgasapp.ScanOriginalQRCode" />
-        <activity
             android:name="com.example.smartgasapp.ScanIotQRCode"
             android:exported="false"
             android:label=" "

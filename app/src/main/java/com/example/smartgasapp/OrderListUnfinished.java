@@ -259,7 +259,7 @@ public class OrderListUnfinished extends AppCompatActivity {
                     jo = ja.getJSONObject(i);
                     String orderTime = jo.getString("Order_Time");
 
-                    OrderListFinishList order = new OrderListFinishList(orderTime, "已完成");
+                    OrderListFinishList order = new OrderListFinishList(orderTime, "未完成");
                     orderListFinishLists.add(order);
 
                     Log.i("order data", order.getTime());
