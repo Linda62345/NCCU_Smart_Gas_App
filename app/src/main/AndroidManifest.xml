@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="glotech.smartgasapp">
 
     <uses-sdk
         android:minSdkVersion="26"
@@ -39,129 +40,129 @@
         android:theme="@style/Theme.SmartGasApp"
         tools:targetApi="31">
         <activity
-            android:name="com.example.smartgasapp.userIot"
+            android:name="glotech.smartgasapp.userIot"
             android:exported="false"
             android:label=" "
-            android:parentActivityName="com.example.smartgasapp.Homepage"/>
+            android:parentActivityName="glotech.smartgasapp.Homepage"/>
         <activity
-            android:name="com.example.smartgasapp.SearchOrderResult"
+            android:name="glotech.smartgasapp.SearchOrderResult"
             android:exported="false"
             android:label=" " />
         <activity
-            android:name="com.example.smartgasapp.SearchOrderResultFinished"
+            android:name="glotech.smartgasapp.SearchOrderResultFinished"
             android:exported="false"
             android:label=" " />
         <activity
-            android:name="com.example.smartgasapp.ConfirmDelivery"
+            android:name="glotech.smartgasapp.ConfirmDelivery"
             android:exported="false" />
         <activity
-            android:name="com.example.smartgasapp.DeliveryMethod"
+            android:name="glotech.smartgasapp.DeliveryMethod"
             android:exported="false"
             android:label=" "
-            android:parentActivityName="com.example.smartgasapp.OrderGas" />
+            android:parentActivityName="glotech.smartgasapp.OrderGas" />
         <activity
-            android:name="com.example.smartgasapp.ScanIotQRCode"
+            android:name="glotech.smartgasapp.ScanIotQRCode"
             android:exported="false"
             android:label=" "
-            android:parentActivityName="com.example.smartgasapp.userIot"/>
+            android:parentActivityName="glotech.smartgasapp.userIot"/>
         <activity
-            android:name="com.example.smartgasapp.OrderListFinished"
+            android:name="glotech.smartgasapp.OrderListFinished"
             android:exported="false"
             android:label=" "
-            android:parentActivityName="com.example.smartgasapp.Homepage" />
+            android:parentActivityName="glotech.smartgasapp.Homepage" />
         <activity
-            android:name="com.example.smartgasapp.OrderListUnfinished"
+            android:name="glotech.smartgasapp.OrderListUnfinished"
             android:exported="false"
             android:label=" "
-            android:parentActivityName="com.example.smartgasapp.Homepage" />
+            android:parentActivityName="glotech.smartgasapp.Homepage" />
         <activity
-            android:name="com.example.smartgasapp.UserDashboard"
+            android:name="glotech.smartgasapp.UserDashboard"
             android:exported="false"
             android:label=" " />
         <activity
-            android:name="com.example.smartgasapp.Homepage"
+            android:name="glotech.smartgasapp.Homepage"
             android:exported="false"
             android:label=" "/>
         <activity
-            android:name="com.example.smartgasapp.PersonalBarcode"
+            android:name="glotech.smartgasapp.PersonalBarcode"
             android:exported="false"
             android:label=" "
-            android:parentActivityName="com.example.smartgasapp.Homepage" />
+            android:parentActivityName="glotech.smartgasapp.Homepage" />
         <activity
-            android:name="com.example.smartgasapp.GasCompanyLocation"
+            android:name="glotech.smartgasapp.GasCompanyLocation"
             android:exported="false"
             android:label="瓦斯行地點"
-            android:parentActivityName="com.example.smartgasapp.Homepage" />
+            android:parentActivityName="glotech.smartgasapp.Homepage" />
         <activity
-            android:name="com.example.smartgasapp.NotificationFrequency"
+            android:name="glotech.smartgasapp.NotificationFrequency"
             android:exported="false"
             android:label=" "
-            android:parentActivityName="com.example.smartgasapp.UserDashboard" />
+            android:parentActivityName="glotech.smartgasapp.UserDashboard" />
         <activity
-            android:name="com.example.smartgasapp.FamilyInvitationCode"
+            android:name="glotech.smartgasapp.FamilyInvitationCode"
             android:exported="false"
             android:label=" "
-            android:parentActivityName="com.example.smartgasapp.UserDashboard" />
+            android:parentActivityName="glotech.smartgasapp.UserDashboard" />
         <activity
-            android:name="com.example.smartgasapp.GasExchange"
+            android:name="glotech.smartgasapp.GasExchange"
             android:exported="false"
             android:label=" "
-            android:parentActivityName="com.example.smartgasapp.Homepage" />
+            android:parentActivityName="glotech.smartgasapp.Homepage" />
         <activity
-            android:name="com.example.smartgasapp.cylinder_gas_menu"
+            android:name="glotech.smartgasapp.cylinder_gas_menu"
             android:exported="false"
             android:label=" "
-            android:parentActivityName="com.example.smartgasapp.Homepage" />
+            android:parentActivityName="glotech.smartgasapp.Homepage" />
         <activity
-            android:name="com.example.smartgasapp.CompositeGasMenu"
+            android:name="glotech.smartgasapp.CompositeGasMenu"
             android:exported="false"
             android:label=" "
-            android:parentActivityName="com.example.smartgasapp.Homepage" />
+            android:parentActivityName="glotech.smartgasapp.Homepage" />
         <activity
-            android:name="com.example.smartgasapp.OrderGas"
+            android:name="glotech.smartgasapp.OrderGas"
             android:exported="false"
             android:label=" "
-            android:parentActivityName="com.example.smartgasapp.Homepage" />
+            android:parentActivityName="glotech.smartgasapp.Homepage" />
         <activity
-            android:name="com.example.smartgasapp.OrderDetail"
+            android:name="glotech.smartgasapp.OrderDetail"
             android:exported="false"
             android:label=" "
-            android:parentActivityName="com.example.smartgasapp.Homepage" />
+            android:parentActivityName="glotech.smartgasapp.Homepage" />
         <activity
-            android:name="com.example.smartgasapp.OrderSuccess"
+            android:name="glotech.smartgasapp.OrderSuccess"
             android:exported="false"
             android:label=" " />
         <activity
-            android:name="com.example.smartgasapp.UsageHistory"
+            android:name="glotech.smartgasapp.UsageHistory"
             android:exported="false"
             android:label=" "
-            android:parentActivityName="com.example.smartgasapp.Homepage" />
+            android:parentActivityName="glotech.smartgasapp.Homepage" />
         <activity
-            android:name="com.example.smartgasapp.EventPage"
+            android:name="glotech.smartgasapp.EventPage"
             android:exported="false"
             android:label=" "
-            android:parentActivityName="com.example.smartgasapp.UserDashboard" />
+            android:parentActivityName="glotech.smartgasapp.UserDashboard" />
         <activity
-            android:name="com.example.smartgasapp.PointPage"
+            android:name="glotech.smartgasapp.PointPage"
             android:exported="false"
             android:label="@string/point"
-            android:parentActivityName="com.example.smartgasapp.Homepage" />
+            android:parentActivityName="glotech.smartgasapp.Homepage" />
         <activity
-            android:name="com.example.smartgasapp.EditPersonalInfo"
+            android:name="glotech.smartgasapp.EditPersonalInfo"
             android:exported="false"
             android:label="@string/edit_personal"
-            android:parentActivityName="com.example.smartgasapp.UserDashboard" />
+            android:parentActivityName="glotech.smartgasapp.UserDashboard" />
         <activity
-            android:name="com.example.smartgasapp.ForgetPassword2"
+            android:name="glotech.smartgasapp.ForgetPassword2"
             android:exported="false"
-            android:parentActivityName="com.example.smartgasapp.ForgetPassword1"/>
+            android:parentActivityName="glotech.smartgasapp.ForgetPassword1"/>
         <activity
-            android:name="com.example.smartgasapp.ForgetPassword1"
+            android:name="glotech.smartgasapp.ForgetPassword1"
             android:exported="false"
-            android:parentActivityName="com.example.smartgasapp.ui.login.LoginActivity"
+            android:parentActivityName="glotech.smartgasapp.ui.login.LoginActivity"
             />
         <activity
-            android:name="com.example.smartgasapp.ui.login.LoginActivity"
+            android:name="glotech.smartgasapp.ui.login.LoginActivity"
             android:exported="true"
             android:label="Smart Gas App">
         <intent-filter>
@@ -171,16 +172,16 @@
         </activity>
 
         <activity
-            android:name="com.example.smartgasapp.Register"
+            android:name="glotech.smartgasapp.Register"
             android:exported="false"
             android:label=" "
-            android:parentActivityName="com.example.smartgasapp.ui.login.LoginActivity"/>
+            android:parentActivityName="glotech.smartgasapp.ui.login.LoginActivity"/>
         <activity
-            android:name="com.example.smartgasapp.MainActivity"
+            android:name="glotech.smartgasapp.MainActivity"
             android:exported="true" />
 
 <!--        <receiver-->
-<!--            android:name="com.example.smartgasapp.NotificationReceiver"-->
+<!--            android:name="glotech.smartgasapp.NotificationReceiver"-->
 <!--            android:enabled="true"-->
 <!--            android:exported="true" />-->
 

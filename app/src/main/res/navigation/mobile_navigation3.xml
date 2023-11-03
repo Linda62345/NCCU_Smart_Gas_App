@@ -7,12 +7,12 @@
 
     <activity
         android:id="@+id/homepage"
-        android:name="com.example.smartgasapp.Homepage"
+        android:name="glotech.smartgasapp.Homepage"
         android:label="activity_homepage"
         tools:layout="@layout/activity_homepage" />
     <activity
         android:id="@+id/userDashboard"
-        android:name="com.example.smartgasapp.UserDashboard"
+        android:name="glotech.smartgasapp.UserDashboard"
         android:label="activity_user_dashboard"
         tools:layout="@layout/activity_user_dashboard" />
 

@@ -30,21 +30,23 @@
 
     <TextView
         android:id="@+id/exchangeSuccessDesc"
-        android:layout_width="175dp"
-        android:layout_height="65dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="6dp"
-        android:text="已新增訂單成功 可至歷史訂單查詢"
+        android:text="已新增訂單成功  可至歷史訂單查詢"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="24sp" />
 
     <Button
         android:id="@+id/exchangeSuccessNext"
-        android:layout_width="239dp"
+        android:layout_width="match_parent"
         android:layout_height="66dp"
+        android:layout_marginHorizontal="80dp"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="273dp"
         android:text="@string/next_string"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/white"/>
 </LinearLayout>

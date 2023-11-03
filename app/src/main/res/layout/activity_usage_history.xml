@@ -94,7 +94,7 @@
                 </LinearLayout>
             </GridLayout>
 
-            <com.example.smartgasapp.listViewAdjust
+            <glotech.smartgasapp.listViewAdjust
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"

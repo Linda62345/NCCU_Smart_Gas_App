@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:63671691275:android:ba65a7c9ac28e72f6eff0e",
         "android_client_info": {
-          "package_name": "com.example.smartgasapp"
+          "package_name": "glotech.smartgasapp"
         }
       },
       "oauth_client": [

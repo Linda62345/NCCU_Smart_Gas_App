@@ -189,7 +189,7 @@
                 android:textStyle=""/>
         </GridLayout>
 
-        <com.example.smartgasapp.listViewAdjust
+        <glotech.smartgasapp.listViewAdjust
             android:id="@+id/list_item"
             android:layout_gravity="center"
             android:layout_width="match_parent"

@@ -129,7 +129,7 @@
     <LinearLayout
         android:id="@+id/order_button_list_unfinished"
         android:layout_width="match_parent"
-        android:layout_height="310dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingTop="20dp">
 
@@ -150,15 +150,14 @@
             android:autoSizeMinTextSize="20sp"
             app:autoSizeTextType="uniform" />
 
-        <ListView
-            android:id="@+id/list_item"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp" />
-
     </LinearLayout>
+            <glotech.smartgasapp.listViewAdjust
+                android:id="@+id/list_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_gravity="center"
+                 />
         </LinearLayout>
     </ScrollView>
 
