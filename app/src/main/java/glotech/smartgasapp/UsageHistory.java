@@ -1,34 +1,31 @@
 package glotech.smartgasapp;
 
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
 import glotech.smartgasapp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -36,272 +33,297 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.Objects;
+import java.text.DecimalFormat;
 
 import glotech.smartgasapp.ui.login.LoginActivity;
 
+public class UserDashboard extends AppCompatActivity {
 
-public class UsageHistory extends AppCompatActivity {
-    public Spinner iot;
-    public String Customer_Id,selectedSensorId,result;
-    public TextView iot_gas1,iot_gas2;
-    LineChart lineChart;
-    JSONArray history;
-    ArrayList<String> iotList = new ArrayList<>();
-    ArrayList<String> xAxisValues = new ArrayList<>();
-    ArrayAdapter<String> iotAdapter;
-    ListView sensorlistView;
-    ArrayList<String> sensorListString;
-    PieChart pieChart;
-    PieData pieData;
-    PieDataSet pieDataSet;
-    ArrayList pieEntries;
-    ArrayList<UsageHistoryItem> usageHistoryList;
+    private Button userInfo;
+    private Button volumeInfo;
+    private Button search;
+    private Button usageHistory;
+    private Button notification;
+    private Button exchange;
+    private Button eventOrAct;
+    private Button famCoupon;
+    private Button logout;
+    private Spinner iot;
+    private TextView VolumeLeft,showName;
+    private ProgressBar progressBar;
+    private String selectedSensorId, IotId;
+    public String result = "", Customer_ID;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_usage_history);
+        setContentView(R.layout.activity_user_dashboard);
 
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        userInfo = findViewById(R.id.go_edit_profile);
+        //iot = findViewById(R.id.iotSpinner);
+        search = findViewById(R.id.search);
+        usageHistory = findViewById(R.id.usageHistory);
 
-        usageHistoryList = new ArrayList<UsageHistoryItem>();
-        iot =findViewById(R.id.usageOption_Spinner);
-        iot_gas1 = findViewById(R.id.changable_gas_specification);
-        //iot_gas2 = findViewById(R.id.changable_gas_remains);
-        //lineChart = findViewById(R.id.getTheGraph);
-        sensorlistView = findViewById(R.id.sensorlist);
+        notification = findViewById(R.id.notificationFrequency);
+        exchange = findViewById(R.id.volExchange);
+        eventOrAct = findViewById(R.id.activityButton);
 
+        famCoupon = findViewById(R.id.familyCodeButton);
+        logout = findViewById(R.id.logout_button);
+
+        showName = findViewById(R.id.show_name);
         LoginActivity loginActivity = new LoginActivity();
-        Customer_Id = String.valueOf(loginActivity.getCustomerID());
-        Thread thread = new Thread(new Runnable() {
+        showName.setText(loginActivity.Customer_Name);
 
+        // Initialize selectedSensorId
+        if (selectedSensorId == null) {
+            selectedSensorId = ""; // Set it to an empty string initially
+        }
+
+        Customer_ID = String.valueOf(loginActivity.getCustomerID());
+
+        NetworkTask networkTask1 = new NetworkTask();
+        networkTask1.execute(selectedSensorId, Customer_ID);
+
+
+
+
+        userInfo.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void run() {
-                try  {
-                    getData("http://54.199.33.241/test/iot.php",Customer_Id);
-                    //處理手機上運行畫面問題
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            try{
-                                //選擇sensor_id
-                                JSONArray ja = new JSONArray(result);
-                                for (int i = 0; i < ja.length(); i++) {
-                                    JSONObject jsonObject = ja.getJSONObject(i);
-                                    String SENSOR_Id = jsonObject.optString("SENSOR_Id");
-                                    //String SENSOR_Weight = jsonObject.optString("SENSOR_Weight");
-                                    iotList.add("感應器ID: "+SENSOR_Id);
-                                    iotAdapter = new ArrayAdapter<>(UsageHistory.this,
-                                            android.R.layout.simple_spinner_item, iotList);
-                                    iotAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                                    iot.setAdapter(iotAdapter);
-                                }
-                                String selectedSensor = iot.getSelectedItem().toString();
-                                String[] selectedSensorParts = selectedSensor.split(" ");
-                                selectedSensorId = selectedSensorParts[1];
-                            }
-                            catch (Exception e){
-                                Log.i("Usage Spinner UI Exception", e.toString());
-                            }
-                        }
-                    });
-
-
-                    iot.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                            String selectedSensor = iot.getSelectedItem().toString();
-                            String[] selectedSensorParts = selectedSensor.split(" ");
-                            selectedSensorId = selectedSensorParts[1];
-                            Log.i("selectedSensorId",selectedSensorId);
-                            new GetHistoryTask().execute(selectedSensorId);
-                            sensorList(selectedSensorId);
-                            setPieChart();
-                        }
-                        @Override
-                        public void onNothingSelected(AdapterView<?> parent) {
-                            // 未選擇任何項目時的處理
-                        }
-                    });
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+            public void onClick(View v) {
+                Intent intent = new Intent(UserDashboard.this, EditPersonalInfo.class);
+                startActivity(intent);
             }
         });
 
-        thread.start();
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserDashboard.this, OrderListUnfinished.class);
+                startActivity(intent);
+            }
+        });
+        usageHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserDashboard.this, UsageHistory.class);
+                startActivity(intent);
+            }
+        });
+        notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserDashboard.this, NotificationFrequency.class);
+                startActivity(intent);
+            }
+        });
+        exchange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserDashboard.this, GasExchange.class);
+                startActivity(intent);
+            }
+        });
+        eventOrAct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserDashboard.this, EventPage.class);
+                startActivity(intent);
+            }
+        });
+        famCoupon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserDashboard.this, FamilyInvitationCode.class);
+                startActivity(intent);
+            }
+        });
 
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserDashboard.this, LoginActivity.class);
+                clearLoginData();
+                intent.putExtra("clearCredentials", true); // Add extra information
+                startActivity(intent);
+                finish();
+            }
+        });
 
+        BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
 
-        BottomNavigationView bottomNavigationView=findViewById(R.id.nav_view);
+        bottomNavigationView.setSelectedItemId(R.id.navigation_dashboard);
 
         // Perform item selected listener
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                switch(item.getItemId())
-                {
+                switch (item.getItemId()) {
                     case R.id.navigation_dashboard:
                         startActivity(new Intent(getApplicationContext(), UserDashboard.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
+                        NetworkTask networkTask = new NetworkTask();
+                        networkTask.execute(selectedSensorId, Customer_ID);
                         return true;
                     case R.id.navigation_home:
                         startActivity(new Intent(getApplicationContext(), Homepage.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
+                        NetworkTask networkTask1 = new NetworkTask();
+                        networkTask1.execute(selectedSensorId, Customer_ID);
                         return true;
                     case R.id.navigation_notifications:
                         startActivity(new Intent(getApplicationContext(), OrderListUnfinished.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
                 }
                 return false;
             }
         });
-
     }
 
-    private class GetHistoryTask extends AsyncTask<String, Void, Void> {
+    private void clearLoginData() {
+        SharedPreferences sharedPref = getSharedPreferences("login_data", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.remove("email");
+        editor.remove("password");
+        editor.apply();
+    }
+
+
+    private class NetworkTask extends AsyncTask<String, Void, String> {
+
         @Override
-        protected Void doInBackground(String... params) {
-            Log.i("background",selectedSensorId);
-            getData("http://54.199.33.241/test/iot_history.php", selectedSensorId);
+        protected String doInBackground(String... params) {
+            try {
+                String selectedSensorId = null;
+                String customerID = null;
+                if (params.length > 0) {
+                    selectedSensorId = params[0];
+                    customerID = params[1];
+                }
+                String Showurl = "http://54.199.33.241/test/Iot_Connect.php";
+                URL url = new URL(Showurl);
+
+                HttpURLConnection httpURLConnection3 = (HttpURLConnection) url.openConnection();
+                httpURLConnection3.setRequestMethod("POST");
+                httpURLConnection3.setDoOutput(true);
+                httpURLConnection3.setDoInput(true);
+                OutputStream outputStream3 = httpURLConnection3.getOutputStream();
+                BufferedWriter bufferedWriter3 = new BufferedWriter(new OutputStreamWriter(outputStream3, "UTF-8"));
+
+                String post_data3 = URLEncoder.encode("id", "UTF-8") + "=" + URLEncoder.encode(Customer_ID, "UTF-8");
+                //String post_data4 = URLEncoder.encode("id1", "UTF-8") + "=" + URLEncoder.encode(selectedSensorId, "UTF-8");
+                //String post_data4 = "id1=" + URLEncoder.encode(selectedSensorId, "UTF-8");
+
+                Log.i("customerID: ", post_data3);
+
+                bufferedWriter3.write(post_data3);
+               // bufferedWriter3.write(post_data4);
+                bufferedWriter3.flush();
+                bufferedWriter3.close();
+                outputStream3.close();
+
+                int statusCode3 = httpURLConnection3.getResponseCode();
+                int statusCode = 0;
+                if (statusCode3 == HttpURLConnection.HTTP_OK) {
+                    InputStream inputStream3 = httpURLConnection3.getInputStream();
+                    BufferedReader bufferedReader3 = new BufferedReader(new InputStreamReader(inputStream3, "iso-8859-1"));
+                    String line3 = "";
+                    StringBuilder result3 = new StringBuilder();
+                    while ((line3 = bufferedReader3.readLine()) != null) {
+                        result3.append(line3);
+                    }
+                    bufferedReader3.close();
+                    inputStream3.close();
+                    httpURLConnection3.disconnect();
+                    Log.i("result3", "[" + result3 + "]");
+
+
+
+                    return result3.toString();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
             return null;
         }
 
         @Override
-        protected void onPostExecute(Void result) {
-            sensorList(selectedSensorId);
-            setPieChart();
-        }
-    }
-    public void getData(String Showurl,String id) {
-        try {
-            URL url = new URL(Showurl);
-            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-            httpURLConnection.setRequestMethod("POST");
-            httpURLConnection.setDoOutput(true);
-            httpURLConnection.setDoInput(true);
-            OutputStream outputStream = httpURLConnection.getOutputStream();
-            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-            String post_data = URLEncoder.encode("id", "UTF-8") + "=" + URLEncoder.encode(id, "UTF-8");
-            bufferedWriter.write(post_data);
-            bufferedWriter.flush();
-            bufferedWriter.close();
-            outputStream.close();
-            InputStream inputStream = httpURLConnection.getInputStream();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
-            String line = "";
-            result = "";
-
-            while ((line = bufferedReader.readLine()) != null) {
-                result += line;
-            }
-
-            bufferedReader.close();
-            inputStream.close();
-            httpURLConnection.disconnect();
-            Log.i("UsageHistory result", "[" + result + "]");
-
+        protected void onPostExecute(String result) {
             if (result != null) {
-                history = new JSONArray(result);
-            } else {
-                Log.i("get data Exception", "Result is empty or null.");
-            }
+                int progressValue = 0;
+                double sensorWeight = 0.0;
 
-        } catch (Exception e) {
-            Log.i("get data Exception", e.toString());
-        }
-    }
+                try {
+                    JSONArray jsonArray = new JSONArray(result);
 
-    public void sensorList(String sensorId) {
-        try {
-            usageHistoryList = new ArrayList<>();
-            sensorListString = new ArrayList<String>();
-            sensorlistView = findViewById(R.id.sensorlist);
-            sensorlistView.setAdapter(null);
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    try{
-                        // Check if the response is empty or not
-                        if (!result.isEmpty()) {
-                            JSONArray ja = new JSONArray(result);
-                            for (int i = 0; i < ja.length(); i++) {
-                                JSONObject jsonObject = ja.getJSONObject(i);
-                                String SENSOR_Time = jsonObject.optString("SENSOR_Time");
-                                String SENSOR_Weight = jsonObject.optString("SENSOR_Weight");
-                                String SENSOR_Percent = jsonObject.optString("Gas_remain");
-                                //sensorListString.add("時間: " + SENSOR_Time + " 流量: " + SENSOR_Weight);
-                                Log.i("UsageHistoryItem size",String.valueOf(i));
-                                usageHistoryList.add(new UsageHistoryItem(SENSOR_Weight,SENSOR_Time,SENSOR_Percent));
-                                //目前最後一筆資料
-                                iot_gas1.setText(SENSOR_Weight+" 公斤");
+                    // Check if selectedSensorId is null or empty
+                    if (selectedSensorId == null || selectedSensorId.isEmpty()) {
+                        // Get the first sensor ID from the JSON response
+                        if(jsonArray!=null){
+                            try {
+                                JSONObject jsonObject = jsonArray.getJSONObject(0);
+                                selectedSensorId = jsonObject.getString("sensorId");
                             }
-                            if(ja.length()==0){
-                                iot_gas1.setText("近一個月內無資料");
+                            catch (Exception e){
+                                Log.i("userDashBoard iot exception",e.toString());
                             }
                         }
-                        UsageHistoryListAdapter adapter = new UsageHistoryListAdapter(getApplicationContext(),R.layout.adapter_usage_history,usageHistoryList);
-                        if(usageHistoryList.size()>0){
-                            sensorlistView.setAdapter(null);
-                            sensorlistView.setAdapter(adapter);
+                    }
+
+                    // Find the JSON object with the selected sensor ID
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        String sensorId = jsonObject.getString("sensorId");
+                        if (sensorId.equals(selectedSensorId)) {
+//                            progressValue = jsonObject.getInt("Result");
+                            progressValue = jsonObject.getInt("SENSOR_Weight");
+                            sensorWeight = jsonObject.getDouble("SENSOR_Weight");
+                            break;
                         }
                     }
-                    catch (Exception e){
-                        Log.i("Usage ListView Exception",e.toString());
-                    }
+                    Log.i("progressBar: ", String.valueOf(progressValue));
+                    Log.i("sensorWeight: ", String.valueOf(sensorWeight));
+
+           }
+                catch (JSONException e) {
+                    e.printStackTrace();
                 }
-            });
-        } catch (Exception e) {
-            Log.i("sensor list exception", e.toString());
-        }
-    }
 
-    public void setPieChart() {
-        pieChart = findViewById(R.id.pieChart);
-        pieEntries = new ArrayList<>();
+                //updateUI(progressValue, sensorWeight);
 
-        pieChart.clear();
-
-        if (usageHistoryList.size() > 0) {
-            try {
-                Log.i("Pie chart", "Pie Chart");
-                for (int i = 0; i < usageHistoryList.size(); i++) {
-                    Log.i("usageHistoryList" + String.valueOf(i), usageHistoryList.get(i).percent);
-                }
-                pieEntries.add(new PieEntry(Float.parseFloat(usageHistoryList.get(0).percent) * 1000f, 0));
-                PieEntry transparentSlice = new PieEntry(100f - (Float.parseFloat(usageHistoryList.get(0).percent) * 1000f), 1);
-                transparentSlice.setData(0); // Set data to 0 (fully transparent)
-                pieEntries.add(transparentSlice);
-
-                pieDataSet = new PieDataSet(pieEntries, "");
-
-                ArrayList<Integer> colors = new ArrayList<>();
-                //colors.add(Color.rgb(0, 128, 255)); // Blue for the first slice
-                colors.add(Color.rgb(255, 0, 128)); // Pink for the first slice
-                colors.add(Color.argb(0, 0, 128, 255)); // Transparent for the second slice
-                pieDataSet.setColors(colors);
-
-                pieData = new PieData(pieDataSet);
-                pieChart.setData(pieData);
-
-                pieDataSet.setSliceSpace(2f);
-                pieDataSet.setValueTextColor(Color.WHITE);
-                pieDataSet.setValueTextSize(10f);
-                pieDataSet.setSliceSpace(5f);
-            } catch (Exception e) {
-                Log.i("Pie chart Exception", e.toString());
+//                try {
+//                    JSONArray jsonArray = new JSONArray(result);
+//                    ArrayAdapter<String> adapter = (ArrayAdapter<String>) iot.getAdapter();
+//                    adapter.clear();
+//
+//                    for (int i = 0; i < jsonArray.length(); i++) {
+//                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+//                        String sensorId = jsonObject.getString("sensorId");
+//                        adapter.add("Iot Id: " + sensorId);
+//                    }
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
             }
-        } else {
-            pieChart.clear();
-            pieChart.setNoDataText("No data available");
         }
-
-        pieChart.invalidate();
     }
+
+    private void updateUI(int progressValue, double sensorWeight) {
+        // Format progressValue and sensorWeight to 2 decimal places
+        DecimalFormat decimalFormat = new DecimalFormat("#0.00");
+        String formattedSensorWeight = decimalFormat.format(sensorWeight);
+
+        //progressBar.setProgress(progressValue);
+   //     VolumeLeft.setText(formattedSensorWeight);
+
+        TextView progressText = findViewById(R.id.progress_text);
+        progressText.setText(String.valueOf(decimalFormat.format(sensorWeight) + "%"));
+//        progressText.setText(String.valueOf(decimalFormat.format(progressValue) + "%"));
+    }
+
 
 }
