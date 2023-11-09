@@ -145,7 +145,7 @@ public class UserDashboard extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(UserDashboard.this, LoginActivity.class);
                 clearLoginData();
-               // intent.putExtra("clearCredentials", true); // Add extra information
+                intent.putExtra("clearCredentials", true); // Add extra information
                 startActivity(intent);
                 finish();
             }
@@ -220,7 +220,7 @@ public class UserDashboard extends AppCompatActivity {
                 Log.i("customerID: ", post_data3);
 
                 bufferedWriter3.write(post_data3);
-               // bufferedWriter3.write(post_data4);
+                // bufferedWriter3.write(post_data4);
                 bufferedWriter3.flush();
                 bufferedWriter3.close();
                 outputStream3.close();
@@ -288,7 +288,7 @@ public class UserDashboard extends AppCompatActivity {
                     Log.i("progressBar: ", String.valueOf(progressValue));
                     Log.i("sensorWeight: ", String.valueOf(sensorWeight));
 
-           }
+                }
                 catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -318,7 +318,7 @@ public class UserDashboard extends AppCompatActivity {
         String formattedSensorWeight = decimalFormat.format(sensorWeight);
 
         //progressBar.setProgress(progressValue);
-   //     VolumeLeft.setText(formattedSensorWeight);
+        //     VolumeLeft.setText(formattedSensorWeight);
 
         TextView progressText = findViewById(R.id.progress_text);
         progressText.setText(String.valueOf(decimalFormat.format(sensorWeight) + "%"));
