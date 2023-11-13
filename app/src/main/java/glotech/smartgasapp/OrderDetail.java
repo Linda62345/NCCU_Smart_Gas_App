@@ -72,6 +72,7 @@ public class OrderDetail extends AppCompatActivity {
     Calendar calendar1 = Calendar.getInstance();
     GasExchange gasExchange;
     CompositeGasMenu compositeGasMenu;
+    cylinder_gas_menu cylinder_gas_menu;
     OrderDetailListAdapter orderDetailListAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +91,7 @@ public class OrderDetail extends AppCompatActivity {
 
         DeliveryMethod deliveryMethod = new DeliveryMethod();
         compositeGasMenu = new CompositeGasMenu();
-        cylinder_gas_menu cylinder_gas_menu = new cylinder_gas_menu();
+        cylinder_gas_menu = new cylinder_gas_menu();
         Gas_Delete=0;
 
         customerOrderDetails = new ArrayList<OrderDetailItem>();
@@ -130,7 +131,7 @@ public class OrderDetail extends AppCompatActivity {
                         ArrayAdapter<String> adapter = (ArrayAdapter<String>) Time_Spinner.getAdapter();
                         position = adapter.getPosition(deliveryMethod.Time_Select);
 
-                        Gas_Quantity = compositeGasMenu.a+compositeGasMenu.b+compositeGasMenu.c+cylinder_gas_menu.a+cylinder_gas_menu.b+cylinder_gas_menu.c;
+                        Gas_Quantity = compositeGasMenu.a+compositeGasMenu.b+compositeGasMenu.c+ cylinder_gas_menu.a+ cylinder_gas_menu.b+ cylinder_gas_menu.c;
                         if(gasExchange.Gas_Quantity!=0){
                             Gas_Quantity += gasExchange.Gas_Quantity;
                         }
@@ -146,10 +147,6 @@ public class OrderDetail extends AppCompatActivity {
                         time = "";
                         Order_Id = responseJSON.getString("ORDER_Id");
                         method = responseJSON.getString("Delivery_Method");
-                        //Total_time = responseJSON.getString("Expect_time");
-                        //Log.i("Original Total time",Total_time);
-                        //date = Total_time.substring(0,10);
-                        //Log.i("Original date",date);
 
                         TimeZone timeZone = TimeZone.getTimeZone("Asia/Taipei");
                         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -241,18 +238,6 @@ public class OrderDetail extends AppCompatActivity {
                                 Time_Spinner.setSelection(position);
                             }
 
-                            //這裡要設定date 跟 time的顯示要正確
-                    /*Time();
-                    Expect_Time.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            timePicker(v);
-                        }
-                    });*/
-
-                            //殘氣結合訂單
-                            //RemainGas();
-
                             //show訂單詳細資料
                             OrderDetailListAdapter adapter = new OrderDetailListAdapter(getApplicationContext(), R.layout.adapter_order_detail_list, customerOrderDetails);
                             if (customerOrderDetails.size() > 0) {
@@ -279,11 +264,19 @@ public class OrderDetail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //若有編輯過 數據會更新 會跑到判斷else裡面去
+                customerOrderDetails.clear();
+                cylinder_gas_menu.a = 0;
+                compositeGasMenu.a = 0;
+                cylinder_gas_menu.b = 0;
+                compositeGasMenu.b = 0;
+                cylinder_gas_menu.c = 0;
+                compositeGasMenu.c = 0;
                 edit = true;
                 Intent intent = new Intent(OrderDetail.this, OrderGas.class);
                 startActivity(intent);
             }
         });
+
         finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -341,7 +334,6 @@ public class OrderDetail extends AppCompatActivity {
     public void newOrder(){
         try{
             String String_url = "http://54.199.33.241/test/NewOrder.php";
-            Log.i("Execute order","Please execute"+Customer_ID+Company_Id+ String.valueOf(0)+address+phone+String.valueOf(Gas_Quantity)+time+method);
             StringRequest stringRequest = new StringRequest(Request.Method.POST, String_url, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
@@ -479,6 +471,9 @@ public class OrderDetail extends AppCompatActivity {
         dialog.show();
     }
     public void TimePick(){
+        if(time.isEmpty() || time.equals("")){
+            time = "08:00";
+        }
         Time_Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -490,22 +485,8 @@ public class OrderDetail extends AppCompatActivity {
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                String Time_Select = Time_Spinner.getSelectedItem().toString();
-                String[] parts = Time_Select.split("-");
-                Time_Select = parts[0];
-                time = Time_Select;
-                Log.i("Spinner time",time);
             }
         });
-    }
-
-    public CustomerOrderDetail GasExchangeOrder(){
-        CustomerOrderDetail od = null;
-        if(gasExchange.Gas_Quantity!=0){
-            od = new CustomerOrderDetail(String.valueOf(gasExchange.Gas_Quantity),gasExchange.Gas_Type, gasExchange.Gas_Weight);
-            od.setExchange("1");
-        }
-        return od;
     }
 
     public void setGas_Quantity(){

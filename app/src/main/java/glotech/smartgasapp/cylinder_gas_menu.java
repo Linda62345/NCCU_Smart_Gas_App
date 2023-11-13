@@ -43,9 +43,7 @@ public class cylinder_gas_menu extends AppCompatActivity {
         a = 0;
         b = 0;
         c = 0;
-//        gasWeightSpinner1 = findViewById(R.id.gasWeightSpinner);
-//        gasWeightSpinner2 = findViewById(R.id.gasWeightSpinner2);
-//        gasWeightSpinner3 = findViewById(R.id.gasWeightSpinner3);
+
         composite = findViewById(R.id.compositeGas);
         order = findViewById(R.id.cylinderGas);
         delivery = findViewById(R.id.ChooseDeliverMethod);

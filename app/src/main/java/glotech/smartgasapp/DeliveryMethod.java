@@ -76,21 +76,6 @@ public class DeliveryMethod extends AppCompatActivity {
                 deliver.setBackgroundColor(Color.WHITE);
             }
         });
-        //textTime = findViewById(R.id.textView);
-//        radioGroup = findViewById(R.id.radioGroup);
-//        radioGroup.check(R.id.deliverOption);
-//        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-//                checkedId = radioGroup.getCheckedRadioButtonId();
-//                if(checkedId==R.id.deliverOption){
-//                    delivery_method = 0;
-//                }
-//                else{
-//                    delivery_method = 1;
-//                }
-//            }
-//        });
         Log.i("delivery_method", String.valueOf(delivery_method));
         TimePick();
         order.setOnClickListener(new View.OnClickListener() {
