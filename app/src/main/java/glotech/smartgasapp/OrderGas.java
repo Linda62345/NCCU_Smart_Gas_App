@@ -16,8 +16,7 @@ import java.util.Objects;
 
 public class OrderGas extends AppCompatActivity {
 
-    private Button composite;
-    private Button cylinder;
+    private Button composite,cylinder,backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +54,15 @@ public class OrderGas extends AppCompatActivity {
 
         composite = findViewById(R.id.compositeGas);
         cylinder = findViewById(R.id.cylinderGas);
+        backButton = findViewById(R.id.backButton);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(OrderGas.this, Homepage.class);
+                startActivity(intent);
+            }
+        });
 
         composite.setOnClickListener(new View.OnClickListener() {
             @Override

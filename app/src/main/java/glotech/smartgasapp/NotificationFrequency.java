@@ -66,6 +66,7 @@ public class NotificationFrequency extends AppCompatActivity  {
     private Handler handler;
     private Runnable notificationRunnable;
     public static ArrayList<Integer> family_Id;
+    private Button backButton;
 
     public JSONArray ja;
 
@@ -81,6 +82,16 @@ public class NotificationFrequency extends AppCompatActivity  {
         }
 
         Button enterButton = findViewById(R.id.enter);
+        backButton = findViewById(R.id.backButton);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(NotificationFrequency.this, UserDashboard.class);
+                startActivity(intent);
+            }
+        });
+
         enterButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Launch the homepage activity when the button is clicked

@@ -52,7 +52,7 @@ public class OrderListUnfinished extends AppCompatActivity {
     DatePickerDialog.OnDateSetListener pickerDialog;
     Calendar calendar2 = Calendar.getInstance();
     DatePickerDialog.OnDateSetListener pickerDialog2;
-    private Button unfinished;
+    private Button unfinished,backButton;
     private ListView orderList;
     public String Customer_Id, start_date, end_date;
     InputStream is = null;
@@ -72,6 +72,15 @@ public class OrderListUnfinished extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         unfinished = findViewById(R.id.order_finished);
+        backButton = findViewById(R.id.backButton);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(OrderListUnfinished.this, Homepage.class);
+                startActivity(intent);
+            }
+        });
 
         unfinished.setOnClickListener(new View.OnClickListener() {
             @Override

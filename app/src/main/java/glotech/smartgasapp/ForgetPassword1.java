@@ -19,6 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import glotech.smartgasapp.R;
+import glotech.smartgasapp.ui.login.LoginActivity;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,7 +27,7 @@ import java.util.Objects;
 
 public class ForgetPassword1 extends AppCompatActivity {
 
-    private Button newPass;
+    private Button newPass,backButton;
     public EditText email,number;
     private String URL = "http://54.199.33.241/test/index.php";
     public String verify;
@@ -39,6 +40,15 @@ public class ForgetPassword1 extends AppCompatActivity {
         email = findViewById(R.id.enterPhone_ForgetPass);
         newPass = findViewById(R.id.setNewPassButton);
         number = findViewById(R.id.enterVerivication);
+        backButton = findViewById(R.id.backButton);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ForgetPassword1.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
         newPass.setOnClickListener(new View.OnClickListener() {
             @Override

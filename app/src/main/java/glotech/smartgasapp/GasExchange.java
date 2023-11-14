@@ -38,7 +38,7 @@ public class GasExchange extends AppCompatActivity {
     public String Customer_ID, Company_Id, Company_Name;
     public static int Gas_Quantity;
     public TextView volume, name;
-    public Button next;
+    public Button next,backButton;
     int totalValue;
 
 
@@ -58,6 +58,15 @@ public class GasExchange extends AppCompatActivity {
         volume = findViewById(R.id.curentGasVolume);
         name = findViewById(R.id.gasCompanyTitle);
         next = findViewById(R.id.confirm_exchangegas_button);
+        backButton = findViewById(R.id.backButton);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GasExchange.this, Homepage.class);
+                startActivity(intent);
+            }
+        });
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override

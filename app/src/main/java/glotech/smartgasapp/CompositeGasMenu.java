@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -19,9 +20,7 @@ import java.util.Objects;
 
 public class CompositeGasMenu extends AppCompatActivity {
 
-    private Button cylinder;
-    private Button order;
-    private Button delivery;
+    private Button cylinder,order,delivery,backButton;
     private AppCompatButton minus1,minus2,minus3,plus1,plus2,plus3;
     private TextView first,second,third;
     public static int a = 0, b = 0, c = 0;
@@ -42,6 +41,7 @@ public class CompositeGasMenu extends AppCompatActivity {
         cylinder = findViewById(R.id.cylinderGas);
         order = findViewById(R.id.compositeGas);
         delivery = findViewById(R.id.ChooseDeliverMethod);
+        backButton = findViewById(R.id.backButton);
 
         BottomNavigationView bottomNavigationView=findViewById(R.id.nav_view);
 
@@ -51,6 +51,14 @@ public class CompositeGasMenu extends AppCompatActivity {
         weight1 = "5";
         weight2 = "16";
         weight3 = "20";
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CompositeGasMenu.this, Homepage.class);
+                startActivity(intent);
+            }
+        });
 
         cylinder.setOnClickListener(new View.OnClickListener() {
             @Override

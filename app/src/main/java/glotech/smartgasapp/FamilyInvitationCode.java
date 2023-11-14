@@ -49,7 +49,7 @@ public class FamilyInvitationCode extends AppCompatActivity {
     public String Customer_ID, Family_Member_Email,result;
     public TextView myId;
     public EditText FamilyMember;
-    public Button save;
+    public Button save,backButton;
     public JSONObject responseJSON;
     public JSONArray ja;
     public static ListView listView;
@@ -70,6 +70,7 @@ public class FamilyInvitationCode extends AppCompatActivity {
         loginActivity = new LoginActivity();
         Customer_ID = String.valueOf(loginActivity.getCustomerID());
         myId = findViewById(R.id.changable_userID);
+        backButton = findViewById(R.id.backButton);
         myId.setText(Customer_ID);
 
         FamilyMember = findViewById(R.id.requestID_Input);
@@ -89,6 +90,13 @@ public class FamilyInvitationCode extends AppCompatActivity {
             }
         });
 
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FamilyInvitationCode.this, UserDashboard.class);
+                startActivity(intent);
+            }
+        });
 
         save = findViewById(R.id.confirm_exchange_button);
 

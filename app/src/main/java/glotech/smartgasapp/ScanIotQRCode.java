@@ -64,7 +64,7 @@ public class ScanIotQRCode extends AppCompatActivity {
     private EditText enterNewIot;
     public String Customer_ID, Sensor_ID, result;
     private ListenableFuture<ProcessCameraProvider> cameraProviderFuture;
-    private Button qrCodeFoundButton;
+    private Button qrCodeFoundButton,backButton;
     private String qrCode;
     private DecoratedBarcodeView barcodeView;
     String[] data;
@@ -84,6 +84,15 @@ public class ScanIotQRCode extends AppCompatActivity {
         barcodeView = findViewById(R.id.receiptScanner);
         barcodeView.decodeContinuous(callback);
         enterNewIot = findViewById(R.id.mannuallyEnterReceiptCode);
+        backButton = findViewById(R.id.backButton);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ScanIotQRCode.this, userIot.class);
+                startActivity(intent);
+            }
+        });
 
 
         enterNewIot.addTextChangedListener(new TextWatcher() {

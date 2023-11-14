@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.SmartGasApp" parent="Theme.MaterialComponents.Light.DarkActionBar">
+    <style name="Theme.SmartGasApp" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="android:homeAsUpIndicator">@drawable/baseline_arrow_back_ios_24</item>
         <item name="colorPrimary">@color/main_blue</item>

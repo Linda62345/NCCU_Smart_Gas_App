@@ -29,7 +29,7 @@ import java.util.Objects;
 import java.util.TimeZone;
 
 public class DeliveryMethod extends AppCompatActivity {
-    private Button order,deliver,pickup;
+    private Button order,deliver,pickup,backButton;
     public Spinner Time_Spinner;
     public static int delivery_method;
     private TextView textView,textTime;
@@ -54,6 +54,15 @@ public class DeliveryMethod extends AppCompatActivity {
         textView = findViewById(R.id.textView2);
         deliver = findViewById(R.id.deliverOption);
         pickup = findViewById(R.id.pickUpOption);
+        backButton = findViewById(R.id.backButton);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DeliveryMethod.this, OrderGas.class);
+                startActivity(intent);
+            }
+        });
 
         deliver.setOnClickListener(new View.OnClickListener() {
             @Override

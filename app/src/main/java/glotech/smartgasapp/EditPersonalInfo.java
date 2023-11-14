@@ -49,7 +49,7 @@ public class EditPersonalInfo extends AppCompatActivity {
     public String CUSTOMER_Name, CUSTOMER_Address, CUSTOMER_Email, COMPANY_Id;
     public int CUSTOMER_Tel,CUSTOMER_Phone;
     private TextView Name, Address, Email, Tel, Phone;
-    private Button save;
+    private Button save,backButton;
     public String customer_name="",phone="",tel="",address="",email="", company="";
 
     public Homepage homepage;
@@ -68,7 +68,8 @@ public class EditPersonalInfo extends AppCompatActivity {
         Email = findViewById(R.id.editEmail);
         Tel = findViewById(R.id.editHousePhone);
         Phone = findViewById(R.id.editPhoneNo);
-        save = findViewById(R.id.saveInfo_button);
+        backButton = findViewById(R.id.backButton);
+//        save = findViewById(R.id.saveInfo_button);
 
         LoginActivity loginActivity = new LoginActivity();
         CUSTOMER_ID = loginActivity.getCustomerID();
@@ -123,15 +124,23 @@ public class EditPersonalInfo extends AppCompatActivity {
 
         thread.start();
 
-        save.setOnClickListener(new View.OnClickListener() {
+        backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                etCompanyName = findViewById(R.id.company);
-                //saveProfile();
                 Intent intent = new Intent(EditPersonalInfo.this, UserDashboard.class);
                 startActivity(intent);
             }
         });
+
+//        save.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                etCompanyName = findViewById(R.id.company);
+//                //saveProfile();
+//                Intent intent = new Intent(EditPersonalInfo.this, UserDashboard.class);
+//                startActivity(intent);
+//            }
+//        });
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
@@ -181,58 +190,58 @@ public class EditPersonalInfo extends AppCompatActivity {
         }
     }
 
-    public void saveProfile(){
-        try {
-            String URL = "http://54.199.33.241/test/Save_Customer_Profile.php";
-            customer_name = Name.getText().toString().trim();
-            phone = Phone.getText().toString().trim();
-            tel = Tel.getText().toString().trim();
-            address = Address.getText().toString().trim();
-            email = Email.getText().toString().trim();
-            String companyName = etCompanyName.getSelectedItem().toString();
-            company = companyName;
-            if (customer_name.equals("") || phone.equals("") || tel.equals("") || address.equals("") || email.equals("") || company.equals("") ) {
-                Toast.makeText(this, "以上不可為空白", Toast.LENGTH_SHORT).show();
-            } else {
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        if (response.equals("success")) {
-                            Log.i("saveProfile", "Successfully registered.");
-                            Intent intent = new Intent(EditPersonalInfo.this, Homepage.class);
-                            intent.putExtra("email", Email.getText().toString());
-                            startActivity(intent);
-                            save.setClickable(false);
-                        } else if (response.equals("failure")) {
-                            Log.i("saveProfile", "Something went wrong!");
-                        }
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), error.toString().trim(), Toast.LENGTH_SHORT).show();
-                    }
-                }) {
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        Map<String, String> data = new HashMap<>();
-                        data.put("id", String.valueOf(CUSTOMER_ID));
-                        data.put("name", customer_name);
-                        data.put("phone", phone);
-                        data.put("houseTel", tel);
-                        data.put("email", email);
-                        data.put("address", address);
-                        data.put("company", company);
-
-                        return data;
-                    }
-                };
-                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-                requestQueue.add(stringRequest);
-            }
-        }
-        catch (Exception e){
-            Log.i("Save Exception", e.toString());
-        }
-    }
+//    public void saveProfile(){
+//        try {
+//            String URL = "http://54.199.33.241/test/Save_Customer_Profile.php";
+//            customer_name = Name.getText().toString().trim();
+//            phone = Phone.getText().toString().trim();
+//            tel = Tel.getText().toString().trim();
+//            address = Address.getText().toString().trim();
+//            email = Email.getText().toString().trim();
+//            String companyName = etCompanyName.getSelectedItem().toString();
+//            company = companyName;
+//            if (customer_name.equals("") || phone.equals("") || tel.equals("") || address.equals("") || email.equals("") || company.equals("") ) {
+//                Toast.makeText(this, "以上不可為空白", Toast.LENGTH_SHORT).show();
+//            } else {
+//                StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//                        if (response.equals("success")) {
+//                            Log.i("saveProfile", "Successfully registered.");
+//                            Intent intent = new Intent(EditPersonalInfo.this, Homepage.class);
+//                            intent.putExtra("email", Email.getText().toString());
+//                            startActivity(intent);
+//                            save.setClickable(false);
+//                        } else if (response.equals("failure")) {
+//                            Log.i("saveProfile", "Something went wrong!");
+//                        }
+//                    }
+//                }, new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        Toast.makeText(getApplicationContext(), error.toString().trim(), Toast.LENGTH_SHORT).show();
+//                    }
+//                }) {
+//                    @Override
+//                    protected Map<String, String> getParams() throws AuthFailureError {
+//                        Map<String, String> data = new HashMap<>();
+//                        data.put("id", String.valueOf(CUSTOMER_ID));
+//                        data.put("name", customer_name);
+//                        data.put("phone", phone);
+//                        data.put("houseTel", tel);
+//                        data.put("email", email);
+//                        data.put("address", address);
+//                        data.put("company", company);
+//
+//                        return data;
+//                    }
+//                };
+//                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+//                requestQueue.add(stringRequest);
+//            }
+//        }
+//        catch (Exception e){
+//            Log.i("Save Exception", e.toString());
+//        }
+//    }
 }

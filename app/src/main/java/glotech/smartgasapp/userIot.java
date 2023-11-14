@@ -50,7 +50,7 @@ public class userIot extends AppCompatActivity {
     public String Customer_ID, Sensor_ID,GasWeightEmptyString,result;
     public EditText E_Sensor_ID,gasWeightEmpty,gasBottleSpec;
     public ListView IOTlistView;
-    public Button B_addIOT;
+    public Button B_addIOT,backButton;
     public ImageButton scanner;
     String[] data;
     public JSONObject responseJSON;
@@ -74,7 +74,7 @@ public class userIot extends AppCompatActivity {
         customerOrderDetails.add(od);
 
         E_Sensor_ID = findViewById(R.id.sensor_Id);
-
+        backButton = findViewById(R.id.backButton);
         IOTlistView = findViewById(R.id.IOTlist);
 
         scanner = findViewById(R.id.qrPage);
@@ -84,6 +84,14 @@ public class userIot extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(userIot.this, ScanIotQRCode.class);
+                startActivity(intent);
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(userIot.this, Homepage.class);
                 startActivity(intent);
             }
         });

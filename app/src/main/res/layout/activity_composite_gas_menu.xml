@@ -8,242 +8,261 @@
     tools:context=".CompositeGasMenu"
     android:background="@color/white">
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/backButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="TODO"
+        android:paddingStart="20dp"
+        android:paddingTop="40dp"
+        android:drawableLeft="@drawable/baseline_arrow_back_ios_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_marginTop="60dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <LinearLayout
-        android:id="@+id/linearLayout6"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingHorizontal="18dp"
-        android:orientation="vertical"
-        android:paddingBottom="90dp">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/compositeGas"
+        <LinearLayout
+            android:id="@+id/linearLayout6"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/highlight_gray_button_back"
-            android:drawableLeft="@drawable/baseline_propane_tank_24"
-            android:padding="15dp"
-            android:text="複合材料"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="239dp"
-            android:layout_gravity="center"
-            android:background="@drawable/gray_border"
-            android:columnCount="4"
-            android:rowCount="4">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingHorizontal="18dp"
+            android:paddingBottom="90dp">
 
             <TextView
-                android:layout_width="50dp"
-                android:layout_height="52dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="52dp"
-                android:gravity="center"
-                android:text="數量"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="50dp"
-                android:layout_height="52dp" />
-
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="52dp"
-                android:text="  規格"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="瓦斯訂購"
                 android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:textSize="33sp"
                 android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/minus1"
-                android:layout_width="50dp"
-                android:layout_height="52dp"
-                android:layout_marginLeft="10dp"
-                android:background="@color/background_gray"
-                android:text="-"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-
-            <TextView
-                android:id="@+id/first"
-                android:layout_width="wrap_content"
-                android:layout_height="52dp"
+                android:id="@+id/compositeGas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:text="0"
-                android:textColor="@color/black"
-                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/highlight_gray_button_back"
+                android:drawableLeft="@drawable/baseline_propane_tank_24"
+                android:padding="15dp"
+                android:text="複合材料"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/plus1"
-                android:layout_width="50dp"
-                android:layout_height="52dp"
-                android:background="@color/background_gray"
-                android:text="+"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="239dp"
+                android:layout_gravity="center"
+                android:background="@drawable/gray_border"
+                android:columnCount="4"
+                android:rowCount="4">
 
-            <!--<Spinner
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="52dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="52dp"
+                    android:gravity="center"
+                    android:text="數量"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="52dp" />
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="52dp"
+                    android:text="  規格"
+                    android:textAlignment="textStart"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/minus1"
+                    android:layout_width="50dp"
+                    android:layout_height="52dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/background_gray"
+                    android:text="-"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/first"
+                    android:layout_width="wrap_content"
+                    android:layout_height="52dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/plus1"
+                    android:layout_width="50dp"
+                    android:layout_height="52dp"
+                    android:background="@color/background_gray"
+                    android:text="+"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <!--<Spinner
                 android:id="@+id/gasWeightSpinner"
                 android:layout_width="100dp"
                 android:layout_height="52dp"
                 android:entries="@array/weight_options" />-->
-            <TextView
-                android:id="@+id/GasWeight5Kg"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:text="5kg"
-                android:layout_marginLeft="20dp"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                />
+                <TextView
+                    android:id="@+id/GasWeight5Kg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="5kg"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/minus2"
-                android:layout_width="50dp"
-                android:layout_height="52dp"
-                android:layout_marginLeft="10dp"
-                android:background="@color/background_gray"
-                android:text="-"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/minus2"
+                    android:layout_width="50dp"
+                    android:layout_height="52dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/background_gray"
+                    android:text="-"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
 
-            <TextView
-                android:id="@+id/second"
-                android:layout_width="wrap_content"
-                android:layout_height="52dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="0"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/second"
+                    android:layout_width="wrap_content"
+                    android:layout_height="52dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/plus2"
-                android:layout_width="50dp"
-                android:layout_height="52dp"
-                android:background="@color/background_gray"
-                android:text="+"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/plus2"
+                    android:layout_width="50dp"
+                    android:layout_height="52dp"
+                    android:background="@color/background_gray"
+                    android:text="+"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/GasWeight16Kg"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:text="16kg"
-                android:layout_marginLeft="20dp"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                />
-            <!--<Spinner
+                <TextView
+                    android:id="@+id/GasWeight16Kg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="16kg"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+                <!--<Spinner
                 android:id="@+id/gasWeightSpinner2"
                 android:layout_width="100dp"
                 android:layout_height="52dp"
                 android:entries="@array/weight_options" />-->
 
 
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/minus3"
+                    android:layout_width="50dp"
+                    android:layout_height="52dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/background_gray"
+                    android:text="-"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/minus3"
-                android:layout_width="50dp"
-                android:layout_height="52dp"
-                android:layout_marginLeft="10dp"
-                android:background="@color/background_gray"
-                android:text="-"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold" />
 
+                <TextView
+                    android:id="@+id/third"
+                    android:layout_width="wrap_content"
+                    android:layout_height="52dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/third"
-                android:layout_width="wrap_content"
-                android:layout_height="52dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="0"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/plus3"
+                    android:layout_width="50dp"
+                    android:layout_height="52dp"
+                    android:background="@color/background_gray"
+                    android:text="+"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/plus3"
-                android:layout_width="50dp"
-                android:layout_height="52dp"
-                android:background="@color/background_gray"
-                android:text="+"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/GasWeight20Kg"
-                android:layout_width="wrap_content"
-                android:layout_height="52dp"
-                android:text="20kg"
-                android:layout_marginLeft="20dp"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                />
-            <!--<Spinner
+                <TextView
+                    android:id="@+id/GasWeight20Kg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="52dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="20kg"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+                <!--<Spinner
                 android:id="@+id/gasWeightSpinner3"
                 android:layout_width="100dp"
                 android:layout_height="52dp"
                 android:entries="@array/weight_options" />-->
 
 
+            </GridLayout>
 
-        </GridLayout>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/cylinderGas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/highlight_gray_button_back"
-            android:drawableLeft="@drawable/baseline_propane_tank_24"
-            android:padding="15dp"
-            android:text="傳統鋼瓶"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cylinderGas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/highlight_gray_button_back"
+                android:drawableLeft="@drawable/baseline_propane_tank_24"
+                android:padding="15dp"
+                android:text="傳統鋼瓶"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
 
-        <Button
-            android:id="@+id/ChooseDeliverMethod"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/main_blue_button_back"
-            android:text="選擇配送方式"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:padding="5dp"
-            android:textStyle="bold" />
+            <Button
+                android:id="@+id/ChooseDeliverMethod"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/main_blue_button_back"
+                android:padding="5dp"
+                android:text="選擇配送方式"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-    </LinearLayout>
+        </LinearLayout>
     </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

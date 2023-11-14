@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,6 +46,7 @@ public class EventPage extends AppCompatActivity {
     public JSONArray ja;
     ArrayList<AnnouncementList> announcementListArrayList;
     Dialog popDialog;
+    Button backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,16 @@ public class EventPage extends AppCompatActivity {
         setContentView(R.layout.activity_event_page);
 
         event_holder=findViewById(R.id.eventList);
+        backButton = findViewById(R.id.backButton);
+
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(EventPage.this, UserDashboard.class);
+                startActivity(intent);
+            }
+        });
 
         requestQueue = Volley.newRequestQueue(this);
 

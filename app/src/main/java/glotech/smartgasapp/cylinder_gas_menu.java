@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -19,9 +20,7 @@ import java.util.Objects;
 
 public class cylinder_gas_menu extends AppCompatActivity {
 
-    private Button composite;
-    private Button order;
-    private Button delivery;
+    private Button composite,order,delivery,backButton;
     private AppCompatButton minus1,minus2,minus3,plus1,plus2,plus3;
     private TextView first,second,third,gasWeight5Kg,gasWeight16Kg,gasWeight20Kg;
     public String S_first,S_second,S_third;
@@ -47,6 +46,7 @@ public class cylinder_gas_menu extends AppCompatActivity {
         composite = findViewById(R.id.compositeGas);
         order = findViewById(R.id.cylinderGas);
         delivery = findViewById(R.id.ChooseDeliverMethod);
+        backButton = findViewById(R.id.backButton);
 
         Minus_Add();
         gasWeight5Kg = findViewById(R.id.GasWeight5Kg);
@@ -56,44 +56,14 @@ public class cylinder_gas_menu extends AppCompatActivity {
         weight2 = "16";
         weight3 = "20";
 
-//        gasWeightSpinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                weight1 = parent.getItemAtPosition(position).toString();
-//                weight1 = weight1.replace("kg","");
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//                // do nothing
-//            }
-//        });
-//
-//        gasWeightSpinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                weight2 = parent.getItemAtPosition(position).toString();
-//                weight2 = weight2.replace("kg","");
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//                // do nothing
-//            }
-//        });
-//
-//        gasWeightSpinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                weight3 = parent.getItemAtPosition(position).toString();
-//                weight3 = weight3.replace("kg","");
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//                // do nothing
-//            }
-//        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(cylinder_gas_menu.this, Homepage.class);
+                startActivity(intent);
+            }
+        });
 
         order.setOnClickListener(new View.OnClickListener() {
             @Override

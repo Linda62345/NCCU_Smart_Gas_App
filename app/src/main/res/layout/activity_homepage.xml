@@ -77,7 +77,7 @@
                 <ImageButton
                     android:id="@+id/prevButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="110dp"
+                    android:layout_height="140dp"
                     android:layout_marginStart="5dp"
                     android:background="@color/white"
                     android:src="@drawable/baseline_arrow_back_ios_24"
@@ -97,7 +97,7 @@
                 <ImageButton
                     android:id="@+id/nextButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="110dp"
+                    android:layout_height="140dp"
                     android:background="@color/white"
                     android:src="@drawable/baseline_arrow_forward_ios_24"
                     app:layout_constraintBottom_toBottomOf="@+id/viewPager2"
@@ -116,7 +116,8 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="50dp"
                 android:layout_marginHorizontal="20dp"
-                android:columnCount="3"
+                android:paddingRight="50dp"
+                android:columnCount="2"
                 android:rowCount="4"
                 android:useDefaultMargins="true">
 
@@ -133,7 +134,7 @@
                     android:src="@drawable/baseline_shopping_cart_24" />
 
                 <ImageButton
-                    android:id="@+id/findOrderListButton"
+                    android:id="@+id/iotButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_row="0"
@@ -143,18 +144,7 @@
                     android:layout_gravity="center"
                     android:backgroundTint="@color/white"
                     android:contentDescription="TODO"
-                    android:src="@drawable/baseline_search_24" />
-
-                <ImageButton
-                    android:id="@+id/iotButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_rowWeight="@integer/material_motion_duration_medium_1"
-                    android:layout_columnWeight="@integer/material_motion_duration_medium_1"
-                    android:backgroundTint="@color/white"
-                    android:contentDescription="TODO"
                     android:src="@drawable/baseline_wifi_tethering_24" />
-
                 <TextView
                     android:id="@+id/buyGasButtonTextView"
                     android:layout_width="wrap_content"
@@ -173,28 +163,12 @@
                     tools:layout_editor_absoluteY="28dp" />
 
                 <TextView
-                    android:id="@+id/findOrderListTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_rowWeight="@integer/material_motion_duration_medium_1"
-                    android:layout_columnWeight="@integer/material_motion_duration_medium_1"
-                    android:layout_gravity="center"
-                    android:autoSizeTextType="uniform"
-                    android:maxLines="1"
-                    android:text="@string/searchOrderList"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    tools:layout_editor_absoluteX="18dp"
-                    tools:layout_editor_absoluteY="28dp" />
-
-                <TextView
                     android:id="@+id/iotTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_rowWeight="@integer/material_motion_duration_medium_1"
                     android:layout_columnWeight="@integer/material_motion_duration_medium_1"
+                    android:layout_gravity="center"
                     android:autoSizeTextType="uniform"
                     android:maxLines="1"
                     android:text="我的 IOT"
@@ -206,19 +180,15 @@
                     tools:layout_editor_absoluteY="28dp" />
 
 
-                <TextView
-                    android:id="@+id/companyButton"
+                <ImageButton
+                    android:id="@+id/findOrderListButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_rowWeight="@integer/material_motion_duration_medium_1"
                     android:layout_columnWeight="@integer/material_motion_duration_medium_1"
-                    android:layout_gravity="center"
                     android:backgroundTint="@color/white"
                     android:contentDescription="TODO"
-                    android:minWidth="48dp"
-                    android:minHeight="48dp" />
-                <!--                android:src="@drawable/baseline_location_on_24" -->
-
+                    android:src="@drawable/baseline_search_24" />
 
                 <ImageButton
                     android:id="@+id/myIDButton"
@@ -232,27 +202,26 @@
                     android:onClick="@barcodeButtonClick"
                     android:src="@drawable/baseline_qr_code_2_24" />
 
-                <TextView
-                    android:id="@+id/myIotButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_rowWeight="@integer/material_motion_duration_medium_1"
-                    android:layout_columnWeight="@integer/material_motion_duration_medium_1"
-                    android:layout_gravity="center"
-                    android:backgroundTint="@color/white" />
+
+
 
                 <TextView
-                    android:id="@+id/companyTextView"
+                    android:id="@+id/findOrderListTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_rowWeight="@integer/material_motion_duration_medium_1"
                     android:layout_columnWeight="@integer/material_motion_duration_medium_1"
-                    android:layout_gravity="center"
-                    android:text=""
+                    android:autoSizeTextType="uniform"
+                    android:maxLines="1"
+                    android:text="@string/searchOrderList"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:layout_editor_absoluteX="18dp"
+                    tools:layout_editor_absoluteY="28dp" />
+
+
 
                 <TextView
                     android:id="@+id/myIDTextView"

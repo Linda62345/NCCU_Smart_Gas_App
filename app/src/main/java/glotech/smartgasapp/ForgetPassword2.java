@@ -28,7 +28,7 @@ import glotech.smartgasapp.ui.login.LoginActivity;
 
 public class ForgetPassword2 extends AppCompatActivity {
 
-    private Button back;
+    private Button back,backButton;
     public EditText NewPassword,reNewPassword;
     public String newpassword, renewpassword,email;
     private TextView tvStatus;
@@ -43,6 +43,15 @@ public class ForgetPassword2 extends AppCompatActivity {
         NewPassword = findViewById(R.id.enterNewPass);
         reNewPassword = findViewById(R.id.enterConfirmNewPass);
         back = findViewById(R.id.backToLoginButton);
+        backButton = findViewById(R.id.backButton);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ForgetPassword2.this, ForgetPassword1.class);
+                startActivity(intent);
+            }
+        });
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override

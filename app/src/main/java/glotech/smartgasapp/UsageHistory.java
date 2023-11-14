@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -46,6 +47,7 @@ public class UsageHistory extends AppCompatActivity {
     public Spinner iot;
     public String Customer_Id,selectedSensorId,result;
     public TextView iot_gas1,iot_gas2;
+    private Button backButton;
     LineChart lineChart;
     JSONArray history;
     ArrayList<String> iotList = new ArrayList<>();
@@ -68,10 +70,19 @@ public class UsageHistory extends AppCompatActivity {
 
         usageHistoryList = new ArrayList<UsageHistoryItem>();
         iot =findViewById(R.id.usageOption_Spinner);
+        backButton =findViewById(R.id.backButton);
         iot_gas1 = findViewById(R.id.changable_gas_specification);
         //iot_gas2 = findViewById(R.id.changable_gas_remains);
         //lineChart = findViewById(R.id.getTheGraph);
         sensorlistView = findViewById(R.id.sensorlist);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UsageHistory.this, Homepage.class);
+                startActivity(intent);
+            }
+        });
 
         LoginActivity loginActivity = new LoginActivity();
         Customer_Id = String.valueOf(loginActivity.getCustomerID());
