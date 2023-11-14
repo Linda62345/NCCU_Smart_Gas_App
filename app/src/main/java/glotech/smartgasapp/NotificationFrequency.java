@@ -166,14 +166,11 @@ public class NotificationFrequency extends AppCompatActivity  {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
-                // Schedule the next notification check after a specific interval (e.g., every 1 minute)
-              //  handler.postDelayed(this, 60000);
             }
         };
 
         // Start the initial notification check
-          handler.post(notificationRunnable);
+          //handler.post(notificationRunnable);
     }
 
 //    private void startNotificationCheck(double gasVolume) {
