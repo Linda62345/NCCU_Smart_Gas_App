@@ -51,7 +51,7 @@ public class PersonalBarcode extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_barcode);
 
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        
 
         BottomNavigationView bottomNavigationView=findViewById(R.id.nav_view);
         backToHome = findViewById(R.id.barcodeBackToHome);

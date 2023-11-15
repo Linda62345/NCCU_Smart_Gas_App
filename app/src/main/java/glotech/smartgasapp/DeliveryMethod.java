@@ -44,7 +44,7 @@ public class DeliveryMethod extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delivery_method);
         order = findViewById(R.id.ConfrimOrder);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        
 
 
 

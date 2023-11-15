@@ -19,7 +19,7 @@ public class PointPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_point);
 
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        
         BottomNavigationView bottomNavigationView=findViewById(R.id.nav_view);
 
         // Perform item selected listener
@@ -46,6 +46,6 @@ public class PointPage extends AppCompatActivity {
             }
         });
 
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        
     }
 }

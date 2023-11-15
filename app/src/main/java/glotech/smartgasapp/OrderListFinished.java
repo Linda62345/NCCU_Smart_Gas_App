@@ -69,7 +69,7 @@ public class OrderListFinished extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_list_finished);
 
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        
 
         unfinished = findViewById(R.id.order_unfinished);
         backButton = findViewById(R.id.backButton);

@@ -32,7 +32,7 @@ public class cylinder_gas_menu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cylinder_gas_menu);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        
 
         BottomNavigationView bottomNavigationView=findViewById(R.id.nav_view);
 

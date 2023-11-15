@@ -66,7 +66,7 @@ public class UsageHistory extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usage_history);
 
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        
 
         usageHistoryList = new ArrayList<UsageHistoryItem>();
         iot =findViewById(R.id.usageOption_Spinner);

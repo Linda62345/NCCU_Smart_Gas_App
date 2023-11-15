@@ -49,7 +49,7 @@ public class GasCompanyLocation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gas_company_location);
 
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        
 
 
         LoginActivity loginActivity = new LoginActivity();

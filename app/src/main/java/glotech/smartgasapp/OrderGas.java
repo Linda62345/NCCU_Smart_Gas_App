@@ -23,7 +23,7 @@ public class OrderGas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_gas);
 
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        
 
         BottomNavigationView bottomNavigationView=findViewById(R.id.nav_view);
 

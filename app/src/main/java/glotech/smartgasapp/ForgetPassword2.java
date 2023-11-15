@@ -64,7 +64,7 @@ public class ForgetPassword2 extends AppCompatActivity {
 
         Log.i("email", email);
 
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        
     }
     public void resetPassword(){
         newpassword = NewPassword.getText().toString().trim();

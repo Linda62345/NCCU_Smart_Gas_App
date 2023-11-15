@@ -63,7 +63,7 @@ public class userIot extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_iot);
 
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        
 
 
         LoginActivity loginActivity = new LoginActivity();

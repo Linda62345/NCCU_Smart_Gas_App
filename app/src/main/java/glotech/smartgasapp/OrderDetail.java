@@ -79,7 +79,7 @@ public class OrderDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_detail);
 
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        //
 
         //ui定義
         findUI();

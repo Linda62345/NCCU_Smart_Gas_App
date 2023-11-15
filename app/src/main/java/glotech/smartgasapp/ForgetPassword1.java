@@ -75,7 +75,7 @@ public class ForgetPassword1 extends AppCompatActivity {
             }
         });
 
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        
     }
     private void checkAccount(){
         String String_email = email.getText().toString().trim();

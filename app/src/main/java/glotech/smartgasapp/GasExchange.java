@@ -47,7 +47,7 @@ public class GasExchange extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gas_exchange);
 
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        
         BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
 
         requestQueue = Volley.newRequestQueue(this);

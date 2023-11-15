@@ -132,17 +132,7 @@ public class EditPersonalInfo extends AppCompatActivity {
             }
         });
 
-//        save.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                etCompanyName = findViewById(R.id.company);
-//                //saveProfile();
-//                Intent intent = new Intent(EditPersonalInfo.this, UserDashboard.class);
-//                startActivity(intent);
-//            }
-//        });
-
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        
 
     }
     public void showData() throws MalformedURLException {

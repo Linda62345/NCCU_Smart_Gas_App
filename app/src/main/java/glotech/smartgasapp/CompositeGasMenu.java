@@ -30,7 +30,7 @@ public class CompositeGasMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_composite_gas_menu);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        
 
         OrderDetail orderDetail = new OrderDetail();
         orderDetail.edit = false;

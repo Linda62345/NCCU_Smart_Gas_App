@@ -61,7 +61,7 @@ public class FamilyInvitationCode extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_family_invitation_code);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        
 
         listView = findViewById(R.id.listview);
         name = new ArrayList<String>();

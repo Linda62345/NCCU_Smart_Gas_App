@@ -43,7 +43,7 @@ public class SearchOrderResultFinished extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_order_result_finish);
 
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        
 
         enter = findViewById(R.id.confirmOrder);
 

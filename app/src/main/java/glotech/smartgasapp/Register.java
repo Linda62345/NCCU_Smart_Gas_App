@@ -74,7 +74,7 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        
 
         serviceCheckBox = findViewById(R.id.serviceCheckBox);
         backButton = findViewById(R.id.backButton);

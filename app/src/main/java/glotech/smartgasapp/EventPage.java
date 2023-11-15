@@ -82,7 +82,7 @@ public class EventPage extends AppCompatActivity {
         });
         thread.start();
 
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
 

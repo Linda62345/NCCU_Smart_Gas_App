@@ -74,7 +74,7 @@ public class NotificationFrequency extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification_frequency);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         try {
             frequency();
         } catch (IOException e) {
