@@ -203,4 +203,12 @@
 
     <!--歷史用量-->
     <string name="usageHistoryTitle">歷史用量</string>
+
+    <!--DashBoard-->
+    <string name="dashBoardQueryTitle">訂單查詢</string>
+    <string name="dashBoardHistoryVolumeTitle">歷史用量</string>
+    <string name="dashBoardNotificationTitle">通知設定</string>
+    <string name="dashBoardRemainGasTitle">殘氣累積</string>
+    <string name="dashBoardAnnouncementTitle">活動公告</string>
+    <string name="dashBoardFamilyTitle">通知群組設定</string>
 </resources>

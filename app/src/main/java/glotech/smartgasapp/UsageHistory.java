@@ -246,13 +246,14 @@ public class UsageHistory extends AppCompatActivity {
                                 String SENSOR_Time = jsonObject.optString("SENSOR_Time");
                                 String SENSOR_Weight = jsonObject.optString("SENSOR_Weight");
                                 String SENSOR_Percent = jsonObject.optString("Gas_remain");
-                                //sensorListString.add("時間: " + SENSOR_Time + " 流量: " + SENSOR_Weight);
-                                Log.i("UsageHistoryItem size",String.valueOf(i));
-                                usageHistoryList.add(new UsageHistoryItem(SENSOR_Weight,SENSOR_Time,SENSOR_Percent));
-                                //目前最後一筆資料
-                                iot_gas1.setText(SENSOR_Weight+" 公斤");
+                                usageHistoryList.add(new UsageHistoryItem(SENSOR_Weight, SENSOR_Time, SENSOR_Percent));
                             }
-                            if(ja.length()==0){
+                            if (ja.length() > 0) {
+                                // Display the latest data
+                                JSONObject latestData = ja.getJSONObject(0);
+                                String latestWeight = latestData.optString("SENSOR_Weight");
+                                iot_gas1.setText(latestWeight + " 公斤");
+                            } else {
                                 iot_gas1.setText("近一個月內無資料");
                             }
                         }
@@ -281,9 +282,6 @@ public class UsageHistory extends AppCompatActivity {
         if (usageHistoryList.size() > 0) {
             try {
                 Log.i("Pie chart", "Pie Chart");
-                for (int i = 0; i < usageHistoryList.size(); i++) {
-                    Log.i("usageHistoryList" + String.valueOf(i), usageHistoryList.get(i).percent);
-                }
                 pieEntries.add(new PieEntry(Float.parseFloat(usageHistoryList.get(0).percent) * 1000f, 0));
                 PieEntry transparentSlice = new PieEntry(100f - (Float.parseFloat(usageHistoryList.get(0).percent) * 1000f), 1);
                 transparentSlice.setData(0); // Set data to 0 (fully transparent)

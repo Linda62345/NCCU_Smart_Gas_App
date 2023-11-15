@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -41,12 +42,7 @@ public class UserDashboard extends AppCompatActivity {
 
     private Button userInfo;
     private Button volumeInfo;
-    private Button search;
-    private Button usageHistory;
-    private Button notification;
-    private Button exchange;
-    private Button eventOrAct;
-    private Button famCoupon;
+    private ImageButton search,usageHistory,notification,exchange,eventOrAct,famCoupon;
     private Button logout;
     private Spinner iot;
     private TextView VolumeLeft,showName;

@@ -73,5 +73,8 @@ dependencies {
     implementation "androidx.camera:camera-lifecycle:$camerax_version"
     implementation "androidx.camera:camera-view:1.0.0-alpha14"
 
+    //GridLayout
+    implementation 'com.intuit.sdp:sdp-android:1.0.4'
+
 
 }
