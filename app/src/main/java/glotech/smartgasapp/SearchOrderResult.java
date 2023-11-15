@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class SearchOrderResult extends AppCompatActivity {
-    private Button enter;
+    private Button enter,backButton;
     private String order_Id;
     private TextView name,phone,address,type,gas_Quan,time;
     public static int gas_quantity;
@@ -46,12 +46,22 @@ public class SearchOrderResult extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         enter = findViewById(R.id.confirmOrder);
+        backButton = findViewById(R.id.backButton);
 
         Bundle bundle;
         order_Id = "";
 
 
         enter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //看有幾桶瓦斯 就換幾次
+                Intent intent = new Intent(SearchOrderResult.this, Homepage.class);
+                startActivity(intent);
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //看有幾桶瓦斯 就換幾次

@@ -55,7 +55,7 @@ import glotech.smartgasapp.ui.login.LoginActivity;
 
 public class OrderDetail extends AppCompatActivity {
 
-    private Button exchange,editReceipt,finish;
+    private Button exchange,editReceipt,finish,backButton;
     public String Customer_ID,Order_Id,result="",Company_Id,phone,address,date,time,method,New_Order_Id;
     public TextView Greeting, Recepit_Name,Receipt_TelNo,Receipt_Addr,Expect_Time,Delivery_Method,Expect_Date;
     public JSONObject responseJSON;
@@ -88,6 +88,15 @@ public class OrderDetail extends AppCompatActivity {
         Customer_ID = String.valueOf(loginActivity.getCustomerID());
         Company_Id = String.valueOf(loginActivity.COMPANY_Id);
         Time_Spinner = findViewById(R.id.Time);
+        backButton = findViewById(R.id.backButton);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(OrderDetail.this, Homepage.class);
+                startActivity(intent);
+            }
+        });
 
         DeliveryMethod deliveryMethod = new DeliveryMethod();
         compositeGasMenu = new CompositeGasMenu();

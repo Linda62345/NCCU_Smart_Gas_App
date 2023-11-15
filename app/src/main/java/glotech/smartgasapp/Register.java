@@ -51,7 +51,7 @@ import java.util.TimeZone;
 import glotech.smartgasapp.ui.login.LoginActivity;
 
 public class Register extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    private Button register;
+    private Button register,backButton;
     private RadioGroup radioGroup;
     private EditText etName, etEmail, etAddress, etPhone, etHouseTel, etPassword, etReenterPassword, etPostCode, etFloor;
     private RadioButton etMale, etFemale, radioButton;
@@ -77,6 +77,7 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         serviceCheckBox = findViewById(R.id.serviceCheckBox);
+        backButton = findViewById(R.id.backButton);
         privacyCheckBox = findViewById(R.id.privacyCheckBox);
         radioGroup = findViewById(R.id.radioGroup);
         etName = findViewById(R.id.register_name_input);
@@ -129,6 +130,14 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
         etLift = findViewById(R.id.lift);
         etPostCode = findViewById(R.id.postCodeText);
         etFloor = findViewById(R.id.floorText);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Register.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
         requestQueue = Volley.newRequestQueue(this);
 
