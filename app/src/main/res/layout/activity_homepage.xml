@@ -122,8 +122,8 @@
 
                 <ImageButton
                     android:id="@+id/buyGasButton"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:layout_row="0"
                     android:layout_rowWeight="1"
                     android:layout_column="0"
@@ -136,7 +136,7 @@
                     />
 
                 <ImageButton
-                    android:id="@+id/findOrderListButton"
+                    android:id="@+id/iotButton"
                     android:layout_width="180dp"
                     android:layout_height="200dp"
                     android:layout_row="0"
@@ -179,11 +179,11 @@
                     android:textStyle="bold" />
 
                 <ImageButton
-                    android:id="@+id/iotButton"
+                    android:id="@+id/findOrderListButton"
                     android:layout_width="0dp"
-                    android:layout_height="200dp"
-                    android:layout_rowWeight="@integer/material_motion_duration_medium_1"
-                    android:layout_columnWeight="@integer/material_motion_duration_medium_1"
+                    android:layout_height="0dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
                     android:backgroundTint="@color/white"
                     android:contentDescription="TODO"
                     android:src="@drawable/homepage_search"

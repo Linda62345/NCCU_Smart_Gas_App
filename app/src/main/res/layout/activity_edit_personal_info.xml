@@ -13,16 +13,16 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:paddingTop="20dp"
-        android:background="@color/white"
         android:drawableLeft="@drawable/baseline_arrow_back_ios_24"
-        android:padding="15dp"
+        android:padding="20dp"
         android:text="個人檔案"
-        android:elevation="0dp"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:stateListAnimator="@null"
+        android:background="@color/white"/>
 
     <ScrollView
         android:id="@+id/scrollView2"
