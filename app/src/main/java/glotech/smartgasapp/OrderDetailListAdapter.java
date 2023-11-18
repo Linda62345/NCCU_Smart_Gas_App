@@ -112,6 +112,16 @@ public class OrderDetailListAdapter extends ArrayAdapter<glotech.smartgasapp.Ord
             }
         });
 
+        // Check if it's the last item
+        boolean isLastItem = position == getCount() - 1;
+
+        // View for the line at the bottom
+        View bottomLine = convertView.findViewById(R.id.bottomLine);
+
+        // Set visibility based on whether it's the last item
+        if (bottomLine != null) {
+            bottomLine.setVisibility(isLastItem ? View.GONE : View.VISIBLE);
+        }
 
         return convertView;
     }

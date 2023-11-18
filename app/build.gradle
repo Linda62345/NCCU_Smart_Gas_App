@@ -75,6 +75,7 @@ dependencies {
 
     //GridLayout
     implementation 'com.intuit.sdp:sdp-android:1.0.4'
+    implementation 'com.google.android.material:material:1.0.0'
 
 
 }

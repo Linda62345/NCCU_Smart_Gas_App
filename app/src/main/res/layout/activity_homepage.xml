@@ -128,7 +128,7 @@
                     android:text="@string/buyGasString"
                     android:backgroundTint="#3C66A7"
                     android:textColor="@color/white"
-                    app:cornerRadius="8dp"
+                    app:cornerRadius="10dp"
                     app:iconTint="@color/white"
                     android:layout_row="0"
                     android:layout_column="0"
@@ -137,7 +137,8 @@
                     android:layout_rowWeight="1"
                     android:textStyle="bold"
                     android:textSize="20dp"
-                    android:paddingVertical="30dp"/>
+                    android:paddingVertical="30dp"
+                    android:layout_marginRight="20dp"/>
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/iotButton"
                     android:layout_width="wrap_content"
@@ -148,7 +149,7 @@
                     android:text="@string/homePageMyIoT"
                     android:backgroundTint="#7099DA"
                     android:textColor="@color/white"
-                    app:cornerRadius="8dp"
+                    app:cornerRadius="10dp"
                     app:iconTint="@color/white"
                     android:layout_row="0"
                     android:layout_column="1"
@@ -169,7 +170,7 @@
                     android:text="@string/searchOrderList"
                     android:backgroundTint="#2D70D8"
                     android:textColor="@color/white"
-                    app:cornerRadius="8dp"
+                    app:cornerRadius="10dp"
                     app:iconTint="@color/white"
                     android:layout_row="1"
                     android:layout_column="0"
@@ -178,7 +179,8 @@
                     android:layout_rowWeight="1"
                     android:textStyle="bold"
                     android:textSize="20dp"
-                    android:paddingVertical="30dp"/>
+                    android:paddingVertical="30dp"
+                    android:layout_marginRight="20dp"/>
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/myIDButton"
                     android:layout_width="wrap_content"
@@ -189,7 +191,7 @@
                     android:text="@string/homePageQrCode"
                     android:backgroundTint="#0A4DB4"
                     android:textColor="@color/white"
-                    app:cornerRadius="8dp"
+                    app:cornerRadius="10dp"
                     app:iconTint="@color/white"
                     android:layout_row="1"
                     android:layout_column="1"

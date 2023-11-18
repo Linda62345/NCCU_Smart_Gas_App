@@ -57,7 +57,8 @@ public class OrderDetail extends AppCompatActivity {
 
     private Button exchange,editReceipt,finish,backButton;
     public String Customer_ID,Order_Id,result="",Company_Id,phone,address,date,time,method,New_Order_Id;
-    public TextView Greeting, Recepit_Name,Receipt_TelNo,Receipt_Addr,Expect_Time,Delivery_Method,Expect_Date;
+    public TextView Greeting, Recepit_Name,Delivery_Method,Expect_Date;
+    public Button ReceiptPhone,ReceiptHome;
     public JSONObject responseJSON;
     public JSONArray ja;
     public ListView listView;
@@ -214,8 +215,8 @@ public class OrderDetail extends AppCompatActivity {
                         public void run() {
                             Greeting.setText(Customer_Name);
                             Recepit_Name.setText(Customer_Name);
-                            Receipt_TelNo.setText(phone);
-                            Receipt_Addr.setText(address);
+                            ReceiptHome.setText(address);
+                            ReceiptPhone.setText(phone);
 
                             //將資料顯示在UI上
                             if(method.equals("0")){
@@ -561,10 +562,10 @@ public class OrderDetail extends AppCompatActivity {
         Expect_Date = findViewById(R.id.ExpectDate);
         //Expect_Time = findViewById(R.id.ExpectTime);
         Delivery_Method = findViewById(R.id.deliveryMethod);
-        Greeting = findViewById(R.id.client_greetingTitle);
+        Greeting = findViewById(R.id.changable_receiptName);
         Recepit_Name = findViewById(R.id.changable_receiptName);
-        Receipt_TelNo = findViewById(R.id.changable_receiptTelNo);
-        Receipt_Addr = findViewById(R.id.changable_receiptAddr);
+        ReceiptPhone = findViewById(R.id.ReceiptPhone);
+        ReceiptHome = findViewById(R.id.ReceiptHome);
 
         editReceipt = findViewById(R.id.receipt_edit_button);
         finish = findViewById(R.id.receipt_next_button);

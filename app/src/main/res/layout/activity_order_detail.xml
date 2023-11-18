@@ -14,12 +14,13 @@
         android:id="@+id/backButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-        android:padding="20dp"
-        android:layout_marginRight="350dp"
-        android:contentDescription="TODO"
-        android:elevation="0dp"
+        android:layout_gravity="center"
+        android:paddingTop="20dp"
         android:drawableLeft="@drawable/baseline_arrow_back_ios_24"
+        android:padding="20dp"
+        android:text="訂單明細"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -31,6 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
     <LinearLayout
         android:paddingTop="5dp"
         android:layout_marginHorizontal="20sp"
@@ -39,147 +41,78 @@
         android:layout_height="wrap_content"
         android:paddingBottom="40dp">
 
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="10dp"
+            android:backgroundTint="#F1F1F1"
+            android:layout_marginVertical="20dp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/changable_receiptName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25.0dp"
+                    android:autoSizeTextType="uniform"
+                    android:maxLines="1"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:layout_marginVertical="10dp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/ReceiptPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    app:icon="@drawable/orderdetail_phone"
+                    app:iconSize="40dp"
+                    android:text="放電話"
+                    android:textColor="@color/black"
+                    app:cornerRadius="8dp"
+                    app:iconTint="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="20sp" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/ReceiptHome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    app:icon="@drawable/orderdetail_home"
+                    app:iconSize="40dp"
+                    android:text="放電話"
+                    android:textColor="@color/black"
+                    app:cornerRadius="8dp"
+                    app:iconTint="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/client_greetingTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/gasOrder"
             android:autoSizeTextType="uniform"
             android:maxLines="1"
-            android:text="test"
-            android:textColor="@color/black"
-            android:textSize="35sp"
-            android:textStyle="bold" />
-
-
-        <TextView
-            android:id="@+id/client_greetingSubtitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:text="以下是您的訂單明細"
-            android:textColor="@color/black"
-            android:textSize="25sp"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:foregroundGravity="center"
-            android:background="@drawable/gray_border">
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/dark_gray"
+            android:textSize="30sp"
+            android:textStyle="bold">
+        </TextView>
 
         <GridLayout
-            android:id="@+id/linearLayout1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="30dp"
-            android:paddingLeft="10dp"
-            android:columnCount="2"
-            android:minWidth="25px"
-            android:minHeight="25px"
-            android:orientation="vertical"
-            android:rowCount="3">
-
-            <TextView
-                android:id="@+id/receiptNameTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="19dp"
-                android:layout_gravity="left"
-                android:autoSizeTextType="uniform"
-                android:maxLines="1"
-                android:text="@string/gas_receiver"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/dark_gray"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/receiptTelNo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_marginTop="7dp"
-                android:text="聯絡電話:"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/dark_gray"
-                android:textSize="16sp"
-                android:autoSizeTextType="uniform"
-                android:maxLines="1"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/receiptAddress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_marginTop="7dp"
-                android:layout_marginBottom="7dp"
-                android:text="配送地址: "
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/dark_gray"
-                android:textSize="16sp"
-                android:autoSizeTextType="uniform"
-                android:maxLines="1"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/changable_receiptName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_marginLeft="25.0dp"
-                android:autoSizeTextType="uniform"
-                android:maxLines="1"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/dark_gray"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/changable_receiptTelNo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_marginLeft="25.0dp"
-                android:layout_marginTop="7dp"
-                android:autoSizeTextType="uniform"
-                android:maxLines="1"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/dark_gray"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/changable_receiptAddr"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:autoSizeTextType="uniform"
-                android:maxLines="1"
-                android:layout_marginLeft="25.0dp"
-                android:layout_marginTop="7dp"
-                android:layout_marginBottom="14dp"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/dark_gray"
-                android:textSize="16sp" />
-        </GridLayout>
-
-        <TextView
-            android:text="請編輯鋼瓶是否要兌換"
-            android:id="@+id/step_one_instr"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:layout_gravity="left"
-            android:autoSizeTextType="uniform"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginBottom="8dp"/>
-
-        <!-- 這裡要加標題 -->
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/highlight_gray_corner_only"
-            android:layout_marginHorizontal="10dp"
+            android:layout_height="wrap_content" android:layout_marginHorizontal="10dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
             android:columnCount="4">
@@ -191,7 +124,7 @@
                 android:autoSizeTextType="uniform"
                 android:textStyle="bold"
                 android:layout_marginTop="5dp"
-                android:layout_columnWeight="0.5"
+                android:layout_columnWeight="1"
                 />
             <TextView
                 android:layout_gravity="center"
@@ -202,6 +135,7 @@
                 android:textStyle="bold"
                 android:layout_marginTop="5dp"
                 android:layout_columnWeight="1"
+                android:layout_marginRight="20dp"
                 />
             <TextView
                 android:layout_gravity="center"
@@ -211,7 +145,7 @@
                 android:autoSizeTextType="uniform"
                 android:textStyle="bold"
                 android:layout_marginTop="5dp"
-                android:layout_columnWeight="1"
+                android:layout_marginRight="20dp"
                 />
             <TextView
                 android:layout_gravity="center"
@@ -222,6 +156,7 @@
                 android:textStyle="bold"
                 android:layout_marginTop="5dp"
                 android:layout_columnWeight="0.5"
+                android:layout_marginRight="30dp"
                 />
         </GridLayout>
 
@@ -236,122 +171,174 @@
             android:layout_marginTop="5dp"
             android:layout_marginHorizontal="10dp"/>
 
-
-
         <TextView
-            android:text="請編輯配送時間、日期"
-            android:id="@+id/step_two_instr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:layout_gravity="left"
+            android:text="@string/gasOrder"
             android:autoSizeTextType="uniform"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="45dp"
-            android:layout_marginBottom="8dp"/>
+            android:maxLines="1"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/dark_gray"
+            android:textSize="30sp"
+            android:textStyle="bold">
+        </TextView>
 
-        <GridLayout
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical"
-            android:rowCount="3"
-            android:columnCount="2">
-
-            <TextView
-                android:text="配送日期"
-                android:autoSizeTextType="uniform"
-                android:maxLines="1"
-                android:textColor="@color/dark_gray"
-                android:textSize="16sp"
-                />
-            <TextView
-                android:text="配送時間"
-                android:autoSizeTextType="uniform"
-                android:layout_marginTop="5dp"
-                android:textColor="@color/dark_gray"
-                android:textSize="16sp"
-                android:maxLines="1"
-                />
-            <TextView
-                android:text="配送方式"
-                android:autoSizeTextType="uniform"
-                android:maxLines="1"
-                android:textColor="@color/dark_gray"
-                android:textSize="16sp"
-                />
-            <TextView
-                android:id="@+id/ExpectDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:autoSizeTextType="uniform"
-                android:maxLines="1"
-                android:layout_marginVertical="5dp"
-                android:layout_marginRight="20dp"
-                android:text="yyyy-mm-dd"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/dark_gray"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-            <Spinner
-                android:id="@+id/Time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minHeight="48dp"
-                android:layout_gravity="end"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                android:entries="@array/Order_Time_Option"
-                />
-            <TextView
-                android:id="@+id/deliveryMethod"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginBottom="5dp"
-                android:layout_marginRight="20dp"
-                android:text="到店自取"
-                android:autoSizeTextType="uniform"
-                android:maxLines="1"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/dark_gray"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-        </GridLayout>
-
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="30dp"
-            android:layout_marginHorizontal="10dp"
             android:orientation="horizontal"
-            android:rowCount="2"
-            android:background="@drawable/highlight_gray_corner_only">
-            <TextView
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:text="付款方式"
-                android:textStyle="bold"
-                android:textColor="@color/dark_gray"
-                android:layout_columnWeight="1">
-            </TextView>
-            <TextView
-                android:layout_gravity="center"
-                android:text="現金"
-                android:layout_margin="5dp"
-                android:textStyle="bold"
-                android:textColor="@color/dark_gray"
-                android:layout_columnWeight="1">
-            </TextView>
-        </GridLayout>
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/black"
+            app:cardCornerRadius="10dp"
+            android:layout_marginVertical="10dp">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
 
-        </LinearLayout>
+                    <!-- Icon -->
+                    <ImageView
+                        android:id="@+id/deliveryDateIcon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/orderdetail_date"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="16dp"/>
+
+                    <!-- First TextView -->
+                    <TextView
+                        android:id="@+id/deliveryDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="配送日期"
+                        android:textSize="18sp"
+                        android:layout_marginEnd="16dp"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center"
+                        android:layout_weight="1" />
+
+                    <!-- Second TextView with Border -->
+                    <TextView
+                        android:id="@+id/ExpectDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autoSizeTextType="uniform"
+                        android:maxLines="1"
+                        android:text="yyyy-mm-dd"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_gravity="center" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/black"
+            app:cardCornerRadius="10dp"
+            android:layout_marginVertical="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <!-- Icon -->
+                <ImageView
+                    android:id="@+id/deliveryTimeIcon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/orderdetail_time"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="16dp"/>
+
+                <!-- First TextView -->
+                <TextView
+                    android:id="@+id/deliveryTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="配送時間"
+                    android:textSize="18sp"
+                    android:layout_marginEnd="16dp"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center"
+                    android:layout_weight="1" />
+
+                <!-- Second TextView with Border -->
+                <Spinner
+                    android:id="@+id/Time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:entries="@array/Order_Time_Option"
+                    android:minHeight="48dp"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/black"
+            app:cardCornerRadius="10dp"
+            android:layout_marginVertical="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <!-- Icon -->
+                <ImageView
+                    android:id="@+id/deliveryMethodIcon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/orderdetail_delivery"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="16dp"/>
+
+                <!-- First TextView -->
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="配送方式"
+                    android:textSize="18sp"
+                    android:layout_marginEnd="16dp"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/deliveryMethod"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:autoSizeTextType="uniform"
+                    android:maxLines="1"
+                    android:text=""
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -359,45 +346,50 @@
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:orientation="horizontal"
-            android:layout_marginHorizontal="30dp"
             android:columnCount="2">
 
-            <androidx.appcompat.widget.AppCompatButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/receipt_edit_button"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_weight="@integer/material_motion_duration_medium_1"
                 android:layout_gravity="center"
-                android:background="@drawable/main_blue_button_back"
+                android:backgroundTint="#EAF2FF"
                 android:paddingHorizontal="30dp"
                 android:text="編輯訂單"
-                android:textColor="#ffffffff"
-                android:textSize="20sp"
+                android:textColor="#696969"
+                android:textSize="18sp"
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"
                 android:textStyle="bold"
                 android:layout_columnWeight="1"
+                android:padding="8dp"
+                app:cornerRadius="10dp"
+                android:translationZ="10dp"
                 />
             <TextView
                 android:layout_width="10dp"
                 android:layout_height="wrap_content"
                 />
-
-            <androidx.appcompat.widget.AppCompatButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/receipt_next_button"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_height="60dp"
                 android:layout_weight="@integer/material_motion_duration_medium_1"
-                android:background="@drawable/main_blue_button_back"
+                android:layout_gravity="center"
+                android:backgroundTint="#3C66A7"
+                android:paddingHorizontal="30dp"
                 android:text="@string/gas_order_complete"
+                android:textColor="@color/white"
+                android:textSize="18sp"
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"
-                android:textColor="#ffffffff"
-                android:textSize="20sp"
-                android:paddingHorizontal="30dp"
                 android:textStyle="bold"
-                android:layout_columnWeight="1"/>
+                android:layout_columnWeight="1"
+                android:padding="8dp"
+                app:cornerRadius="10dp"
+                android:translationZ="10dp"
+                />
 
         </LinearLayout>
 

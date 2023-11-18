@@ -202,6 +202,7 @@
     <string name="orderWeight">規格</string>
     <string name="orderRemain">是否兌換</string>
     <string name="gas_receiver">收件者:</string>
+    <string name="gasOrder">訂購內容</string>
 
     <!--歷史用量-->
     <string name="usageHistoryTitle">歷史用量</string>

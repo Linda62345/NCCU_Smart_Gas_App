@@ -10,14 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:columnCount="4"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp">
         <TextView
             android:id="@+id/quantity"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="TextView"
             android:gravity="center"
-            android:textColor="#ff757575"
+            android:textColor="@color/black"
             android:textSize="20.0sp"
             android:textStyle="bold"
             android:layout_columnWeight="1"
@@ -27,8 +28,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:textColor="@color/black"
             android:text="TextView"
-            android:textColor="#ff757575"
             android:textSize="20.0sp"
             android:textStyle="bold"
             android:layout_columnWeight="1.5"
@@ -39,8 +40,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:textColor="@color/black"
             android:text="TextView"
-            android:textColor="#ff757575"
             android:textSize="20.0sp"
             android:textStyle="bold"
             android:layout_columnWeight="1"
@@ -51,8 +52,13 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_columnWeight="2"
+            android:textColor="@color/black"
             android:entries="@array/exchange_remainGas_options"
             />
     </GridLayout>
-
+    <View
+        android:id="@+id/bottomLine"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black" />
 </LinearLayout>
