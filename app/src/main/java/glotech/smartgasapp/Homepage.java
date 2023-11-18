@@ -55,15 +55,10 @@ public class Homepage extends AppCompatActivity {
     private static final long SESSION_TIMEOUT_MILLISECONDS = 2 * 60 * 60 * 1000; // 2 hours in milliseconds
     private static final String SESSION_TIMEOUT_KEY = "session_timeout";
 
-    private Button point;
-    private Button homeLogin;
-    private Button moreVol;
-
-    private ImageButton buy;
-    private ImageButton search;
-    private ImageButton location;
-    private ImageButton iot;
-    private ImageButton personalBarcode;
+    private Button buy;
+    private Button search;
+    private Button iot;
+    private Button personalBarcode;
     private BottomNavigationView bottomNavigationView;
     private TextView remainGas, showName;
     private ProgressBar progressBar;

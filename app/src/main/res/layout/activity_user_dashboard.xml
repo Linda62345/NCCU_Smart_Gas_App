@@ -105,142 +105,148 @@
 
                 <ImageButton
                     android:id="@+id/search"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
                     android:layout_row="0"
+                    android:layout_rowWeight="1"
                     android:layout_column="0"
+                    android:layout_columnWeight="1"
                     android:layout_gravity="center"
+                    android:adjustViewBounds="true"
                     android:backgroundTint="@color/white"
-                    android:src="@drawable/dashboard_inquery"
                     android:scaleType="fitCenter"
-                    android:adjustViewBounds="true" />
-
+                    android:src="@drawable/dashboard_inquery" />
                 <ImageButton
                     android:id="@+id/usageHistory"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
                     android:layout_row="0"
+                    android:layout_rowWeight="1"
                     android:layout_column="1"
-                    android:src="@drawable/dashboard_historyvolume"
+                    android:layout_columnWeight="1"
                     android:layout_gravity="center"
+                    android:adjustViewBounds="true"
                     android:backgroundTint="@color/white"
                     android:scaleType="fitCenter"
-                    android:adjustViewBounds="true"
-                    android:layout_columnWeight="1"
-                    android:layout_rowWeight="1"/>
+                    android:src="@drawable/dashboard_historyvolume" />
 
                 <ImageButton
                     android:id="@+id/notificationFrequency"
-                    android:layout_width="100dp"
-                    android:layout_height="80dp"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
                     android:layout_row="0"
+                    android:layout_rowWeight="1"
                     android:layout_column="2"
-                    android:src="@drawable/dashboard_notification"
+                    android:layout_columnWeight="1"
                     android:layout_gravity="center"
+                    android:adjustViewBounds="true"
                     android:backgroundTint="@color/white"
                     android:scaleType="fitCenter"
-                    android:adjustViewBounds="true"
-                    android:layout_columnWeight="1"
-                    android:layout_rowWeight="1"/>
+                    android:src="@drawable/dashboard_notification" />
+
                 <TextView
-                    android:text="@string/dashBoardQueryTitle"
-                    android:backgroundTint="@color/white"
-                    android:textColor="@color/black"
-                    android:layout_gravity="center"
-                    android:textSize="16dp"
                     android:layout_row="1"
                     android:layout_column="0"
-                    android:textStyle="bold"
-                    />
-                <TextView
-                    android:text="@string/dashBoardHistoryVolumeTitle"
-                    android:backgroundTint="@color/white"
-                    android:textColor="@color/black"
                     android:layout_gravity="center"
+                    android:backgroundTint="@color/white"
+                    android:text="@string/dashBoardQueryTitle"
+                    android:textColor="@color/black"
                     android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
                     android:layout_row="1"
                     android:layout_column="1"
-                    android:textStyle="bold"
-                    />
-                <TextView
-                    android:text="@string/dashBoardNotificationTitle"
-                    android:backgroundTint="@color/white"
-                    android:textColor="@color/black"
                     android:layout_gravity="center"
+                    android:backgroundTint="@color/white"
+                    android:text="@string/dashBoardHistoryVolumeTitle"
+                    android:textColor="@color/black"
                     android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
                     android:layout_row="1"
                     android:layout_column="2"
-                    android:textStyle="bold"
-                    />
-                <ImageButton
-                    android:id="@+id/volExchange"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_row="2"
-                    android:layout_column="0"
                     android:layout_gravity="center"
                     android:backgroundTint="@color/white"
-                    android:src="@drawable/dashboard_remaingas"
-                    android:scaleType="fitCenter"
-                    android:adjustViewBounds="true"
+                    android:text="@string/dashBoardNotificationTitle"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/volExchange"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_row="2"
+                    android:layout_rowWeight="1"
+                    android:layout_column="0"
                     android:layout_columnWeight="1"
-                    android:layout_rowWeight="1"/>
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:backgroundTint="@color/white"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/dashboard_remaingas" />
+
                 <ImageButton
                     android:id="@+id/activityButton"
                     android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_height="wrap_content"
                     android:layout_row="2"
+                    android:layout_rowWeight="1"
                     android:layout_column="1"
-                    android:layout_gravity="center"
-                    android:backgroundTint="@color/white"
-                    android:src="@drawable/dashboard_announcement"
-                    android:scaleType="fitCenter"
-                    android:adjustViewBounds="true"
                     android:layout_columnWeight="1"
-                    android:layout_rowWeight="1"/>
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:backgroundTint="@color/white"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/dashboard_announcement" />
+
                 <ImageButton
                     android:id="@+id/familyCodeButton"
                     android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_height="wrap_content"
                     android:layout_row="2"
+                    android:layout_rowWeight="1"
                     android:layout_column="2"
-                    android:layout_gravity="center"
-                    android:backgroundTint="@color/white"
-                    android:src="@drawable/dashboard_family"
-                    android:scaleType="fitCenter"
-                    android:adjustViewBounds="true"
                     android:layout_columnWeight="1"
-                    android:layout_rowWeight="1"/>
-                <TextView
-                    android:text="@string/dashBoardRemainGasTitle"
-                    android:backgroundTint="@color/white"
-                    android:textColor="@color/black"
                     android:layout_gravity="center"
-                    android:textSize="16dp"
+                    android:adjustViewBounds="true"
+                    android:backgroundTint="@color/white"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/dashboard_family" />
+
+                <TextView
                     android:layout_row="3"
                     android:layout_column="0"
-                    android:textStyle="bold"
-                    />
-                <TextView
-                    android:text="@string/dashBoardAnnouncementTitle"
-                    android:backgroundTint="@color/white"
-                    android:textColor="@color/black"
                     android:layout_gravity="center"
+                    android:backgroundTint="@color/white"
+                    android:text="@string/dashBoardRemainGasTitle"
+                    android:textColor="@color/black"
                     android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
                     android:layout_row="3"
                     android:layout_column="1"
-                    android:textStyle="bold"
-                    />
-                <TextView
-                    android:text="@string/dashBoardFamilyTitle"
-                    android:backgroundTint="@color/white"
-                    android:textColor="@color/black"
                     android:layout_gravity="center"
+                    android:backgroundTint="@color/white"
+                    android:text="@string/dashBoardAnnouncementTitle"
+                    android:textColor="@color/black"
                     android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="77dp"
                     android:layout_row="3"
                     android:layout_column="2"
-                    android:textStyle="bold"
-                    />
+                    android:layout_gravity="center"
+                    android:backgroundTint="@color/white"
+                    android:text="@string/dashBoardFamilyTitle"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
             </GridLayout>
 
             <Button

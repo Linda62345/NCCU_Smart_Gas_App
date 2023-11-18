@@ -193,6 +193,8 @@
     <string name="changable_exchangePrice">兌換價值：xxx 公斤</string>
     <string name="Changable_GasCompName"></string>
     <string name="userGenderNickname">先生</string>
+    <string name="homePageMyIoT">我的IoT</string>
+    <string name="homePageQrCode">QrCode</string>
 
     <!--瓦斯訂單OrderDetail-->
     <string name="orderQuantity">數量</string>
