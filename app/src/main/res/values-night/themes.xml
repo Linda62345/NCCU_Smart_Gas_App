@@ -3,7 +3,7 @@
     <style name="Theme.SmartGasApp" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="android:homeAsUpIndicator">@drawable/baseline_arrow_back_ios_24</item>
-        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimary">@color/main_blue</item>
         <item name="colorPrimaryVariant">@color/main_blue</item>
         <item name="colorOnPrimary">?attr/colorPrimary</item>
         <!-- Secondary brand color. -->

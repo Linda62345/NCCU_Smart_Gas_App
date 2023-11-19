@@ -37,7 +37,7 @@
             android:id="@+id/forgetImage"
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:src="@drawable/logo"
+            android:src="@mipmap/bearlogo"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="35dp"

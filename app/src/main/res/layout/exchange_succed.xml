@@ -39,7 +39,7 @@
         android:textColor="@color/black"
         android:textSize="24sp" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/exchangeSuccessNext"
         android:layout_width="match_parent"
         android:layout_height="66dp"
@@ -48,5 +48,6 @@
         android:layout_marginBottom="273dp"
         android:text="@string/next_string"
         android:textStyle="bold"
+        android:background="@drawable/main_blue_button_back"
         android:textColor="@color/white"/>
 </LinearLayout>

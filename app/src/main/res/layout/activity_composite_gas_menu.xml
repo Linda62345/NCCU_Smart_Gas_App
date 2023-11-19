@@ -251,7 +251,7 @@
                 android:textStyle="bold" />
 
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/ChooseDeliverMethod"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
