@@ -22,10 +22,9 @@ public class cylinder_gas_menu extends AppCompatActivity {
 
     private Button composite,order,delivery,backButton;
     private AppCompatButton minus1,minus2,minus3,plus1,plus2,plus3;
-    private TextView first,second,third,gasWeight5Kg,gasWeight16Kg,gasWeight20Kg;
+    private TextView first,second,third;
     public String S_first,S_second,S_third;
     public static int a = 0, b = 0, c = 0;
-    private Spinner gasWeightSpinner1,gasWeightSpinner2,gasWeightSpinner3;
     public static String weight1, weight2, weight3;
 
     @Override
@@ -49,9 +48,6 @@ public class cylinder_gas_menu extends AppCompatActivity {
         backButton = findViewById(R.id.backButton);
 
         Minus_Add();
-        gasWeight5Kg = findViewById(R.id.GasWeight5Kg);
-        gasWeight16Kg = findViewById(R.id.GasWeight16Kg);
-        gasWeight20Kg = findViewById(R.id.GasWeight20Kg);
         weight1 = "5";
         weight2 = "16";
         weight3 = "20";
@@ -60,8 +56,7 @@ public class cylinder_gas_menu extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(cylinder_gas_menu.this, Homepage.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
 

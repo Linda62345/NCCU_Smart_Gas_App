@@ -36,7 +36,8 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:paddingHorizontal="18dp"
-            android:paddingBottom="90dp">
+            android:paddingBottom="90dp"
+            android:layout_margin="10dp">
 
 
         <ImageView
@@ -68,7 +69,7 @@
             android:minHeight="25dp"
             android:autoSizeTextType="uniform"
             android:textColor="@color/black"
-            android:text="王大明" />
+            android:text="" />
 
         <View
             android:layout_width="match_parent"
@@ -94,7 +95,7 @@
             android:autoSizeTextType="uniform"
             android:inputType="phone"
             android:textColor="@color/black"
-            android:text="02-12345567" />
+            android:text="" />
 
         <View
             android:layout_width="match_parent"
@@ -120,7 +121,7 @@
             android:inputType="phone"
             android:autoSizeTextType="uniform"
             android:textColor="@color/black"
-            android:text="0912345678" />
+            android:text="" />
 
         <View
             android:layout_width="match_parent"
@@ -148,7 +149,7 @@
             android:minHeight="25dp"
             android:autoSizeTextType="uniform"
             android:textColor="@color/black"
-            android:text="台北市瓦斯區瓦斯行瓦斯路一段1號" />
+            android:text="" />
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -174,7 +175,7 @@
             android:minWidth="25dp"
             android:minHeight="25dp"
             android:autoSizeTextType="uniform"
-            android:text="gasgas@gmail.com"
+            android:text=""
             android:textColor="@color/black"/>
 
         <View

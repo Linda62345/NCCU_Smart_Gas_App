@@ -79,8 +79,7 @@ public class UsageHistory extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(UsageHistory.this, Homepage.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
 
@@ -222,7 +221,6 @@ public class UsageHistory extends AppCompatActivity {
             } else {
                 Log.i("get data Exception", "Result is empty or null.");
             }
-
         } catch (Exception e) {
             Log.i("get data Exception", e.toString());
         }
@@ -281,7 +279,7 @@ public class UsageHistory extends AppCompatActivity {
 
         if (usageHistoryList.size() > 0) {
             try {
-                Log.i("Pie chart", "Pie Chart");
+                Log.i("Pie chart", usageHistoryList.get(0).percent.toString());
                 pieEntries.add(new PieEntry(Float.parseFloat(usageHistoryList.get(0).percent) * 1000f, 0));
                 PieEntry transparentSlice = new PieEntry(100f - (Float.parseFloat(usageHistoryList.get(0).percent) * 1000f), 1);
                 transparentSlice.setData(0); // Set data to 0 (fully transparent)

@@ -63,8 +63,7 @@ public class GasExchange extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(GasExchange.this, Homepage.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
 

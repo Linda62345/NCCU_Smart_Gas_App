@@ -134,8 +134,7 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Register.this, LoginActivity.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
 

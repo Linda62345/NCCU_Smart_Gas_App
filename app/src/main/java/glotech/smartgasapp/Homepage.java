@@ -285,7 +285,7 @@ public class Homepage extends AppCompatActivity {
                                 Intent intent = new Intent(Homepage.this, OrderDetail.class);
                                 startActivity(intent);
                             } else {
-                                Intent intent = new Intent(Homepage.this, OrderGas.class);
+                                Intent intent = new Intent(Homepage.this, OrderStep1.class);
                                 startActivity(intent);
                             }
                         } catch (Exception e) {

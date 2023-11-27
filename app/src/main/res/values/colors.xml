@@ -15,4 +15,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="white_button">#FFEBEBEB</color>
     <color name="layout_background2">#FFE6E6E6</color>
+    <color name="selected_color">#3C66A7</color>
+    <color name="non_selected_color">#A9A9A9</color>
 </resources>

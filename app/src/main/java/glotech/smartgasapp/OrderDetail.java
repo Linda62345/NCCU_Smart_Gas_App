@@ -69,12 +69,8 @@ public class OrderDetail extends AppCompatActivity {
     public static String Gas_Volume;
     DatePickerDialog.OnDateSetListener pickerDialog;
     Calendar calendar = Calendar.getInstance();
-    TimePickerDialog.OnTimeSetListener timeDialog;
-    Calendar calendar1 = Calendar.getInstance();
     GasExchange gasExchange;
-    CompositeGasMenu compositeGasMenu;
-    cylinder_gas_menu cylinder_gas_menu;
-    OrderDetailListAdapter orderDetailListAdapter;
+    OrderStep1 orderStep1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,18 +86,16 @@ public class OrderDetail extends AppCompatActivity {
         Company_Id = String.valueOf(loginActivity.COMPANY_Id);
         Time_Spinner = findViewById(R.id.Time);
         backButton = findViewById(R.id.backButton);
+        orderStep1 = new OrderStep1();
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(OrderDetail.this, Homepage.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
 
         DeliveryMethod deliveryMethod = new DeliveryMethod();
-        compositeGasMenu = new CompositeGasMenu();
-        cylinder_gas_menu = new cylinder_gas_menu();
         Gas_Delete=0;
 
         customerOrderDetails = new ArrayList<OrderDetailItem>();
@@ -141,14 +135,9 @@ public class OrderDetail extends AppCompatActivity {
                         ArrayAdapter<String> adapter = (ArrayAdapter<String>) Time_Spinner.getAdapter();
                         position = adapter.getPosition(deliveryMethod.Time_Select);
 
-                        Gas_Quantity = compositeGasMenu.a+compositeGasMenu.b+compositeGasMenu.c+ cylinder_gas_menu.a+ cylinder_gas_menu.b+ cylinder_gas_menu.c;
-                        if(gasExchange.Gas_Quantity!=0){
-                            Gas_Quantity += gasExchange.Gas_Quantity;
-                        }
                         //顯示訂單詳細資料
-                        setGas_Quantity();
-
-
+                        customerOrderDetails.addAll(OrderStep1.cartItemList);
+                        OrderStep1.cartItemList.clear();
                     }
                     //有上一筆訂單資料
                     else{
@@ -275,14 +264,8 @@ public class OrderDetail extends AppCompatActivity {
             public void onClick(View v) {
                 //若有編輯過 數據會更新 會跑到判斷else裡面去
                 customerOrderDetails.clear();
-                cylinder_gas_menu.a = 0;
-                compositeGasMenu.a = 0;
-                cylinder_gas_menu.b = 0;
-                compositeGasMenu.b = 0;
-                cylinder_gas_menu.c = 0;
-                compositeGasMenu.c = 0;
                 edit = true;
-                Intent intent = new Intent(OrderDetail.this, OrderGas.class);
+                Intent intent = new Intent(OrderDetail.this, OrderStep1.class);
                 startActivity(intent);
             }
         });
@@ -499,32 +482,6 @@ public class OrderDetail extends AppCompatActivity {
         });
     }
 
-    public void setGas_Quantity(){
-        if(compositeGasMenu.a>0){
-            OrderDetailItem od = new OrderDetailItem(String.valueOf(compositeGasMenu.a), "composite", compositeGasMenu.weight1,false);
-            customerOrderDetails.add(od);
-        }
-        if(compositeGasMenu.b>0){
-            OrderDetailItem od = new OrderDetailItem(String.valueOf(compositeGasMenu.b), "composite", compositeGasMenu.weight2,false);
-            customerOrderDetails.add(od);
-        }
-        if(compositeGasMenu.c>0){
-            OrderDetailItem od = new OrderDetailItem(String.valueOf(compositeGasMenu.c), "composite", compositeGasMenu.weight3,false);
-            customerOrderDetails.add(od);
-        }
-        if(cylinder_gas_menu.a>0){
-            OrderDetailItem od = new OrderDetailItem(String.valueOf(cylinder_gas_menu.a), "tradition", cylinder_gas_menu.weight1,false);
-            customerOrderDetails.add(od);
-        }
-        if(cylinder_gas_menu.b>0){
-            OrderDetailItem od = new OrderDetailItem(String.valueOf(cylinder_gas_menu.b), "tradition", cylinder_gas_menu.weight2,false);
-            customerOrderDetails.add(od);
-        }
-        if(cylinder_gas_menu.c>0){
-            OrderDetailItem od = new OrderDetailItem(String.valueOf(cylinder_gas_menu.c), "tradition", cylinder_gas_menu.weight3,false);
-            customerOrderDetails.add(od);
-        }
-    }
 
     public void deleteGasRemain(){
         //三個值 Customer Id Company Id Gas Volume

@@ -59,8 +59,7 @@ public class OrderGas extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(OrderGas.this, Homepage.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
 

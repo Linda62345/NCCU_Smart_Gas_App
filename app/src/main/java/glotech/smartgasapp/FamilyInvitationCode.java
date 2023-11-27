@@ -93,8 +93,7 @@ public class FamilyInvitationCode extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(FamilyInvitationCode.this, UserDashboard.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
 

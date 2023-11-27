@@ -47,7 +47,7 @@ public class EditPersonalInfo extends AppCompatActivity {
 
     public int CUSTOMER_ID;
     public String CUSTOMER_Name, CUSTOMER_Address, CUSTOMER_Email, COMPANY_Id;
-    public int CUSTOMER_Tel,CUSTOMER_Phone;
+    public String CUSTOMER_Tel,CUSTOMER_Phone;
     private TextView Name, Address, Email, Tel, Phone;
     private Button save,backButton;
     public String customer_name="",phone="",tel="",address="",email="", company="";
@@ -127,8 +127,7 @@ public class EditPersonalInfo extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(EditPersonalInfo.this, UserDashboard.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
 
@@ -165,9 +164,9 @@ public class EditPersonalInfo extends AppCompatActivity {
             JSONObject responseJSON = new JSONObject(result);
             CUSTOMER_Name = responseJSON.getString("CUSTOMER_Name");
             Name.setText(CUSTOMER_Name);
-            CUSTOMER_Phone = responseJSON.getInt("CUSTOMER_Phone");
+            CUSTOMER_Phone = responseJSON.getString("CUSTOMER_Phone");
             Phone.setText(String.valueOf(CUSTOMER_Phone));
-            CUSTOMER_Tel = responseJSON.getInt("CUSTOMER_Tel");
+            CUSTOMER_Tel = responseJSON.getString("CUSTOMER_Tel");
             Tel.setText(String.valueOf(CUSTOMER_Tel));
             CUSTOMER_Address = responseJSON.getString("CUSTOMER_Address");
             Address.setText(CUSTOMER_Address);

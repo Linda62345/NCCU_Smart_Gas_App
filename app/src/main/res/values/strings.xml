@@ -214,4 +214,11 @@
     <string name="dashBoardRemainGasTitle">殘氣累積</string>
     <string name="dashBoardAnnouncementTitle">活動公告</string>
     <string name="dashBoardFamilyTitle">通知群組設定</string>
+
+    <!--瓦斯訂購第一步-->
+    <string name="orderStep1Composite">複合材料</string>
+    <string name="orderStep1Tradition">傳統鋼瓶</string>
+    <string name="orderStep1">瓦斯訂購</string>
+    <string name="orderStep1Volume">瓦斯容量</string>
+
 </resources>

@@ -65,8 +65,7 @@ public class SearchOrderResult extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //看有幾桶瓦斯 就換幾次
-                Intent intent = new Intent(SearchOrderResult.this, Homepage.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
 

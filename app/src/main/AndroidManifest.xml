@@ -153,6 +153,11 @@
             android:label="@string/edit_personal"
             android:parentActivityName="glotech.smartgasapp.UserDashboard" />
         <activity
+            android:name="glotech.smartgasapp.OrderStep1"
+            android:exported="false"
+            android:label=" "
+            android:parentActivityName="glotech.smartgasapp.OrderStep1" />
+        <activity
             android:name="glotech.smartgasapp.ForgetPassword2"
             android:exported="false"
             android:parentActivityName="glotech.smartgasapp.ForgetPassword1"/>

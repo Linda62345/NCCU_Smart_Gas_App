@@ -59,8 +59,7 @@ public class DeliveryMethod extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DeliveryMethod.this, OrderGas.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
 

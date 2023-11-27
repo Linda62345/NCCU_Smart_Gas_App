@@ -11,8 +11,11 @@
         <item name="colorSecondaryVariant">@color/mid_gray</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">@color/white</item>
         <!-- Customize your theme here. -->
         <item name="colorOnSurface">@android:color/black</item>
+
+        <!-- Set the status bar text color to black -->
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 </resources>

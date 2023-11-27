@@ -87,8 +87,7 @@ public class NotificationFrequency extends AppCompatActivity  {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(NotificationFrequency.this, UserDashboard.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
 

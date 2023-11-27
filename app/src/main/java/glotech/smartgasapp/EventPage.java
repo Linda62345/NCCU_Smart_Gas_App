@@ -60,8 +60,7 @@ public class EventPage extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(EventPage.this, UserDashboard.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
 
