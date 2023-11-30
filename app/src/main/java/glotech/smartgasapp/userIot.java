@@ -80,6 +80,12 @@ public class userIot extends AppCompatActivity {
         scanner = findViewById(R.id.qrPage);
         gasBottleSpec = findViewById(R.id.GasBottleSpec);
 
+        ScanIotQRCode scanIotQRCode = new ScanIotQRCode();
+        if(scanIotQRCode.qrCodeText!=null && !scanIotQRCode.qrCodeText.equals("")){
+            E_Sensor_ID.setText(scanIotQRCode.qrCodeText);
+
+        }
+
         scanner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -206,6 +212,8 @@ public class userIot extends AppCompatActivity {
                     if (response.contains("success")) {
                         Toast.makeText(getApplicationContext(), "IOT新增成功", Toast.LENGTH_LONG).show();
                         E_Sensor_ID.setText("");
+                        gasWeightEmpty.setText("");
+                        gasBottleSpec.setText("");
                         //畫面更新
                         ShowDataDetail();
                     } else if (response.contains("Duplicate")) {
