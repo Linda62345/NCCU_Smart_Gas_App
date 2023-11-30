@@ -29,6 +29,7 @@ public class OrderStep1 extends AppCompatActivity {
     private boolean isTraditionSelected = false;
     private int quantity = 0;
     public static ArrayList<OrderDetailItem> cartItemList = new ArrayList<OrderDetailItem>();
+    public static ArrayList<ChartRemoveListAdapter> cartItemList1 = new ArrayList<ChartRemoveListAdapter>();
     private Dialog popDialog;
 
     @Override
@@ -267,7 +268,7 @@ public class OrderStep1 extends AppCompatActivity {
         });
 
         nameTextView.setText("購物車");
-        OrderDetailListAdapter adapter = new OrderDetailListAdapter(getApplicationContext(), R.layout.adapter_order_detail_list, cartItemList);
+        ChartRemoveListAdapter adapter = new ChartRemoveListAdapter(getApplicationContext(), R.layout.adapter_remove_chart_list, cartItemList);
         if (cartItemList.size() > 0) {
             // listView.setAdapter(null);
             // Stuff that updates the UI
