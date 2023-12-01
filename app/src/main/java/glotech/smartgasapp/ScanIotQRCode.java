@@ -72,6 +72,7 @@ public class ScanIotQRCode extends AppCompatActivity {
     public JSONArray ja;
     public ListView IOTlistView;
     ArrayList<CustomerOrderDetail> customerOrderDetails;
+    public static String qrCodeText;
 
     //public static ArrayList<CustomerOrderDetail> customerOrderDetails;
 
@@ -131,7 +132,9 @@ public class ScanIotQRCode extends AppCompatActivity {
         qrCodeFoundButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveIOT();
+                Intent intent = new Intent(ScanIotQRCode.this, userIot.class);
+                startActivity(intent);
+                //saveIOT();
 //                startQRCodeScanner();
 //                IntentIntegrator integrator;
 //                integrator = new IntentIntegrator(ScanIotQRCode.this);
@@ -166,11 +169,12 @@ public class ScanIotQRCode extends AppCompatActivity {
         public void barcodeResult(BarcodeResult result) {
 
 
-            String qrCodeText = result.getText();
+            qrCodeText = result.getText();
             if (qrCodeText != null && !qrCodeText.isEmpty() && qrCodeText.length() == 15 ) {
                 enterNewIot.setText(qrCodeText);
                 Log.i("Scanned QR Code", qrCodeText);
             } else {
+                Toast.makeText(getApplicationContext(), "此QrCode不符合格式", Toast.LENGTH_SHORT).show();
                 Log.i("Scanned QR Code length invallid ", qrCodeText);
             }
         }

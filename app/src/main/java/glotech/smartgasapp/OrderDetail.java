@@ -63,7 +63,7 @@ public class OrderDetail extends AppCompatActivity {
     public JSONArray ja;
     public ListView listView;
     public Spinner Time_Spinner;
-    public int Gas_Quantity,orderDetailQuan,Gas_Delete=0,position=-1;
+    public int Gas_Quantity,Gas_Delete=0,position=-1;
     public static boolean edit=false;
     public static ArrayList<OrderDetailItem> customerOrderDetails;
     public static String Gas_Volume;

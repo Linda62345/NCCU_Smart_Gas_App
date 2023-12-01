@@ -44,8 +44,8 @@
                 <LinearLayout
                     android:layout_gravity="end"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
-
+                    android:orientation="vertical"
+                    android:padding="5dp">
                     <GridLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
@@ -55,10 +55,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
-                            android:text="xxx"
+                            android:text=""
                             android:textColor="@color/black"
                             app:autoSizeTextType="uniform"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:textSize="20dp"/>
 
                         <TextView
                             android:id="@+id/gender_call"
@@ -69,7 +70,8 @@
                             android:textColor="@color/black"
                             app:autoSizeTextType="uniform"
                             android:autoSizeMinTextSize="70sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:textSize="20dp"/>
                     </GridLayout>
 
                     <androidx.appcompat.widget.AppCompatButton
@@ -77,12 +79,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:minHeight="48dp"
-                        android:padding="8dp"
+                        android:paddingHorizontal="15dp"
+                        android:paddingVertical="8dp"
                         android:layout_gravity="end"
                         android:background="@drawable/oval_button"
-                        android:text="個人資料修改"
+                        android:text="個人資料"
                         app:autoSizeTextType="uniform"
-                        android:textColor="@color/dark_gray" />
+                        android:textColor="@color/dark_gray"
+                        android:layout_marginTop="5dp"/>
                 </LinearLayout>
 
                 <ImageView
