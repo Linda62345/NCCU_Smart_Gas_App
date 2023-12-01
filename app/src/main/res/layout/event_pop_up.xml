@@ -36,7 +36,52 @@
             android:layout_marginTop="6dp"
             android:layout_marginBottom="6dp"
             android:layout_marginHorizontal="20dp"
-            android:background="#b5b5b5" />
+            android:background="@color/black" />
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:columnCount="4">
+                <TextView
+                    android:layout_gravity="center"
+                    android:text="@string/orderQuantity"
+                    android:textSize="18sp"
+                    android:textColor="@color/dark_gray"
+                    android:autoSizeTextType="uniform"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp"
+                    android:layout_columnWeight="1"
+                    />
+                <TextView
+                    android:layout_gravity="center"
+                    android:text="@string/orderType"
+                    android:textSize="18sp"
+                    android:textColor="@color/dark_gray"
+                    android:autoSizeTextType="uniform"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginRight="20dp"
+                    />
+                <TextView
+                    android:layout_gravity="center"
+                    android:text="@string/orderWeight"
+                    android:textSize="18sp"
+                    android:textColor="@color/dark_gray"
+                    android:autoSizeTextType="uniform"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="20dp"
+                    />
+        </GridLayout>
+<!--        <View-->
+<!--            android:id="@+id/bottomLine"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="1dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:background="#b5b5b5" />-->
         <TextView
             android:id="@+id/des"
             android:layout_width="wrap_content"
@@ -53,7 +98,6 @@
             android:divider="@null"
             android:scrollingCache="false"
             android:smoothScrollbar="true"
-            android:layout_marginTop="5dp"
             android:layout_marginHorizontal="10dp"/>
 
     </LinearLayout>

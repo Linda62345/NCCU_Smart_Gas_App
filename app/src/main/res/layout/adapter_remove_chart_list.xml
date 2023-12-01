@@ -6,6 +6,19 @@
     android:padding="2dp"
     android:background="@color/white">
 
+
+
+<!--    <glotech.smartgasapp.listViewAdjust-->
+<!--        android:id="@+id/listview"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:animationCache="false"-->
+<!--        android:divider="@null"-->
+<!--        android:scrollingCache="false"-->
+<!--        android:smoothScrollbar="true"-->
+<!--        android:layout_marginHorizontal="10dp"/>-->
+
+
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -58,9 +71,5 @@
             />
 
     </GridLayout>
-    <View
-        android:id="@+id/bottomLine"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/black" />
+
 </LinearLayout>

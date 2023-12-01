@@ -74,12 +74,20 @@ public class NotificationFrequency extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification_frequency);
+        createNotificationChannel();
 
-        try {
-            frequency();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//            // Execute AsyncTask here
+//            new SendRequest().execute(Customer_Id);
+//        } catch (Exception e) {
+//            Log.i("Frequency JSON Exception", e.toString());
+//        }
+
+//        try {
+//            frequency();
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
 
         Button enterButton = findViewById(R.id.enter);
         backButton = findViewById(R.id.backButton);
@@ -176,49 +184,11 @@ public class NotificationFrequency extends AppCompatActivity  {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                handler.postDelayed(this, 60000);
             }
         };
-
-        // Start the initial notification check
-          //handler.post(notificationRunnable);
+        handler.post(notificationRunnable);
     }
-
-//    private void startNotificationCheck(double gasVolume) {
-//        handler = new Handler();
-//        notificationRunnable = new Runnable() {
-//            @Override
-//            public void run() {
-//                try {
-//                    // frequency();
-//                    double gasVolume = frequency(); // Retrieve the gasVolume value from the frequency() method
-//                    startNotificationCheck(gasVolume);
-//
-//                    Data inputData = new Data.Builder()
-//                            .putDouble("gasVolume", gasVolume) // Pass the gasVolume value to the Worker
-//                            .build();
-////                    PeriodicWorkRequest workRequest = new PeriodicWorkRequest.Builder(MyWorker.class, 1, TimeUnit.MINUTES)
-////                            .setInputData(inputData)
-////                            .build();
-//
-//                    OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(MyWorker.class)
-//                            .setInputData(new Data.Builder().putDouble("gasVolume", gasVolume).build())
-//                            .build();
-//
-//                    WorkManager.getInstance(NotificationFrequency.this).enqueue(workRequest);
-//                    handler.postDelayed(this, 60000);
-//
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//
-////                // Schedule the next notification check after a specific interval (e.g., every 1 minute)
-////                handler.postDelayed(this, 60000);
-//            }
-//        };
-//
-//        // Start the initial notification check
-//        handler.post(notificationRunnable);
-//    }
 
     private void createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= VERSION_CODES.O) {
@@ -235,13 +205,6 @@ public class NotificationFrequency extends AppCompatActivity  {
             Log.i("finish: ", Customer_Id);
             new SendRequest().execute(Customer_Id);
 
-//            double gasVolume = new SendRequest().execute(Customer_Id).get();
-//            Log.i("gasVolume: ", String.valueOf(gasVolume));
-//            // startNotificationCheck(gasVolume);
-//            if (gasVolume < 3) {
-//                startNotificationCheck(gasVolume);
-//            }
-//            return gasVolume;
         } catch (Exception e) {
             Log.i("Frequency JSON Exception", e.toString());
         }
@@ -433,63 +396,45 @@ public class NotificationFrequency extends AppCompatActivity  {
         }
 
 
+
         private void checkAndNotifyForFrequency(double gasVolume) {
-//            Calendar calendar = Calendar.getInstance();
-//            int hour = calendar.get(Calendar.HOUR_OF_DAY);
-//            int currentMinute = calendar.get(Calendar.MINUTE);
-//
-//            if ((hour == 2 || hour == 18) && gasVolume < 3) {
-//                showNotification("Your gas volume is less than 3 kg");
-//            }
-//        }
-            if (gasVolume < 3) {
-                Calendar calendar = Calendar.getInstance();
-                int hour = calendar.get(Calendar.HOUR_OF_DAY);
-                int minute = calendar.get(Calendar.MINUTE);
-
-                // Define the desired hours for notifications
-                int[] desiredHours = {14, 18};
-                int[] desiredMinutes = {00, 00};
-
-                for (int i = 0; i < desiredHours.length; i++) {
-                    int desiredHour = desiredHours[i];
-                    int desiredMinute = desiredMinutes[i];
-
-                    if ((hour < desiredHour) || (hour == desiredHour && minute < desiredMinute)) {
-                        // Schedule the next notification for today
-                        scheduleNotification(desiredHour, desiredMinute, gasVolume);
-                        return;
-                    }
-                }
-                scheduleNotification(desiredHours[0], desiredMinutes[0], gasVolume);
-            }
-        }
-
-
-
-
-        private void scheduleNotification(int desiredHour, int desiredMinute, double gasVolume) {
-            // Get the current time and add one minute
-            // long notificationTime = System.currentTimeMillis() + 60000;
 
             Calendar calendar = Calendar.getInstance();
+            int hour = calendar.get(Calendar.HOUR_OF_DAY);
+            int minute = calendar.get(Calendar.MINUTE);
 
+            int desiredHour = hour;
+            int desiredMinute = minute;
+
+            if (gasVolume < 3 && (hour == 14 && minute == 00 || hour == 18 && minute == 00)) {
+                showNotification("您的瓦斯容量小於" + 3 + "kg");
+                if (hour >= 13 || (hour == 13 && minute >= 30)) {
+                    // Afternoon, schedule the next notification for tomorrow morning
+                    desiredHour = 14;
+                    desiredMinute = 00;
+                    showNotification("您的瓦斯容量小於" + 3 + "公斤");
+                } else if (hour >= 17 && minute == 0) {
+                    // Morning, schedule the next notification for this afternoon
+                    desiredHour = 18;
+                    desiredMinute = 00;
+                    showNotification("您的瓦斯容量小於" + 3 + "公斤");
+                }
+            }
+            scheduleNotification(desiredHour, desiredMinute, gasVolume);
+        }
+        private void scheduleNotification(int desiredHour, int desiredMinute, double gasVolume) {
+            Calendar calendar = Calendar.getInstance();
             calendar.set(Calendar.HOUR_OF_DAY, desiredHour);
             calendar.set(Calendar.MINUTE, desiredMinute);
             calendar.set(Calendar.SECOND, 0);
 
             long notificationTime = calendar.getTimeInMillis();
 
-//            // If the desired time has already passed, schedule it for the next day
-//            if (notificationTime < System.currentTimeMillis()) {
-//                calendar.add(Calendar.DAY_OF_YEAR, 1);
-//                notificationTime = calendar.getTimeInMillis();
-//            }
-
-            if (System.currentTimeMillis() > calendar.getTimeInMillis()) {
-                calendar.add(Calendar.DAY_OF_MONTH, 1); // Schedule for the next day
+            // If the desired time has already passed, schedule it for the next day
+            if (notificationTime < System.currentTimeMillis()) {
+                calendar.add(Calendar.DAY_OF_YEAR, 1);
+                notificationTime = calendar.getTimeInMillis();
             }
-
             // Create an Intent for the notification
             Intent notificationIntent = new Intent(NotificationFrequency.this, NotificationReceiver.class);
             notificationIntent.putExtra("gasVolume", gasVolume);
@@ -501,7 +446,7 @@ public class NotificationFrequency extends AppCompatActivity  {
             AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
             // Set the notification to trigger at the desired time
-            if (Build.VERSION.SDK_INT >= VERSION_CODES.M) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, notificationTime, pendingIntent);
             } else {
                 alarmManager.setExact(AlarmManager.RTC_WAKEUP, notificationTime, pendingIntent);
