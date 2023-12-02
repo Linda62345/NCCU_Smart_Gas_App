@@ -408,7 +408,7 @@ public class NotificationFrequency extends AppCompatActivity  {
 
             if (gasVolume < 3 && (hour == 14 && minute == 00 || hour == 18 && minute == 00)) {
                 showNotification("您的瓦斯容量小於" + 3 + "kg");
-                if (hour >= 13 || (hour == 13 && minute >= 30)) {
+                if ((hour > 13 || (hour == 13 && minute >= 30)) && hour < 17) {
                     // Afternoon, schedule the next notification for tomorrow morning
                     desiredHour = 14;
                     desiredMinute = 00;
@@ -433,6 +433,9 @@ public class NotificationFrequency extends AppCompatActivity  {
             // If the desired time has already passed, schedule it for the next day
             if (notificationTime < System.currentTimeMillis()) {
                 calendar.add(Calendar.DAY_OF_YEAR, 1);
+                calendar.set(Calendar.HOUR_OF_DAY, desiredHour);
+                calendar.set(Calendar.MINUTE, desiredMinute);
+                calendar.set(Calendar.SECOND, 0);
                 notificationTime = calendar.getTimeInMillis();
             }
             // Create an Intent for the notification
