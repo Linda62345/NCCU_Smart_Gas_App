@@ -408,7 +408,7 @@ public class NotificationFrequency extends AppCompatActivity  {
 
             if (gasVolume < 3 && (hour == 14 && minute == 00 || hour == 18 && minute == 00)) {
                 showNotification("您的瓦斯容量小於" + 3 + "kg");
-                if ((hour > 13 || (hour == 13 && minute >= 30)) && hour < 17) {
+                if (hour > 13 || (hour == 13 && minute >= 30)) {
                     // Afternoon, schedule the next notification for tomorrow morning
                     desiredHour = 14;
                     desiredMinute = 00;
