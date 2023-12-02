@@ -125,7 +125,7 @@ public class MyWorker extends Worker {
                 PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "My Notification");
-        builder.setContentTitle("SmartGasApp Notification");
+        builder.setContentTitle("Gas Guard Notification");
         builder.setContentText("您的瓦斯容量小於" + 3 + "公斤");
         builder.setSmallIcon(R.drawable.baseline_shopping_cart_24);
         builder.setAutoCancel(true);

@@ -110,7 +110,7 @@ public class NotificationForegroundService extends Service {
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setContentTitle("SmartGasApp Notification")
+                .setContentTitle("Gas Guard Notification")
                 .setContentText("您的瓦斯容量小於" + 3 + "kg")
                 .setSmallIcon(R.drawable.baseline_shopping_cart_24)
                 .setContentIntent(pendingIntent)
@@ -147,7 +147,7 @@ public class NotificationForegroundService extends Service {
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
 
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setContentTitle("SmartGasApp Notification")
+                .setContentTitle("Gas Guard Notification")
                 .setContentText("您的瓦斯容量小於" + 3 + "kg")
                 .setSmallIcon(R.drawable.baseline_shopping_cart_24)
                 .setContentIntent(pendingIntent)

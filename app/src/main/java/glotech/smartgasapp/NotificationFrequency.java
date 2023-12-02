@@ -469,7 +469,7 @@ public class NotificationFrequency extends AppCompatActivity  {
 
 
             NotificationCompat.Builder builder = new NotificationCompat.Builder(NotificationFrequency.this, "My Notification");
-            builder.setContentTitle("SmartGasApp Notification");
+            builder.setContentTitle("Gas Guard Notification");
             builder.setContentText(message);
             builder.setSmallIcon(R.drawable.baseline_shopping_cart_24);
             builder.setAutoCancel(true);
