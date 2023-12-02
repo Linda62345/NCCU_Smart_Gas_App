@@ -107,9 +107,9 @@ public class Homepage extends AppCompatActivity {
 
         // Create sample images
         SliderView sliderView;
-        int[] images = {R.drawable.gasGuardAd,
-                R.drawable.gasGuardAd,
-                R.drawable.gasGuardAd};
+        int[] images = {R.drawable.gasguardad,
+                R.drawable.gasguardad,
+                R.drawable.gasguardad};
 
 
         viewPager2 = findViewById(R.id.viewPager2);
