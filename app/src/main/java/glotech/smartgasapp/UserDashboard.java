@@ -143,7 +143,12 @@ public class UserDashboard extends AppCompatActivity {
                 clearLoginData();
                 intent.putExtra("clearCredentials", true); // Add extra information
                 startActivity(intent);
+
+                stopService(new Intent(UserDashboard.this, NotificationForegroundService.class));
+
                 finish();
+
+              //  NotificationFrequency.cancelNotification(UserDashboard.this);
             }
         });
 

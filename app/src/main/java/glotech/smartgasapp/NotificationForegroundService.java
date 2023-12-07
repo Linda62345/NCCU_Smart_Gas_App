@@ -91,7 +91,7 @@ public class NotificationForegroundService extends Service {
 
         // Schedule the alarm to repeat at 14:00 and 18:00
         scheduleAlarm(alarmManager, pendingIntent, 14, 00);
-        scheduleAlarm(alarmManager, pendingIntent, 18, 0);
+        scheduleAlarm(alarmManager, pendingIntent, 18, 00);
     }
 
     private void scheduleAlarm(AlarmManager alarmManager, PendingIntent pendingIntent, int hour, int minute) {
@@ -140,6 +140,9 @@ public class NotificationForegroundService extends Service {
             alarmManager.setExact(AlarmManager.RTC_WAKEUP, triggerAtMillis, pendingIntent);
         }
     }
+
+
+
 }
 
 
