@@ -90,7 +90,7 @@ public class NotificationForegroundService extends Service {
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
         // Schedule the alarm to repeat at 14:00 and 18:00
-        scheduleAlarm(alarmManager, pendingIntent, 16, 00);
+        scheduleAlarm(alarmManager, pendingIntent, 14, 00);
         scheduleAlarm(alarmManager, pendingIntent, 18, 0);
     }
 
