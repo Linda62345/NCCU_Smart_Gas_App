@@ -32,77 +32,24 @@ public class NotificationForegroundService extends Service {
         scheduleNotificationCheck();
     }
 
+    @Override
+    public IBinder onBind(Intent intent) {
+        // This service is not designed to be bound to an activity
+        return null;
+    }
+
     public void setGasVolume(double gasVolume) {
         this.gasVolume = gasVolume;
     }
 
-    private void startNotificationCheck() {
-        handler = new Handler();
-        notificationRunnable = new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    frequency();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                // Schedule the next notification check after a specific interval (e.g., every 1 minute)
-                handler.postDelayed(this, 60000);
-            }
-        };
-
-        // Start the initial notification check
-        handler.post(notificationRunnable);
-
-        // Schedule the first notification check using AlarmManager
-        scheduleNotificationCheck();
-        //NotificationForegroundService.setGasVolume(gasVolume);
-    }
-
-
-    private void frequency() throws IOException {
-        try {
-
-            // Check if gasVolume is less than 3 and show the notification if needed
-            if (gasVolume < 3) {
-                showNotification("您的瓦斯容量小於" + 3 + "kg"); // Adjust the message as per your requirement
-            }
-
-        } catch (Exception e) {
-            Log.i("Frequency JSON Exception", e.toString());
-        }
-    }
-
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        // Update gasVolume here if needed
         Notification notification = buildNotification();
         startForeground(1, notification);
         // Schedule the task to run periodically using AlarmManager
         scheduleTask();
-        // Start the notification check task here
         return START_STICKY;
-    }
-
-    private void scheduleTask() {
-        // Create an Intent for your task
-        Intent taskIntent = new Intent(this, NotificationReceiver.class);
-
-        // Create a PendingIntent to be triggered by the AlarmManager
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(
-                this,
-                0,
-                taskIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE // Add FLAG_IMMUTABLE
-        );
-        // Get the AlarmManager and set the periodic alarm
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-
-        long intervalMillis = 60 * 1000; // 1 minute
-        long triggerAtMillis = System.currentTimeMillis();
-
-        // Schedule the alarm to repeat at the specified interval
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, triggerAtMillis, intervalMillis, pendingIntent);
     }
 
     private Notification buildNotification() {
@@ -120,15 +67,6 @@ public class NotificationForegroundService extends Service {
 
         return notification;
     }
-
-    @Override
-    public IBinder onBind(Intent intent) {
-
-        return null;
-    }
-
-
-
     private void createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel serviceChannel = new NotificationChannel(
@@ -141,30 +79,59 @@ public class NotificationForegroundService extends Service {
             manager.createNotificationChannel(serviceChannel);
         }
     }
+    private void scheduleTask() {
+        Intent taskIntent = new Intent(this, NotificationReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(
+                this,
+                0,
+                taskIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
+        );
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
-    private void showNotification(String message) {
-        Intent notificationIntent = new Intent(this, NotificationReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
-
-        Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setContentTitle("Gas Guard Notification")
-                .setContentText("您的瓦斯容量小於" + 3 + "kg")
-                .setSmallIcon(R.drawable.baseline_shopping_cart_24)
-                .setContentIntent(pendingIntent)
-                .setAutoCancel(true)
-                .build();
-
-        startForeground(1, notification);
+        // Schedule the alarm to repeat at 14:00 and 18:00
+        scheduleAlarm(alarmManager, pendingIntent, 16, 00);
+        scheduleAlarm(alarmManager, pendingIntent, 18, 0);
     }
 
+    private void scheduleAlarm(AlarmManager alarmManager, PendingIntent pendingIntent, int hour, int minute) {
+        long intervalMillis = 24 * 60 * 60 * 1000; // 24 hours
+        long triggerAtMillis = getTriggerAtMillis(hour, minute);
+
+        // Set the alarm to repeat at the specified time every day
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, triggerAtMillis, intervalMillis, pendingIntent);
+    }
+
+    private long getTriggerAtMillis(int hour, int minute) {
+        // Get the current time
+        long currentTimeMillis = System.currentTimeMillis();
+
+        // Calculate the desired time in millis
+        long desiredTimeMillis = currentTimeMillis + ((hour * 60 + minute) * 60 * 1000);
+
+        // If the desired time has already passed, schedule it for the next day
+        if (desiredTimeMillis <= currentTimeMillis) {
+            desiredTimeMillis += 24 * 60 * 60 * 1000;
+        }
+
+        return desiredTimeMillis;
+    }
+
+    // Other methods remain unchanged
+
     private void scheduleNotificationCheck() {
-        // Use AlarmManager to schedule the next notification check
         Intent notificationIntent = new Intent(this, NotificationReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(
+                this,
+                0,
+                notificationIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
+        );
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
-        long intervalMillis = 60000; // 1 minute (adjust this interval as per your requirement)
+        // Schedule the first notification check at the next minute
+        long intervalMillis = 60 * 1000; // 1 minute
         long triggerAtMillis = System.currentTimeMillis() + intervalMillis;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -174,3 +141,5 @@ public class NotificationForegroundService extends Service {
         }
     }
 }
+
+
