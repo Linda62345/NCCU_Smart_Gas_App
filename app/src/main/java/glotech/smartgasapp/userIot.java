@@ -218,7 +218,6 @@ public class userIot extends AppCompatActivity {
                         ShowDataDetail();
                     } else if (response.contains("Duplicate")) {
                         Toast.makeText(getApplicationContext(), "新增失敗，此IOT已在資料庫中", Toast.LENGTH_LONG).show();
-
                     } else if (response.contains("failure")) {
                         Toast.makeText(getApplicationContext(), "新增失敗", Toast.LENGTH_LONG).show();
                     }

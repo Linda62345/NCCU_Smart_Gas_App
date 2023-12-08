@@ -61,8 +61,8 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
     ArrayList<String> cityList = new ArrayList<>();
     ArrayAdapter<String> countryAdapter;
     ArrayAdapter<String> cityAdapter;
-    ArrayList<String> companyList = new ArrayList<>();
-    ArrayAdapter<String> companyAdapter;
+    ArrayList<Company> companyList = new ArrayList<>();
+    ArrayAdapter<Company> companyAdapter;
     private String URL = "http://54.199.33.241/test/customer_register.php";
 
     private String name, email, address, phone, houseTel, password, reenterPassword, gender, company, city, area, lift, postCode, floor;
@@ -151,13 +151,17 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
                         JSONArray jsonArray = response.getJSONArray("company");
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
+                            String companyId = jsonObject.optString("COMPANY_Id");
                             String companyName = jsonObject.optString("COMPANY_Name");
-                            companyList.add(companyName);
+
+                            // Create a Company object and add it to the list
+                            Company company = new Company(companyId, companyName);
+                            companyList.add(company);
+
                             companyAdapter = new ArrayAdapter<>(Register.this,
                                     android.R.layout.simple_spinner_item, companyList);
                             companyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                             etCompanyName.setAdapter(companyAdapter);
-
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -312,8 +316,9 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
 
             city = etCity.getSelectedItem().toString();
             area = etArea.getSelectedItem().toString();
-            String companyName = etCompanyName.getSelectedItem().toString();
-            company = companyName;
+            Company selectedCompany = (Company) etCompanyName.getSelectedItem();
+            String companyId = selectedCompany.getCompanyId();
+            company = companyId;
             floor = etFloor.getText().toString().trim();
             address = city + area + etAddress.getText().toString().trim() + " (" + floor + "樓" + ")";
             name = etName.getText().toString().trim();

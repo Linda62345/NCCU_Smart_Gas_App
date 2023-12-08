@@ -464,7 +464,7 @@ public class OrderDetail extends AppCompatActivity {
         dialog.show();
     }
     public void TimePick(){
-        if(time.isEmpty() || time.equals("")){
+        if(time.isEmpty() || time.equals("") || time==null){
             time = "08:00";
         }
         Time_Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
